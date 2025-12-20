@@ -15,9 +15,9 @@ createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <StrictMode>
       <Routes>
-        <Route path="/*" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/courier" element={<Courier />} />
+        <Route path="/*" element={<Navigate to="/ride.driver.frontend/home" />} />
+        <Route path="/ride.driver.frontend/home" element={<Home />} />
+        <Route path="/ride.driver.frontend/courier" element={<Courier />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>

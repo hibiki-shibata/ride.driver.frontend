@@ -6,7 +6,7 @@ function header() {
             <h1 className="pt-2 pl-10 text-5xl">~ Amazones ~</h1>
             <div className="flex">
                 <button className="hover:underline m-3">
-                    <a href="/courier">
+                    <a href="/ride.driver.frontend/courier">
                         Join as a Courier
                     </a>
                 </button>
