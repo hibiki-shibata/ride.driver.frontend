@@ -1,6 +1,6 @@
 function meritOfAmazones() {
     return (
-        <div className="bg-cyan-900 p-10 rounded-3xl p-10 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold " >
+        <div className="bg-cyan-700 p-10 rounded-3xl p-10 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold " >
             <h2 className="text-3xl font-bold mb-5">Merits of Amazones Delivery?</h2>
             <ul className="list-disc list-inside text-lg space-y-3">
                 <li className="mt-6"> The price

@@ -1,4 +1,4 @@
-import SignupButton from "./signupButton";
+import SignupButton from "../signupButton";
 import LoginButton from "../loginButton";
 import HrefToCourierPage from "./hrefToCourierPage";
 import UnknownAccountIcon from "./unknownAccountIcon";
