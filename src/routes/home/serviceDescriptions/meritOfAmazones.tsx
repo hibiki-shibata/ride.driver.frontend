@@ -1,7 +1,7 @@
-function meritOfMélobee() {
+function meritOfAmazones() {
     return (
         <div className="bg-cyan-600 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-10" >
-            <h2 className="text-3xl font-bold mb-5">Merits of Mélobee Delivery?</h2>
+            <h2 className="text-3xl font-bold mb-5">Merits of Amazones Delivery?</h2>
             <ul className="list-disc list-inside text-lg space-y-3">
                 <li className="mt-6"> The price
                     <ul className="text-gray-300 font-normal">
@@ -27,4 +27,4 @@ function meritOfMélobee() {
         </div>
     )
 }
-export default meritOfMélobee;
+export default meritOfAmazones;

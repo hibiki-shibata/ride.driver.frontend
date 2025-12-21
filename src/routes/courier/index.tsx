@@ -9,7 +9,7 @@ function courier() {
             <Header />
             <div className="bg-gray-900 text-white md:p-20 p-1">
                 <div className="text-center">
-                    <h1 className="text-5xl">Become a Mélobee Courier Partner</h1>
+                    <h1 className="text-5xl">Become a Amazones Courier Partner</h1>
                     <SignupButton />
                 </div>
                 <DescriptionContaners />

@@ -1,10 +1,10 @@
-import MélobeeLogo from "../../../../components/Mélobee-logo";
+import AmazonesLogo from "../../../../components/amazones-logo";
 import ExploreAsCustomer from "./exploreAsCustomer";
 
 function header() {
     return (
         <div className="bg-black text-white flex justify-between">
-            <MélobeeLogo />
+            <AmazonesLogo />
             <ExploreAsCustomer />
         </div>
     )

@@ -2,12 +2,12 @@ import SignupButton from "../signupButton";
 import LoginButton from "../loginButton";
 import HrefToCourierPage from "./hrefToCourierPage";
 import UnknownAccountIcon from "./unknownAccountIcon";
-import MélobeeLogo from "../../../components/Mélobee-logo";
+import AmazonesLogo from "../../../components/amazones-logo";
 
 function header() {
     return (
         <div className="bg-black text-white flex justify-between">
-            <MélobeeLogo />
+            <AmazonesLogo />
             <div className="flex">
                 <HrefToCourierPage />
                 <div className="sm:flex hidden sm:block">
