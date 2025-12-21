@@ -11,7 +11,7 @@ function registerProcessCircle() {
                 <div className="m-5 w-35 h-35 bg-sky-600 rounded-full flex items-center justify-center font-bold align-center text-5xl">
                     2
                 </div>
-                <p className="text-xl font-bold" >install App</p>
+                <p className="text-xl font-bold" >Install App</p>
             </div>
            <div className="pr-7 pl-7 flex justify-center items-center flex-col">
                 <div className="m-6 w-35 h-35 bg-sky-600 rounded-full flex items-center justify-center font-bold align-center text-5xl">

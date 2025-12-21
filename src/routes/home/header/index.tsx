@@ -6,7 +6,7 @@ import AmazonesLogo from "../../../components/amazones-logo";
 
 function header() {
     return (
-        <div className="bg-black text-white flex justify-between">
+        <div className="bg-black text-white flex justify-between md:p-0 p-5">
             <AmazonesLogo />
             <div className="flex">
                 <HrefToCourierPage />

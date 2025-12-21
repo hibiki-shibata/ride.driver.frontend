@@ -3,7 +3,7 @@ import SignupButton from "../signupButton";
 function whatNeedToRegister() {
     return (
         // <div className="bg-cyan-900 p-10 rounded-3xl p-10 sm:mr-7 sm:ml-7 mr-1 ml-1 mt-4 font-bold" >
-        <div className="bg-cyan-800 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-10" >
+        <div className="bg-gradient-to-b from-yellow-600 to-yellow-900 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-10" >
             <h2 className="text-3xl text-center font-bold mb-5">What you need to register?</h2>
             <div className="flex flex-col justify-center items-center">
                 <ul className="list-disc list-inside text-lg  space-y-3">
