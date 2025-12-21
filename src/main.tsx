@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import Home from './routes/home/'
 import Courier from './routes/courier/'
+import CourierApply from './routes/courier/apply/'
+
 import {
   BrowserRouter,
   Routes,
@@ -18,6 +20,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/*" element={<Navigate to="/ride.driver.frontend/home" />} />
         <Route path="/ride.driver.frontend/home" element={<Home />} />
         <Route path="/ride.driver.frontend/courier" element={<Courier />} />
+        <Route path="/ride.driver.frontend/courier/apply" element={<CourierApply />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>

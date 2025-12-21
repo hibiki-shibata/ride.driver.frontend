@@ -1,4 +1,4 @@
-import SignupButton from "../signupButton";
+import SignupButton from "../../components/signupButton";
 
 function missionAndResponsibility() {
     return (
