@@ -1,5 +1,5 @@
 import Footer from '../../components/footer'
-import Header from './header'
+import Header from './header/'
 import ServiceDescription from './serviceDescriptions'
 
 function Home() {

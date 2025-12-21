@@ -1,13 +1,13 @@
-import Header from "./header";
+import Header from "./header/";
 import Footer from '../../components/footer'
 import SignupButton from "./signupButton";
-import DescriptionContaners from "./descriptionContaners";
+import DescriptionContaners from "./descriptionContainers";
 
 function courier() {
     return (
         <>
             <Header />
-            <div className="bg-gray-900 text-white p-20">
+            <div className="bg-gray-900 text-white md:p-20 p-1">
                 <div className="text-center">
                     <h1 className="text-5xl">Become a Amazones Courier Partner</h1>
                     <SignupButton />

@@ -9,7 +9,7 @@ function serviceDescription() {
                 <MeritOfAmazones />
                 <WhatNeedToRegister />
             </div>
-            <div className="rounded-3xl flex mt-15  justify-center">
+            <div className="rounded-3xl flex mt-15 justify-center">
                 <WhenChoseUs />
             </div>
         </>

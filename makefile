@@ -1,5 +1,5 @@
 
-.phony: compile
+.phony: compile everything and prepare for github page deployment
 compile:
 	@echo "Compiling the project..."
 	npm run build
