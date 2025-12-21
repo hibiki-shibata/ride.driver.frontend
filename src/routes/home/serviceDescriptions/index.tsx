@@ -5,7 +5,7 @@ import WhenChoseUs from "./whenChoseUs";
 function serviceDescription() {
     return (
         <>
-            <div className="rounded-3xl sm:flex mt-17">
+            <div className="rounded-3xl sm:flex mt-12">
                 <MeritOfAmazones />
                 <WhatNeedToRegister />
             </div>

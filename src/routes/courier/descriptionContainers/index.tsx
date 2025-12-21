@@ -1,12 +1,12 @@
 import RequiredInfo from "./requiredInfo";
 import MissionAndResponsibility from "./missionAndResponsibility";
-import RegisterProcessDesc from "./registerProcessDesc";
+import RegisterProcessCircle from "./registerProcessCircle";
 
 function descriptionContaners() {
     return (
         <>
             <MissionAndResponsibility />
-            <RegisterProcessDesc />
+            <RegisterProcessCircle />
             <RequiredInfo />
         </>
     )
