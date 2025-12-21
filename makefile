@@ -1,5 +1,5 @@
 
-
+.phony: compile
 compile:
 	@echo "Compiling the project..."
 	npm run build
