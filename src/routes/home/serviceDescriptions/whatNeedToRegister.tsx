@@ -27,8 +27,8 @@ function whatNeedToRegister() {
                             - Courier will deliver to address.
                         </ul>
                     </li>
-                    <SignupButton />
                 </ul>
+                    <SignupButton />
             </div>
         </div>
     )
