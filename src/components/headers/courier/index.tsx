@@ -1,4 +1,4 @@
-import AmazonesLogo from "../../../../components/amazones-logo";
+import AmazonesLogo from "../../../components/amazones-logo";
 import ExploreAsCustomer from "./exploreAsCustomer";
 
 function header() {
