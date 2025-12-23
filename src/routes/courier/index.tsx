@@ -1,7 +1,7 @@
-import Header from "./components/header";
+import Header from "../../components/headers/home"
 import Footer from '../../components/footer'
-import SignupButton from "./components/signupButton";
-import DescriptionContaners from "./components/descriptionContainers";
+import SignupButton from "../../components/buttons/couriers/courierSignupButton";
+import DescriptionContaners from "./descriptionContainer"
 
 function courier() {
     return (
