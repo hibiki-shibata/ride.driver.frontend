@@ -1,4 +1,4 @@
-import Header from "../../components/headers/home"
+import Header from "../../components/headers/courier"
 import Footer from '../../components/footer'
 import SignupButton from "../../components/buttons/couriers/courierSignupButton";
 import DescriptionContaners from "./descriptionContainer"
