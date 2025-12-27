@@ -5,6 +5,10 @@ export type CpApplicationData = {
 }
 
 export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<void> {
+    if (!cpApplyData.cpName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
+        alert('We need all the fields filled out!');
+        return
+    }
     const res = await fetch('http://localhost:3000/courier/apply', {
         method: 'POST',
         headers: {
