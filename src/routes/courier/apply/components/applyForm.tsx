@@ -4,7 +4,8 @@ import { cpApplicationReq } from "../services/cpApplicationReq"
 
 function applyForm() {
     const [cpData, setCpData] = useState({
-        cpName: "",
+        cpFirstName: "",
+        cpLastName: "",
         phoneNumber: "",
         vehicleType: ""
     })
@@ -12,14 +13,24 @@ function applyForm() {
         <div className="py-15">
             <form>
                 <label className="font-bold">Your name</label>
-                <input
-                    className="mb-7 p-3 rounded-lg w-full text-black bg-white bg-white"
-                    type="text"
-                    placeholder="Full Name"
-                    value={cpData.cpName}
-                    onChange={(e) => setCpData({ ...cpData, cpName: e.target.value })}
-                    required
-                />
+                <div className="flex">
+                    <input
+                        className="mb-7 p-3 mr-2 rounded-lg w-full text-black bg-white bg-white"
+                        type="text"
+                        placeholder="First Name"
+                        value={cpData.cpFirstName}
+                        onChange={(e) => setCpData({ ...cpData, cpFirstName: e.target.value })}
+                        required
+                    />
+                    <input
+                        className="mb-7 p-3 ml-2 rounded-lg w-full text-black bg-white bg-white"
+                        type="text"
+                        placeholder="Last Name"
+                        value={cpData.cpLastName}
+                        onChange={(e) => setCpData({ ...cpData, cpLastName: e.target.value })}
+                        required
+                    />
+                </div>
                 <label className="font-bold">Phone number</label>
                 <small> ( Format: +8112345678 )</small>
                 <input
@@ -28,7 +39,7 @@ function applyForm() {
                     placeholder="Phone Number"
                     value={cpData.phoneNumber}
                     onChange={(e) => setCpData({ ...cpData, phoneNumber: e.target.value })}
-                    pattern="\+?[0-9]{10,15}"
+                    pattern="^\+?\d{8,12}$"
                     required
                 />
                 <label className="font-bold">Vehicle type</label>
