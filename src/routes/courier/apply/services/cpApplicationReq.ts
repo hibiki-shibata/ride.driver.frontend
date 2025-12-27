@@ -1,11 +1,12 @@
 export type CpApplicationData = {
-    cpName: string;
+    cpFirstName: string;
+    cpLastName: string;
     phoneNumber: string;
     vehicleType: string;
 }
 
 export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<void> {
-    if (!cpApplyData.cpName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
+    if (!cpApplyData.cpFirstName || !cpApplyData.cpLastName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
         alert('We need all the fields filled out!');
         return
     }

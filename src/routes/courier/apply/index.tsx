@@ -1,4 +1,4 @@
-import Header from "../../../components/headers/home"
+import Header from "../../../components/headers/courier"
 import ApplyForm from "./components/applyForm"
 import Footer from '../../../components/footer'
 
