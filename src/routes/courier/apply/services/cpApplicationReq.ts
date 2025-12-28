@@ -5,10 +5,9 @@ export type CpApplicationData = {
     vehicleType: string;
 }
 
-export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<void> {
+export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<String> {
     if (!cpApplyData.cpFirstName || !cpApplyData.cpLastName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
-        alert('We need all the fields filled out!');
-        return
+        throw new Error("All fields are required.");
     }
     const res = await fetch('http://localhost:3000/courier/apply', {
         method: 'POST',
@@ -19,6 +18,7 @@ export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<
     });
 
     if (!res.ok) {
-        throw new Error('Failed to send request');
+        throw new Error(`HTTP error! status: ${res.status}`);
     }
+    return res.json()
 }

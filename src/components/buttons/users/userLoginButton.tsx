@@ -17,13 +17,11 @@ function loginButton() {
                         <input
                             type="text"
                             placeholder="example@domain.com"
-                            className="mb-10 p-2 w-100 border border-gray-300 rounded"
-                        />
+                            className="mb-10 p-2 w-100 border border-gray-300 rounded"/>
                         <button
                             type="submit"
                             className="bg-sky-600 text-white rounded-lg p-2 hover:bg-sky-700"
-                            onClick={() => { setIsLoginOpen(false) }}
-                        >
+                            onClick={() => { setIsLoginOpen(false) }}>
                             Login
                         </button>
                     </form>
