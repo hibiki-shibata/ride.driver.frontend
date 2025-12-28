@@ -26,8 +26,8 @@ function applyForm() {
         <div className="py-15">
             <form
                 onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSubmit(cpDraftData);
+                    e.preventDefault()
+                    handleSubmit(cpDraftData)
                 }}>
                 <label className="font-bold">Your name</label>
                 <div className="flex">
