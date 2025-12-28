@@ -9,7 +9,7 @@ export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<
     if (!cpApplyData.cpFirstName || !cpApplyData.cpLastName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
         throw new Error("All fields are required.");
     }
-    const res = await fetch('http://localhost:3000/courier/apply', {
+    const res = await fetch('http://localhost:3000/api/v1/auth/courier/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
