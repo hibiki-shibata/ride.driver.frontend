@@ -63,9 +63,10 @@ function applyForm() {
                     value={cpDraftData.vehicleType}
                     onChange={(e) => setCpDraftData({ ...cpDraftData, vehicleType: e.target.value })}>
                     <option value="" disabled>Select vehicle type</option>
-                    <option value="Bicycle" >Bicycle</option>
-                    <option value="Car">Car</option>
-                    <option value="Motorcycle">Motorcycle</option>
+                    <option value="BICYCLE" >Bicycle</option>
+                    <option value="MOTORCYCLE">Motorcycle</option>
+                    <option value="CAR">Car</option>
+                    <option value="TRUCK">Truck</option>
                 </select>
                 {requestStatus.status === "loading" && (
                     <p className="text-blue-600 font-bold mb-4">Submitting your application...</p>
