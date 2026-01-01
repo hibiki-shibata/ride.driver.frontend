@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { cpApplicationReq } from "../services/cpApplicationReq"
-import type { CpApplicationData } from "../services/cpApplicationReq"
+import { Navigate } from "react-router-dom";
+import { cpApplicationReq } from "../api/cpApplicationReq"
+import type { CpApplicationData } from "../api/cpApplicationReq"
 
 type ApplicationSubmitStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
@@ -61,7 +62,9 @@ function applyForm() {
                 <label className="font-bold">Vehicle type</label>
                 <select className="mb-7 p-3 rounded-lg w-full text-black bg-white bg-white"
                     value={cpDraftData.vehicleType}
-                    onChange={(e) => setCpDraftData({ ...cpDraftData, vehicleType: e.target.value })}>
+                    onChange={(e) => setCpDraftData({ ...cpDraftData, vehicleType: e.target.value })}
+                    required
+                >
                     <option value="" disabled>Select vehicle type</option>
                     <option value="BICYCLE" >Bicycle</option>
                     <option value="MOTORCYCLE">Motorcycle</option>
@@ -72,8 +75,9 @@ function applyForm() {
                     <p className="text-blue-600 font-bold mb-4">Submitting your application...</p>
                 )}
                 {requestStatus.status === "success" && (
-                    <p className="text-green-700 font-bold mb-4">Your application has been submitted successfully!</p>
+                    <Navigate to="/ride.driver.frontend/courier/apply/success" />
                 )}
+
                 {requestStatus.status === "failed" && (
                     <p className="text-red-600 font-bold mb-4">There was an error submitting your application. Please try again later.</p>
                 )}
