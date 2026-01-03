@@ -5,7 +5,6 @@ import Home from './routes/home/'
 import Courier from './routes/courier/'
 import CourierApply from './routes/courier/apply/'
 import Explore from './routes/explore/'
-import SuccessApply from './routes/courier/apply/successApplyPage/successApply'
 
 import {
   BrowserRouter,
@@ -23,7 +22,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/ride.driver.frontend/home" element={<Home />} />
         <Route path="/ride.driver.frontend/courier" element={<Courier />} />
         <Route path="/ride.driver.frontend/courier/apply" element={<CourierApply />} />
-        <Route path="/ride.driver.frontend/courier/apply/success" element={<SuccessApply />} />
         <Route path="/ride.driver.frontend/explore" element={<Explore />} />
       </Routes>
     </StrictMode>
