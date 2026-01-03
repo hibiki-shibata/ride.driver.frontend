@@ -12,7 +12,7 @@ function userLoginOrSignIn({ isLogin }: { isLogin: Boolean }) {
     return (
         <>
             <Header />
-            <div className="flex flex-col items-center px-20 py-50 bg-gray-900 text-white">
+            <div className="flex flex-col items-center px-20 py-30 sm:py-50 bg-gray-900 text-white">
                 <h1 className="text-4xl font-bold mb-15">
                     Welcome back to Amazones platform!
                 </h1>
