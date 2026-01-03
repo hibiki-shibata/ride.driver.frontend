@@ -2,10 +2,13 @@ import Header from "../../../components/headers/courier"
 import Footer from '../../../components/footer'
 import UserLoginForm from "./loginForm"
 import UserSignupForm from "./signupForm"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function userLoginOrSignIn() {
-    const [isLoginMode, setLoginMode] = useState<Boolean>(true);
+function userLoginOrSignIn({ isLogin }: { isLogin: Boolean }) {
+    const [isLoginMode, setLoginMode] = useState<Boolean>(true)
+    useEffect(() => {
+        setLoginMode(isLogin)
+    }, [isLogin])
     return (
         <>
             <Header />

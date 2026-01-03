@@ -24,7 +24,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/ride.driver.frontend/courier" element={<Courier />} />
         <Route path="/ride.driver.frontend/courier/apply" element={<CourierApply />} />
         <Route path="/ride.driver.frontend/explore" element={<Explore />} />
-        <Route path="/ride.driver.frontend/explore/loginOrSignin" element={<UserLoginOrSignIn />} />
+        <Route path="/ride.driver.frontend/explore/login" element={<UserLoginOrSignIn isLogin={true} />} />
+        <Route path="/ride.driver.frontend/explore/signup" element={<UserLoginOrSignIn isLogin={false} />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>
