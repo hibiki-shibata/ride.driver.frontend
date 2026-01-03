@@ -1,7 +1,7 @@
 import Header from "../../../components/headers/courier"
 import Footer from '../../../components/footer'
 import UserLoginForm from "./loginForm"
-import UserSignupForm from "./signupForm"
+import UserSigninForm from "./signupForm"
 import { useEffect, useState } from "react";
 
 function userLoginOrSignIn({ isLogin }: { isLogin: Boolean }) {
@@ -16,7 +16,7 @@ function userLoginOrSignIn({ isLogin }: { isLogin: Boolean }) {
                 <h1 className="text-4xl font-bold mb-15">
                     Welcome back to Amazones platform!
                 </h1>
-                <div className="flex mb-10 text-gray-400">
+                <div className="flex mb-10 text-gray-400 cursor-pointer">
                     {isLoginMode ? (
                         <h2 className="text-3xl font-bold text-white"
                             onClick={() => setLoginMode(true)}>Login </h2>
@@ -31,7 +31,7 @@ function userLoginOrSignIn({ isLogin }: { isLogin: Boolean }) {
                     ) : <h2 className="text-3xl font-bold"
                         onClick={() => setLoginMode(false)}>Signup</h2>}
                 </div>
-                {isLoginMode ? <UserLoginForm /> : <UserSignupForm />}
+                {isLoginMode ? <UserLoginForm /> : <UserSigninForm />}
             </div>
 
             <Footer />

@@ -5,7 +5,7 @@ import Home from './routes/home/'
 import Courier from './routes/courier/'
 import CourierApply from './routes/courier/apply/'
 import Explore from './routes/explore/'
-import UserLoginOrSignIn from './routes/explore/userLoginOrSignIn'
+import LoginOrSignIn from './routes/explore/loginSignin'
 
 import {
   BrowserRouter,
@@ -24,8 +24,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/ride.driver.frontend/courier" element={<Courier />} />
         <Route path="/ride.driver.frontend/courier/apply" element={<CourierApply />} />
         <Route path="/ride.driver.frontend/explore" element={<Explore />} />
-        <Route path="/ride.driver.frontend/explore/login" element={<UserLoginOrSignIn isLogin={true} />} />
-        <Route path="/ride.driver.frontend/explore/signup" element={<UserLoginOrSignIn isLogin={false} />} />
+        <Route path="/ride.driver.frontend/explore/login" element={<LoginOrSignIn isLogin={true} />} />
+        <Route path="/ride.driver.frontend/explore/signup" element={<LoginOrSignIn isLogin={false} />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>
