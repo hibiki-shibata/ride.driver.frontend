@@ -1,8 +1,9 @@
 function signupButton() {
     return (
-        <button className="bg-sky-600 rounded-lg p-3 m-3 mr-10 hover:bg-sky-700 text-nowrap">
+        <a className="bg-sky-600 rounded-lg p-3 m-3 mr-10 hover:bg-sky-700 text-nowrap"
+            href="/ride.driver.frontend/explore/loginOrsignin">
             Sign up
-        </button>
+        </a>
     )
 }
 

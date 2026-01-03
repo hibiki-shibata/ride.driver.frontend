@@ -82,6 +82,12 @@ function applyForm() {
             {requestStatus.status === "success" && (
                 <ApplySuccessPage />
             )}
+            {requestStatus.status === "loading" && (
+                <p>Submitting your application...</p>
+            )}
+            {requestStatus.status === "failed" && (
+                <p className="text-red-600 font-bold">Something went wrong: {requestStatus.error}</p>
+            )}
         </div>
 
     )
