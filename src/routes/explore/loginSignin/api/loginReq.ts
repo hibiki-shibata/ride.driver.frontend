@@ -4,7 +4,7 @@ export type LoginRequestDTO = {
 };
 
 export async function loginReq(loginRequest: LoginRequestDTO): Promise<any> {
-    const res = await fetch("http://localhost:8000/api/explore/login", {
+    const res = await fetch("http://localhost:3000/api/v1/auth/courier/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
