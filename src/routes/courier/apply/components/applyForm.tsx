@@ -17,10 +17,10 @@ function applyForm() {
     const handleSubmit = async (cpDraftData: CpApplicationData) => {
         try {
             setRequestStatus({ status: "loading" })
-            const resMesssage: String = await cpApplicationReq(cpDraftData)
-            if (resMesssage) setRequestStatus({ status: "success", message: JSON.stringify(resMesssage) })
-        } catch (e) {
-            setRequestStatus({ status: "failed", error: (e as Error).message })
+            const resMessage: String = await cpApplicationReq(cpDraftData)
+            if (resMessage) setRequestStatus({ status: "success", message: JSON.stringify(resMessage) })
+        } catch (e: unknown) {
+            setRequestStatus({ status: "failed", error: (e instanceof Error) ? e.message : "Unknown error" })
         }
     }
     return (
@@ -89,7 +89,6 @@ function applyForm() {
                 <p className="text-red-600 font-bold">Something went wrong: {requestStatus.error}</p>
             )}
         </div>
-
     )
 }
 
