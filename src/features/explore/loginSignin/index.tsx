@@ -1,5 +1,5 @@
-import Header from "../../../components/headers/courier"
-import Footer from '../../../components/footer'
+import Header from "../../../shared/components/headers/courier"
+import Footer from '../../../shared/components/footer'
 import UserLoginForm from "./loginForm"
 import UserSigninForm from "./signupForm"
 import { useEffect, useState } from "react";

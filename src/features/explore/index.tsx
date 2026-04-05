@@ -1,4 +1,4 @@
-import Header from '../../components/headers/home'
+import Header from '../../shared/components/headers/home'
 
 
 function explore() {

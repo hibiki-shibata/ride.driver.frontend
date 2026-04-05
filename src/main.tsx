@@ -1,11 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import Consumer from './routes/consumer'
-import Courier from './routes/courier/'
-import CourierApply from './routes/courier/apply/'
-import Explore from './routes/explore/'
-import LoginOrSignIn from './routes/explore/loginSignin'
+import './style/index.css'
+import Consumer from './features/consumer'
+import Courier from './features/courier'
+import CourierApply from './features/courier/apply'
+import Explore from './features/explore'
+import LoginOrSignIn from './features/explore/loginSignin'
 
 import {
   BrowserRouter,

@@ -1,4 +1,4 @@
-import SignupButton from "../../../components/buttons/users/userSignupButton"
+import SignupButton from "../../../shared/components/buttons/users/userSignupButton"
 
 function whenChoseUs() {
     return (

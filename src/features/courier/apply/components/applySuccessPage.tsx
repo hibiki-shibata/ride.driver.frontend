@@ -1,7 +1,6 @@
 import { Navigate } from "react-router-dom";
 
 
-const APPLY_ROUTE = "/ride.driver.frontend/courier/apply"
 const APP_DOWNLOAD_URL = "https://hibiki-shibata.github.io"
 
 function applySuccessPage() {
