@@ -1,5 +1,9 @@
 import { Navigate } from "react-router-dom";
 
+
+const APPLY_ROUTE = "/ride.driver.frontend/courier/apply"
+const APP_DOWNLOAD_URL = "https://hibiki-shibata.github.io"
+
 function applySuccessPage() {
   const displaySuccessApplyPage: boolean = true
   if (!displaySuccessApplyPage) {
@@ -14,8 +18,10 @@ function applySuccessPage() {
         <h2 className="text-xl font-bold">~ Install Amazones Courier App & Go online ~</h2>
         <a
           className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 mt-10 rounded-lg"
-          href="https://hibiki-shibata.github.io"
-          target="_blank">
+          href={APP_DOWNLOAD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Download the App
         </a>
       </div>

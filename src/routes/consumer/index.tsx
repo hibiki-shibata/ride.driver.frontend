@@ -2,7 +2,7 @@ import Footer from '../../components/footer'
 import Header from '../../components/headers/home'
 import ServiceDescription from './serviceDescriptions'
 
-function Home() {
+function Consumer() {
     return (
         <>
             <Header />
@@ -23,4 +23,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default Consumer

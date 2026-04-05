@@ -15,7 +15,7 @@ export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(cpApplyData),
-    });
+    })
 
     if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
