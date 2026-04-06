@@ -1,6 +1,6 @@
 import ServiceDescription from './serviceDescription'
-import Headline from '../../components/common/headline'
-import ExploreCpButton from '../../components/common/exploreCpButton'
+import Headline from '../../component/common/headline'
+import ExploreCpButton from '../../component/common/exploreCpButton'
 
 function ConsumerHomeBodySection() {
     return (

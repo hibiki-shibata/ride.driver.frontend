@@ -1,6 +1,6 @@
 import ApplyForm from "./components/applyForm"
-import Header from "../../../shared/components/headers/courier"
-import Footer from '../../../shared/components/footer'
+import Header from "../../../shared/component/headers/courier"
+import Footer from '../../../shared/component/footer'
 
 function coureirApply() {
     return (

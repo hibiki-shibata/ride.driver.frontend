@@ -1,4 +1,4 @@
-import SignupButton from "../../../shared/components/buttons/couriers/courierSignupButton";
+import SignupButton from "../../../shared/component/buttons/couriers/courierSignupButton";
 
 function missionAndResponsibility() {
     return (

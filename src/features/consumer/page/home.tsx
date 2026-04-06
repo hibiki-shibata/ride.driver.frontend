@@ -1,6 +1,6 @@
-import Footer from '../../../shared/components/footer'
-import Header from '../../../shared/components/headers/home'
-import ConsumerHomeBodySection from '../sections/home/bodySection'
+import Footer from '../../../shared/component/footer'
+import Header from '../../../shared/component/headers/home'
+import ConsumerHomeBodySection from '../section/home/bodySection'
 
 function ConsumerHome() {
     return (

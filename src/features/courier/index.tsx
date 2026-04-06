@@ -1,6 +1,6 @@
-import Header from "../../shared/components/headers/courier"
-import Footer from '../../shared/components/footer'
-import SignupButton from "../../shared/components/buttons/couriers/courierSignupButton";
+import Header from "../../shared/component/headers/courier"
+import Footer from '../../shared/component/footer'
+import SignupButton from "../../shared/component/buttons/couriers/courierSignupButton";
 import DescriptionContaners from "./descriptionContainer"
 
 function courier() {

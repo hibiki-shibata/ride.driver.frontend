@@ -2,7 +2,7 @@ import UserSignupButton from "../../buttons/users/userSignupButton";
 import UserLoginButton from "../../buttons/users/userLoginButton";
 import HrefToCourierPage from "./hrefToCourierPage";
 import UnknownAccountIcon from "./unknownAccountIcon";
-import AmazonesLogo from "../../../components/amazones-logo";
+import AmazonesLogo from "../../../component/amazones-logo";
 
 function headerForUserPages() {
     return (

@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './style/index.css'
-import ConsumerHome from './features/consumer/pages/home'
+import ConsumerHome from './features/consumer/page/home'
 import Courier from './features/courier'
 import CourierApply from './features/courier/apply'
 import Explore from './features/explore'
