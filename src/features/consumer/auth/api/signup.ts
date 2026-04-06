@@ -1,6 +1,12 @@
 export type SignupReqDTO = {
-  phoneNumber: string;
-  username: string;
+  name: string;
+  emailAddress: string;
+  consumerAddress: string;
+  consumerCoordinates: {
+    latitude: number;
+    longitude: number;
+  };
+  password: string;
 };
 
 export type SignupResDTO = {

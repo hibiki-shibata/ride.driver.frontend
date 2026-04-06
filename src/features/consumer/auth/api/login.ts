@@ -1,5 +1,6 @@
 export type LoginReqDTO = {
-  phoneNumber: string;
+  emailAddress: string;
+  password: string;
 };
 
 export type LoginResDTO = {
