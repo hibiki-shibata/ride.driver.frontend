@@ -1,10 +1,11 @@
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
+import { COURIER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
 
 export async function loginReq(
   body: LoginReqDTO,
 ): Promise<LoginResDTO> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/courier/login`,
+    COURIER_PROFILE_API_URI.LOGIN,
     {
       method: "POST",
       headers: {

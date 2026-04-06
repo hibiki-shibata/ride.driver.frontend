@@ -1,10 +1,11 @@
-import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
+import { COURIER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
+import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO"
 
 export async function signupReq(
   body: SignupReqDTO,
 ): Promise<SignupResDTO> {
   const res = await fetch(
-    `${import.meta.env.VITE_API_BASE_URL}/api/v1/auth/courier/signup`,
+    COURIER_PROFILE_API_URI.SIGNUP,
     {
       method: "POST",
       headers: {
