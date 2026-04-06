@@ -11,7 +11,6 @@ function userSignupForm() {
         username: ""
     })
 
-
     async function handleSignupSubmit(signinData: SignupReqDTO) {
         try {
             setSigninStatus({ status: "loading" })
