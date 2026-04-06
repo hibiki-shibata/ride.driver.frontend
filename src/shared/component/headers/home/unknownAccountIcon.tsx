@@ -10,12 +10,12 @@ function unknownAccountIcon() {
             </div>
             {showSigninOptions && (
                 <div className="absolute top-15 right-2 mt-2 text-white font-bold rounded-lg p-2 z-50 bg-gray-700">
-                    <a href="/ride.driver.frontend/explore/login"
+                    <a href="/ride.driver.frontend/consumer/login"
                         className="block px-10 py-4 bg-gray-700 hover:bg-gray-600 border-white rounded-lg">
                         Login to your account
                     </a>
                     <span className="block border-t my-2 border-gray-500"></span>
-                    <a href="/ride.driver.frontend/explore/signup"
+                    <a href="/ride.driver.frontend/consumer/signup"
                         className="block px-10 py-4 bg-gray-700 hover:bg-gray-600 rounded-lg">
                         Signup for a new account
                     </a>

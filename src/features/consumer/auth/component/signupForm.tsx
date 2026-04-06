@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { signinReq } from "./api/signinReq";
-import type { SigninRequestDTO } from "./api/signinReq";
+import { signupReq } from "../api/signup";
+import type { SignupReqDTO } from "../api/signup";
 
 type SignupStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
 function userSignupForm() {
     const [signinStatus, setSigninStatus] = useState<SignupStatus>({ status: "idle" })
-    const [signinData, setSigninData] = useState<SigninRequestDTO>({
+    const [signinData, setSigninData] = useState<SignupReqDTO>({
         phoneNumber: "",
         username: ""
     })
 
 
-    async function handleSignupSubmit(signinData: SigninRequestDTO) {
+    async function handleSignupSubmit(signinData: SignupReqDTO) {
         try {
             setSigninStatus({ status: "loading" })
-            const res = await signinReq(signinData)
+            const res = await signupReq(signinData)
             if (res) setSigninStatus({ status: "success", message: "Signup successful" })
         } catch (e) {
             setSigninStatus({ status: "failed", error: (e as Error).message })

@@ -1,14 +1,14 @@
-import { loginReq } from "./api/loginReq";
-import type { LoginRequestDTO } from "./api/loginReq";
+import { loginReq } from "../api/login";
+import type { LoginReqDTO } from "../api/login";
 import { useState } from "react";
 
 type LoginStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
-function userLoginForm() {
-    const [loginData, setLoginData] = useState<LoginRequestDTO>()
+function LoginForm() {
+    const [loginData, setLoginData] = useState<LoginReqDTO>()
     const [loginStatus, setLoginStatus] = useState<LoginStatus>({ status: "idle" })
 
-    async function handleLoginSubmit(loginData: LoginRequestDTO) {
+    async function handleLoginSubmit(loginData: LoginReqDTO) {
         try {
             setLoginStatus({ status: "loading" })
             const res = await loginReq(loginData)
@@ -43,4 +43,4 @@ function userLoginForm() {
         </>
     )
 }
-export default userLoginForm;
+export default LoginForm;
