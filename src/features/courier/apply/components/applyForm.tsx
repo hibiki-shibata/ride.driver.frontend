@@ -17,7 +17,7 @@ function applyForm() {
     const handleSubmit = async (cpDraftData: CpApplicationData) => {
         try {
             setRequestStatus({ status: "loading" })
-            const resMessage: String = await cpApplicationReq(cpDraftData)
+            const resMessage: string = await cpApplicationReq(cpDraftData)
             if (resMessage) setRequestStatus({ status: "success", message: JSON.stringify(resMessage) })
         } catch (e: unknown) {
             setRequestStatus({ status: "failed", error: (e instanceof Error) ? e.message : "Unknown error" })

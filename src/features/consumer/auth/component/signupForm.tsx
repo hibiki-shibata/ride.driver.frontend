@@ -4,11 +4,17 @@ import type { SignupReqDTO } from "../api/signup";
 
 type SignupStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
-function userSignupForm() {
+function SignupForm() {
     const [signinStatus, setSigninStatus] = useState<SignupStatus>({ status: "idle" })
     const [signinData, setSigninData] = useState<SignupReqDTO>({
-        phoneNumber: "",
-        username: ""
+    name: "",
+    emailAddress: "",
+    consumerAddress: "",
+    consumerCoordinates: {
+        latitude: 0,
+        longitude: 0,
+    },
+    password: "",
     })
 
     async function handleSignupSubmit(signinData: SignupReqDTO) {
@@ -28,13 +34,13 @@ function userSignupForm() {
                     className="p-3 rounded-lg text-black mb-5 bg-white w-80"
                     type="text"
                     placeholder="Username"
-                    onChange={(e) => setSigninData({ ...signinData, username: e.target.value })}
+                    onChange={(e) => setSigninData({ ...signinData, name: e.target.value })}
                 />
                 <input
                     className="p-3 rounded-lg text-black mb-5 bg-white w-80"
                     type="text"
-                    placeholder="Phone number"
-                    onChange={(e) => setSigninData({ ...signinData, phoneNumber: e.target.value })}
+                    placeholder="Email Address"
+                    onChange={(e) => setSigninData({ ...signinData, emailAddress: e.target.value })}
                 />
                 <button
                     className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg"
@@ -53,4 +59,4 @@ function userSignupForm() {
     )
 }
 
-export default userSignupForm;
+export default SignupForm

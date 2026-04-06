@@ -5,7 +5,10 @@ import { useState } from "react";
 type LoginStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
 function LoginForm() {
-    const [loginData, setLoginData] = useState<LoginReqDTO>()
+    const [loginData, setLoginData] = useState<LoginReqDTO>({
+        emailAddress: "",
+        password: "",
+    })
     const [loginStatus, setLoginStatus] = useState<LoginStatus>({ status: "idle" })
 
     async function handleLoginSubmit(loginData: LoginReqDTO) {
@@ -24,8 +27,14 @@ function LoginForm() {
                 <input
                     className="p-3 rounded-lg text-black mb-5 bg-white w-80"
                     type="text"
-                    placeholder="Phone number"
-                    onChange={(e) => setLoginData({ ...loginData, phoneNumber: e.target.value })}
+                    placeholder="Email Address"
+                    onChange={(e) => setLoginData({ ...loginData, emailAddress: e.target.value })}
+                />
+                <input
+                    className="p-3 rounded-lg text-black mb-5 bg-white w-80"
+                    type="text"
+                    placeholder="Password"
+                    onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
                 />
                 <button
                     className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg"

@@ -5,7 +5,7 @@ export type CpApplicationData = {
     vehicleType: string;
 }
 
-export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<String> {
+export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<string> {
     if (!cpApplyData.cpFirstName || !cpApplyData.cpLastName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
         throw new Error("All fields are required.");
     }

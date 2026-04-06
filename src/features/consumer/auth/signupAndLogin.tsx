@@ -3,8 +3,8 @@ import UserSigninForm from "./component/signupForm"
 
 import { useEffect, useState } from "react";
 
-function SignupAndLogin({ isLogin }: { isLogin: Boolean }) {
-    const [isLoginMode, setLoginMode] = useState<Boolean>(true)
+function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
+    const [isLoginMode, setLoginMode] = useState<boolean>(true)
     useEffect(() => {
         setLoginMode(isLogin)
     }, [isLogin])
