@@ -1,37 +1,43 @@
-import UserLoginForm from "./component/loginForm"
-import UserSigninForm from "./component/signupForm"
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import UserLoginForm from "./component/loginForm";
+import UserSigninForm from "./component/signupForm";
 
 function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
-    const [isLoginMode, setLoginMode] = useState<boolean>(true)
-    useEffect(() => {
-        setLoginMode(isLogin)
-    }, [isLogin])
-    return (
-        <>
-            <div className="flex flex-col items-center px-20 py-30 sm:py-50 bg-gray-900 text-white">
-                <h1 className="text-4xl font-bold mb-15">
-                    Welcome back to Amazones platform!
-                </h1>
-                <div className="flex mb-10 text-gray-400 cursor-pointer">
-                    {isLoginMode ? (
-                        <h2 className="text-3xl font-bold text-white"
-                            onClick={() => setLoginMode(true)}>Login </h2>
-                    ) : <h2 className="text-3xl font-bold"
-                        onClick={() => setLoginMode(true)}>Login</h2>}
+  const [isLoginMode, setLoginMode] = useState(isLogin);
 
-                    <span className="text-3xl font-bold mx-3">/</span>
+  return (
+    <div className="flex flex-col items-center px-20 py-24 sm:py-32 bg-gray-900 text-white">
+      <h1 className="mb-10 text-4xl font-bold">
+        Welcome back to Amazones platform!
+      </h1>
 
-                    {!isLoginMode ? (
-                        <h2 className="text-3xl font-bold text-white"
-                            onClick={() => setLoginMode(false)}>Signup</h2>
-                    ) : <h2 className="text-3xl font-bold"
-                        onClick={() => setLoginMode(false)}>Signup</h2>}
-                </div>
-                {isLoginMode ? <UserLoginForm /> : <UserSigninForm />}
-            </div>
-        </>
-    )
+      <div className="mb-8 flex text-gray-400">
+        <button
+          type="button"
+          onClick={() => setLoginMode(true)}
+          className={`text-3xl font-bold cursor-pointer ${
+            isLoginMode ? "text-white" : "text-gray-400"
+          }`}
+        >
+          Login
+        </button>
+
+        <span className="mx-3 text-3xl font-bold">/</span>
+
+        <button
+          type="button"
+          onClick={() => setLoginMode(false)}
+          className={`text-3xl font-bold cursor-pointer ${
+            !isLoginMode ? "text-white" : "text-gray-400"
+          }`}
+        >
+          Signup
+        </button>
+      </div>
+
+      {isLoginMode ? <UserLoginForm /> : <UserSigninForm />}
+    </div>
+  );
 }
+
 export default SignupAndLogin;
