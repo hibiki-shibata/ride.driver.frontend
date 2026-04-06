@@ -1,7 +1,5 @@
 import { Navigate } from "react-router-dom";
-
-
-const APP_DOWNLOAD_URL = "https://hibiki-shibata.github.io"
+import { FRONTEND_URI } from "../../../../shared/constant/apiUri";
 
 function applySuccessPage() {
   const displaySuccessApplyPage: boolean = true
@@ -17,7 +15,7 @@ function applySuccessPage() {
         <h2 className="text-xl font-bold">~ Install Amazones Courier App & Go online ~</h2>
         <a
           className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 mt-10 rounded-lg"
-          href={APP_DOWNLOAD_URL}
+          href={FRONTEND_URI}
           target="_blank"
           rel="noopener noreferrer"
         >
