@@ -1,5 +1,5 @@
 import { loginReq } from "../api/login";
-import type { LoginReqDTO } from "../api/login";
+import type { LoginReqDTO } from "../type/loginDTO";
 import { useState } from "react";
 
 type LoginStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }

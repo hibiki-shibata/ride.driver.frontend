@@ -1,19 +1,4 @@
-export type SignupReqDTO = {
-  name: string;
-  emailAddress: string;
-  consumerAddress: string;
-  consumerCoordinates: {
-    latitude: number;
-    longitude: number;
-  };
-  password: string;
-};
-
-export type SignupResDTO = {
-  success: boolean;
-  message?: string;
-  userId?: string;
-};
+import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
 
 export async function signupReq(
   body: SignupReqDTO,

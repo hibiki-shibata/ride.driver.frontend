@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { signupReq } from "../api/signup";
-import type { SignupReqDTO } from "../api/signup";
+import type { SignupReqDTO } from "../type/signupDTO";
 
 type SignupStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 

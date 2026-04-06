@@ -1,13 +1,4 @@
-export type LoginReqDTO = {
-  emailAddress: string;
-  password: string;
-};
-
-export type LoginResDTO = {
-  success: boolean;
-  message?: string;
-  token?: string;
-};
+import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
 
 export async function loginReq(
   body: LoginReqDTO,
