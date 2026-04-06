@@ -1,6 +1,6 @@
-import MeritOfAmazones from "../../component/common/meritOfAmazones";
-import WhatNeedToRegister from "../../component/common/whatNeedToRegister";
-import WhenChoseUs from "../../component/common/whenChoseUs";
+import MeritOfAmazones from "../component/meritOfAmazones";
+import WhatNeedToRegister from "../component/whatNeedToRegister";
+import WhenChoseUs from "../component/whenChoseUs";
 
 function ServiceDescriptionSection() {
     return (

@@ -1,4 +1,4 @@
-import ExploreCpHeadline from "../../component/common/exploreCpHeadline";
+import ExploreCpHeadline from "../component/headline";
 
 function ConsumerExploreBodySection() {
     return (

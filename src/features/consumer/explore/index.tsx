@@ -1,7 +1,7 @@
 import Header from "../../../shared/component/headers/home"
-import ConsumerExploreBodySection from "../section/explore/bodySection"
+import ConsumerExploreBodySection from "./section/bodySection"
 
-function Explore() {
+function ConsumerExplore() {
     return (
         <>
             <Header />
@@ -9,4 +9,4 @@ function Explore() {
         </>
     )
 }
-export default Explore
+export default ConsumerExplore

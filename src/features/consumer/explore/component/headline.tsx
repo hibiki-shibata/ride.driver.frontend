@@ -1,4 +1,4 @@
-function ExploreCpHeadline() {
+function Headline() {
     return (
 
         <div className="text-white bg-gray-900 flex items-center justify-center h-screen text-3xl">
@@ -6,4 +6,4 @@ function ExploreCpHeadline() {
         </div >
     )
 }
-export default ExploreCpHeadline;
+export default Headline
