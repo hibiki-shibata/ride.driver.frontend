@@ -63,6 +63,7 @@ function LoginForm() {
           type="email"
           placeholder="Email Address"
           autoComplete="email"
+          required
           value={loginData.emailAddress}
           onChange={handleChange}
         />
@@ -77,6 +78,7 @@ function LoginForm() {
           type="password"
           placeholder="Password"
           autoComplete="current-password"
+          required
           value={loginData.password}
           onChange={handleChange}
         />

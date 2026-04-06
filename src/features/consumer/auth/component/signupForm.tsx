@@ -67,6 +67,7 @@ function SignupForm() {
           className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="text"
           placeholder="Username"
+          required
           value={signupData.name}
           onChange={handleChange}
         />
@@ -81,6 +82,7 @@ function SignupForm() {
           type="email"
           placeholder="Email Address"
           autoComplete="email"
+          required
           value={signupData.emailAddress}
           onChange={handleChange}
         />
@@ -95,6 +97,7 @@ function SignupForm() {
           type="password"
           placeholder="Password"
           autoComplete="new-password"
+          required
           value={signupData.password}
           onChange={handleChange}
         />
@@ -108,6 +111,7 @@ function SignupForm() {
           className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="text"
           placeholder="Delivery Address"
+          required
           value={signupData.consumerAddress}
           onChange={handleChange}
         />
