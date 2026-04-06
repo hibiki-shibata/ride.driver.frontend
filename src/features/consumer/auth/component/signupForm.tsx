@@ -2,61 +2,137 @@ import { useState } from "react";
 import { signupReq } from "../api/signup";
 import type { SignupReqDTO } from "../type/signupDTO";
 
-type SignupStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
+type SignupStatus =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; message: string }
+  | { status: "failed"; error: string };
 
 function SignupForm() {
-    const [signinStatus, setSigninStatus] = useState<SignupStatus>({ status: "idle" })
-    const [signinData, setSigninData] = useState<SignupReqDTO>({
+  const [signupStatus, setSignupStatus] = useState<SignupStatus>({
+    status: "idle",
+  });
+
+  const [signupData, setSignupData] = useState<SignupReqDTO>({
     name: "",
     emailAddress: "",
     consumerAddress: "",
     consumerCoordinates: {
-        latitude: 0,
-        longitude: 0,
+      latitude: 0,
+      longitude: 0,
     },
     password: "",
-    })
+  });
 
-    async function handleSignupSubmit(signinData: SignupReqDTO) {
-        try {
-            setSigninStatus({ status: "loading" })
-            const res = await signupReq(signinData)
-            if (res) setSigninStatus({ status: "success", message: "Signup successful" })
-        } catch (e) {
-            setSigninStatus({ status: "failed", error: (e as Error).message })
-        }
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setSignupData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSignupStatus({ status: "loading" });
+
+    try {
+      await signupReq(signupData);
+      setSignupStatus({
+        status: "success",
+        message: "Signup successful",
+      });
+    } catch (error: unknown) {
+      setSignupStatus({
+        status: "failed",
+        error: error instanceof Error ? error.message : "Something went wrong",
+      });
     }
+  }
 
-    return (
-        <>
-            <form className="mt-5 rounded-3xl flex flex-col justify-center">
-                <input
-                    className="p-3 rounded-lg text-black mb-5 bg-white w-80"
-                    type="text"
-                    placeholder="Username"
-                    onChange={(e) => setSigninData({ ...signinData, name: e.target.value })}
-                />
-                <input
-                    className="p-3 rounded-lg text-black mb-5 bg-white w-80"
-                    type="text"
-                    placeholder="Email Address"
-                    onChange={(e) => setSigninData({ ...signinData, emailAddress: e.target.value })}
-                />
-                <button
-                    className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg"
-                    type="submit"
-                    onClick={(e) => {
-                        e.preventDefault()
-                        handleSignupSubmit(signinData!)
-                    }}>
-                    Continue to Signup
-                </button>
-            </form>
-            {signinStatus.status === "loading" && <p>Signing up...</p>}
-            {signinStatus.status === "success" && <p className="text-green-600 font-bold">{signinStatus.message}</p>}
-            {signinStatus.status === "failed" && <p className="text-red-600 font-bold">Signup failed: {signinStatus.error}</p>}
-        </>
-    )
+  const isLoading = signupStatus.status === "loading";
+
+  return (
+    <>
+      <form
+        className="mt-5 rounded-3xl flex flex-col justify-center"
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="name" className="mb-1">
+          Username
+        </label>
+        <input
+          id="name"
+          name="name"
+          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
+          type="text"
+          placeholder="Username"
+          value={signupData.name}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="emailAddress" className="mb-1">
+          Email Address
+        </label>
+        <input
+          id="emailAddress"
+          name="emailAddress"
+          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
+          type="email"
+          placeholder="Email Address"
+          autoComplete="email"
+          value={signupData.emailAddress}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="password" className="mb-1">
+          Password
+        </label>
+        <input
+          id="password"
+          name="password"
+          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
+          type="password"
+          placeholder="Password"
+          autoComplete="new-password"
+          value={signupData.password}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="consumerAddress" className="mb-1">
+          Delivery Address
+        </label>
+        <input
+          id="consumerAddress"
+          name="consumerAddress"
+          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
+          type="text"
+          placeholder="Delivery Address"
+          value={signupData.consumerAddress}
+          onChange={handleChange}
+        />
+
+        <button
+          className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg disabled:opacity-50"
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? "Signing up..." : "Continue to Signup"}
+        </button>
+      </form>
+
+      <div aria-live="polite" className="mt-4">
+        {signupStatus.status === "success" && (
+          <p className="text-green-600 font-bold">{signupStatus.message}</p>
+        )}
+        {signupStatus.status === "failed" && (
+          <p className="text-red-600 font-bold">
+            Signup failed: {signupStatus.error}
+          </p>
+        )}
+      </div>
+    </>
+  );
 }
 
-export default SignupForm
+export default SignupForm;
