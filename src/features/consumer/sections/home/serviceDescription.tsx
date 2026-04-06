@@ -1,8 +1,8 @@
-import MeritOfAmazones from "./meritOfAmazones";
-import WhatNeedToRegister from "./whatNeedToRegister";
-import WhenChoseUs from "./whenChoseUs";
+import MeritOfAmazones from "../../components/common/meritOfAmazones";
+import WhatNeedToRegister from "../../components/common/whatNeedToRegister";
+import WhenChoseUs from "../../components/common/whenChoseUs";
 
-function serviceDescription() {
+function ServiceDescriptionSection() {
     return (
         <>
             <div className="rounded-3xl sm:flex mt-5">
@@ -14,7 +14,6 @@ function serviceDescription() {
             </div>
         </>
     )
-
 }
 
-export default serviceDescription;
+export default ServiceDescriptionSection;

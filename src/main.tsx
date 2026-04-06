@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './style/index.css'
-import Consumer from './features/consumer'
+import ConsumerHome from './features/consumer/pages/home'
 import Courier from './features/courier'
 import CourierApply from './features/courier/apply'
 import Explore from './features/explore'
@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <Routes>
         <Route path="/*" element={<Navigate to="/ride.driver.frontend/home" />} />
-        <Route path="/ride.driver.frontend/consumer" element={<Consumer />} />
+        <Route path="/ride.driver.frontend/consumer" element={<ConsumerHome />} />
         <Route path="/ride.driver.frontend/courier" element={<Courier />} />
         <Route path="/ride.driver.frontend/courier/apply" element={<CourierApply />} />
         <Route path="/ride.driver.frontend/explore" element={<Explore />} />

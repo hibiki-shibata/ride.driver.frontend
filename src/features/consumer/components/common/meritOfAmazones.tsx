@@ -1,4 +1,4 @@
-function meritOfAmazones() {
+function MeritOfAmazones() {
     return (
         // <div className="bg-cyan-600 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-10" >
         <div className="bg-gradient-to-t from-amber-900 to-orange-700  rounded-3xl p-12 font-bold mt-10" >
@@ -30,4 +30,4 @@ function meritOfAmazones() {
         </div>
     )
 }
-export default meritOfAmazones;
+export default MeritOfAmazones;

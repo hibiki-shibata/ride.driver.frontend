@@ -1,6 +1,6 @@
-import SignupButton from "../../../shared/components/buttons/users/userSignupButton"
+import SignupButton from "../../../../shared/components/buttons/users/userSignupButton"
 
-function whenChoseUs() {
+function WhenChoseUs() {
     return (
         <div className="bg-gradient-to-b from-teal-600 to-teal-800 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-5" >
             <h2 className="text-3xl text-center font-bold mb-5">When people chose us?</h2>
@@ -28,4 +28,4 @@ function whenChoseUs() {
     )
 }
 
-export default whenChoseUs;
+export default WhenChoseUs;

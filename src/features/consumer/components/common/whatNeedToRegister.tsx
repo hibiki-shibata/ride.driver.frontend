@@ -1,6 +1,6 @@
-import SignupButton from "../../../shared/components/buttons/users/userSignupButton"
+import SignupButton from "../../../../shared/components/buttons/users/userSignupButton"
 
-function whatNeedToRegister() {
+function WhatNeedToRegister() {
     return (
         // <div className="bg-cyan-900 p-10 rounded-3xl p-10 sm:mr-7 sm:ml-7 mr-1 ml-1 mt-4 font-bold" >
         <div className="bg-gradient-to-b from-yellow-600 to-yellow-900 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-10" >
@@ -34,4 +34,4 @@ function whatNeedToRegister() {
     )
 }
 
-export default whatNeedToRegister;
+export default WhatNeedToRegister;
