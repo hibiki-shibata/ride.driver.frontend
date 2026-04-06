@@ -1,31 +1,47 @@
-import SignupButton from "../../../../shared/component/buttons/users/userSignupButton"
+import SignupButton from "../../auth/component/signupButton";
 
-function WhenChoseUs() {
-    return (
-        <div className="bg-gradient-to-b from-teal-600 to-teal-800 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-5" >
-            <h2 className="text-3xl text-center font-bold mb-5">When people chose us?</h2>
-            <div className="flex flex-col justify-center items-center">
-                <ul className="list-disc list-inside text-lg  space-y-3">
-                    <li className="mt-10">You want to control the delivery price.
-                        <ul className="text-gray-300 font-normal">
-                            - You can negotiate the couriers directly.
-                        </ul>
-                    </li>
-                    <li className="mt-10">You want to quickly try delivery service for free.
-                        <ul className="text-gray-300 font-normal">
-                            - You don't need any contracts and complex procedures, just start using it on browser.
-                        </ul>
-                    </li>
-                    <li className="mt-10">You want to directly connect with couriers.
-                        <ul className="text-gray-300 font-normal">
-                            - You can establish your own direct supply-chain with couriers.
-                        </ul>
-                    </li>
-                </ul>
-                <SignupButton />
-            </div>
+const reasonsToChooseUs = [
+  {
+    title: "You want to control the delivery price",
+    description: "You can negotiate directly with couriers."
+  },
+  {
+    title: "You want to try a delivery service quickly and for free",
+    description:
+      "There are no contracts or complex procedures. You can start using it right in your browser."
+  },
+  {
+    title: "You want to connect directly with couriers",
+    description:
+      "You can build your own direct delivery network with couriers."
+  }
+];
+
+function WhenPeopleChooseUs() {
+  return (
+    <section className="mt-5 mr-1 ml-1 rounded-3xl bg-gradient-to-b from-teal-600 to-teal-800 p-12 font-bold sm:mr-7 sm:ml-7">
+      <h2 className="mb-5 text-center text-3xl font-bold">
+        When Do People Choose Us?
+      </h2>
+
+      <div className="flex flex-col items-center justify-center">
+        <ul className="list-disc list-inside space-y-8 text-lg">
+          {reasonsToChooseUs.map((reason) => (
+            <li key={reason.title}>
+              <span>{reason.title}</span>
+              <p className="mt-1 font-normal text-gray-300">
+                {reason.description}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8">
+          <SignupButton />
         </div>
-    )
+      </div>
+    </section>
+  );
 }
 
-export default WhenChoseUs;
+export default WhenPeopleChooseUs;

@@ -1,5 +1,5 @@
-import UserSignupButton from "../../buttons/users/userSignupButton";
-import UserLoginButton from "../../buttons/users/userLoginButton";
+import UserSignupButton from "../../../../features/consumer/auth/component/signupButton";
+import UserLoginButton from "../../../../features/consumer/auth/component/loginButton";
 import HrefToCourierPage from "./hrefToCourierPage";
 import UnknownAccountIcon from "./unknownAccountIcon";
 import AmazonesLogo from "../../../component/amazones-logo";

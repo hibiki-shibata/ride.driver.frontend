@@ -1,4 +1,4 @@
-import SignupButton from "../../../shared/component/buttons/couriers/courierSignupButton";
+import SignupButton from "../auth/component/courierSignupButton";
 
 function requiredInfo() {
     return (

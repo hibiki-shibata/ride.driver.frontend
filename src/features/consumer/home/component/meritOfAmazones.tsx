@@ -1,33 +1,41 @@
-function MeritOfAmazones() {
-    return (
-        // <div className="bg-cyan-600 p-10 rounded-3xl p-12 sm:mr-7 sm:ml-7 mr-1 ml-1 font-bold mt-10" >
-        <div className="bg-gradient-to-t from-amber-900 to-orange-700  rounded-3xl p-12 font-bold mt-10" >
-            <h2 className="text-3xl text-center font-bold mb-5">Merits of Amazones Delivery?</h2>
-            <div className="flex flex-col justify-center items-center">
-                <ul className="list-disc list-inside text-lg space-y-3">
-                    <li className="mt-6"> The price
-                        <ul className="text-gray-300 font-normal">
-                            - We don't take commisions as a platform, but you decide.
-                        </ul>
-                    </li>
-                    <li className="mt-6">Flexiblility
-                        <ul className="text-gray-300 font-normal">
-                            - You can use it for Taxi, mailing and Q-commerce.
-                        </ul>
-                    </li>
-                    <li className="mt-6">Simpleness
-                        <ul className="text-gray-300 font-normal">
-                            - No contracts and coplex procedures, start delivery on browser right now.
-                        </ul>
-                    </li>
-                    <li className="mt-6">Democracy
-                        <ul className="text-gray-300 font-normal">
-                            - Minimum controls as a platform, most of things are up to couriers & customers' direct negotiation.
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    )
+const merits = [
+  {
+    title: "Pricing",
+    description: "We don't take commissions as a platform. You decide the pricing."
+  },
+  {
+    title: "Flexibility",
+    description: "You can use it for taxis, mailing, and quick commerce."
+  },
+  {
+    title: "Simplicity",
+    description: "No contracts or complex procedures. Start deliveries in the browser right away."
+  },
+  {
+    title: "Freedom",
+    description: "Minimal platform control. Most decisions are handled directly between couriers and customers."
+  }
+];
+
+function MeritsOfAmazones() {
+  return (
+    <section className="mt-10 rounded-3xl bg-gradient-to-t from-amber-900 to-orange-700 p-12">
+      <h2 className="mb-5 text-center text-3xl font-bold">
+        Merits of Amazones Delivery
+      </h2>
+
+      <ul className="list-disc list-inside space-y-6 text-lg">
+        {merits.map((merit) => (
+          <li key={merit.title}>
+            <span className="font-bold">{merit.title}</span>
+            <p className="mt-1 font-normal text-gray-300">
+              {merit.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
-export default MeritOfAmazones;
+
+export default MeritsOfAmazones;
