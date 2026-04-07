@@ -34,6 +34,10 @@ function LoginForm() {
         status: "success",
         message: "Login successful",
       })
+      setLoginData({
+        emailAddress: "",
+        password: "",
+      })
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",

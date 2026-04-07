@@ -37,11 +37,21 @@ function SignupForm() {
     setSignupStatus({ status: "loading" });
 
     try {
-      await signupReq(signupData);
+      await signupReq(signupData)      
       setSignupStatus({
         status: "success",
         message: "Signup successful",
-      });
+      })
+      setSignupData({
+        name: "",
+        emailAddress: "",
+        consumerAddress: "",
+        consumerAddressCoordinate: {
+          latitude: 0,
+          longitude: 0,
+        },
+        password: "",
+      })
     } catch (error: unknown) {
       setSignupStatus({
         status: "failed",
