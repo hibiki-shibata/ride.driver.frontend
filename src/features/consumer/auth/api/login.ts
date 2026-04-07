@@ -1,11 +1,11 @@
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
-import { COURIER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
+import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
 
 export async function loginReq(
   body: LoginReqDTO,
 ): Promise<LoginResDTO> {
   const res = await fetch(
-    COURIER_PROFILE_API_URI.LOGIN,
+    CONSUMER_PROFILE_API_URI.LOGIN,
     {
       method: "POST",
       headers: {

@@ -17,7 +17,7 @@ function SignupForm() {
     name: "",
     emailAddress: "",
     consumerAddress: "",
-    consumerCoordinates: {
+    consumerAddressCoordinate: {
       latitude: 0,
       longitude: 0,
     },

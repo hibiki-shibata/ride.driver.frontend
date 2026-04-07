@@ -1,11 +1,11 @@
-import { COURIER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
+import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO"
 
 export async function signupReq(
   body: SignupReqDTO,
 ): Promise<SignupResDTO> {
   const res = await fetch(
-    COURIER_PROFILE_API_URI.SIGNUP,
+    CONSUMER_PROFILE_API_URI.SIGNUP,
     {
       method: "POST",
       headers: {

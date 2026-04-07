@@ -2,7 +2,7 @@ export type SignupReqDTO = {
   name: string;
   emailAddress: string;
   consumerAddress: string;
-  consumerCoordinates: {
+  consumerAddressCoordinate: {
     latitude: number;
     longitude: number;
   };
