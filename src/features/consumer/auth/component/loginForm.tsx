@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { loginReq } from "../api/login";
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
-import { useAccessTokenContext } from "../context/accessTokenContext";
+import { useConsumerAccessTokenContext } from "../context/accessTokenContext";
 
 type LoginStatus =
   | { status: "idle" }
@@ -19,7 +19,7 @@ function LoginForm() {
     status: "idle",
   })
 
-  const { setContextAccessToken } = useAccessTokenContext()
+  const { setContextAccessToken } = useConsumerAccessTokenContext()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

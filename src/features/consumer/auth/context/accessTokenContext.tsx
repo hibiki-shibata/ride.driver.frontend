@@ -10,7 +10,7 @@ const AccessTokenContext = createContext<AccessTokenContextType>({
   setContextAccessToken: () => {},
 })
 
-export function AccessTokenProvider({children}: {children: React.ReactNode}) {
+export function ConsumerAccessTokenProvider({children}: {children: React.ReactNode}) {
   const [accessToken, setAccessToken] = useState<string | null>(null)
 
   return (
@@ -23,7 +23,7 @@ export function AccessTokenProvider({children}: {children: React.ReactNode}) {
   )
 }
 
-export function useAccessTokenContext() {
+export function useConsumerAccessTokenContext() {
   const context = useContext(AccessTokenContext)
   if (context === undefined) {
     throw new Error('useAccessToken must be used within an AccessTokenProvider')
