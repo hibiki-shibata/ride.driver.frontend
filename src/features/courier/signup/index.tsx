@@ -1,8 +1,8 @@
-import ApplyForm from "./components/applyForm"
+import ApplyForm from "./components/signupForm"
 import Header from "../../../shared/component/headers/courier"
 import Footer from '../../../shared/component/footer'
 
-function coureirApply() {
+function CoureirSignup() {
     return (
         <>
             <Header />
@@ -22,4 +22,4 @@ function coureirApply() {
     )
 }
 
-export default coureirApply;
+export default CoureirSignup

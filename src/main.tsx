@@ -6,7 +6,7 @@ import ConsumerExplore from './features/consumer/explore'
 import ConsumerAuth from './features/consumer/auth/'
 // import { ConsumerAccessTokenProvider } from './features/consumer/auth/context/accessTokenContext'
 import Courier from './features/courier'
-import CourierApply from './features/courier/apply'
+import CourierApply from './features/courier/signup'
 import { CONSUMER_PATH } from './shared/constant/hrefPath'
 import {
   BrowserRouter,

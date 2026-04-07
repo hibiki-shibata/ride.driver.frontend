@@ -14,12 +14,12 @@ export function ConsumerAccessTokenProvider({children}: {children: React.ReactNo
   const [accessToken, setAccessToken] = useState<string | null>(null)
 
   return (
-    <AccessTokenContext value={{ 
+    <AccessTokenContext.Provider value={{
       contextAccessToken: accessToken,
       setContextAccessToken: setAccessToken
     }}>
       {children}
-    </AccessTokenContext>
+    </AccessTokenContext.Provider>
   )
 }
 

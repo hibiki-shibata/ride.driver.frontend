@@ -1,36 +1,61 @@
 import SignupButton from "../auth/component/courierSignupButton";
 
-function missionAndResponsibility() {
-    return (
-        <div className="bg-gray-800 p-10 mt-10 rounded-3xl">
-            <h1 className="text-4xl text-center mb-10">Missions and Responsibilities</h1>
-            <div className="flex flex-col justify-center items-center">
-                <ul className="list-disc text-lg  font-bold">
-                    <li className="mt-7">Flexible online time.
-                        <ul className="mt-1 font-normal text-base text-gray-400">
-                            <li>Let's go online whenever you want to.</li>
-                            <li>Let's go offline whenever you want to after comleting an ongoing Misssion.</li>
-                        </ul>
-                    </li>
-                    <li className="mt-7">Please be a professional on duty.
-                        <ul className="mt-1 font-normal text-base text-gray-400">
-                            <li>Your safety, customer's safety is your priority.</li>
-                            <li>Polityly driving, but effort for on-time delivering.</li>
-                            <li>Smooth communications.</li>
-                        </ul>
-                    </li>
-                    <li className="mt-7">Report us issues quickly.
-                        <ul className="mt-1 font-normal text-base text-gray-400">
-                            <li>Feel free to report us about operatinal issue or system issues</li>
-                            <li> Always Welcome to hear your feedback about the service.</li>
-                        </ul>
-                    </li>
-                    <li className="mt-7">Make a little earnings at your free time, and go grab a drink with it !!🍻</li>
+const responsibilities = [
+  {
+    title: "Flexible online time.",
+    details: [
+      "Go online whenever you want.",
+      "Go offline whenever you want after completing an ongoing mission.",
+    ],
+  },
+  {
+    title: "Please be professional on duty.",
+    details: [
+      "Your safety and the customer's safety should be your top priority.",
+      "Drive politely while still aiming for on-time delivery.",
+      "Communicate smoothly and clearly.",
+    ],
+  },
+  {
+    title: "Report issues quickly.",
+    details: [
+      "Feel free to report operational or system issues.",
+      "We always welcome your feedback about the service.",
+    ],
+  },
+  {
+    title: "Earn a little extra in your free time, then go grab a drink with it!! 🍻",
+  },
+];
+
+function MissionAndResponsibility() {
+  return (
+    <div className="mt-10 rounded-3xl bg-gray-800 p-10">
+      <h1 className="mb-10 text-center text-4xl">
+        Missions and Responsibilities
+      </h1>
+
+      <div className="flex flex-col items-center justify-center">
+        <ul className="list-disc text-lg font-bold">
+          {responsibilities.map((item, index) => (
+            <li key={index} className="mt-7">
+              {item.title}
+
+              {item.details && (
+                <ul className="mt-1 text-base font-normal text-gray-400">
+                  {item.details.map((detail, detailIndex) => (
+                    <li key={detailIndex}>{detail}</li>
+                  ))}
                 </ul>
-                <SignupButton />
-            </div>
-        </div>
-    )
+              )}
+            </li>
+          ))}
+        </ul>
+
+        <SignupButton />
+      </div>
+    </div>
+  );
 }
 
-export default missionAndResponsibility;
+export default MissionAndResponsibility;

@@ -5,7 +5,7 @@ import ApplySuccessPage from "./applySuccessPage"
 
 type ApplicationSubmitStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
-function applyForm() {
+function SignupForm() {
     const [requestStatus, setRequestStatus] = useState<ApplicationSubmitStatus>({ status: "idle" })
     const [cpDraftData, setCpDraftData] = useState<CpApplicationData>({
         cpFirstName: "",
@@ -93,4 +93,4 @@ function applyForm() {
 }
 
 
-export default applyForm
+export default SignupForm

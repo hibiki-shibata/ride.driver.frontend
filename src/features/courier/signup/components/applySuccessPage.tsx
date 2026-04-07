@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { FRONTEND_URI } from "../../../../shared/constant/apiUri";
 
-function applySuccessPage() {
+function SignupSuccessPage() {
   const displaySuccessApplyPage: boolean = true
   if (!displaySuccessApplyPage) {
     return <Navigate to="/ride.driver.frontend/courier/apply" />;
@@ -26,4 +26,4 @@ function applySuccessPage() {
   )
 }
 
-export default applySuccessPage;
+export default SignupSuccessPage

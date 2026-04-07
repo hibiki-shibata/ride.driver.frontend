@@ -1,27 +1,24 @@
-function registerProcessCircle() {
-    return (
-        <div className="flex flex-col sm:flex-row justify-center items-center mt-4 mb-5">
-            <div className="pr-7 pl-7 flex justify-center items-center flex-col">
-                <div className="m-5 w-35 h-35 bg-sky-600 rounded-full flex items-center justify-center font-bold align-center text-5xl text-white">
-                    1
-                </div>
-                <p className="text-xl font-bold" >Apply</p>
-            </div>
-            <div className="pr-7 pl-7 flex justify-center items-center flex-col">
-                <div className="m-5 w-35 h-35 bg-sky-600 rounded-full flex items-center justify-center font-bold align-center text-5xl text-white">
-                    2
-                </div>
-                <p className="text-xl font-bold" >Install App</p>
-            </div>
-            <div className="pr-7 pl-7 flex justify-center items-center flex-col">
-                <div className="m-5 w-35 h-35 bg-sky-600 rounded-full flex items-center justify-center font-bold align-center text-5xl text-white">
-                    3
-                </div>
-                <p className="text-xl font-bold">Go online!</p>
-            </div>
+const steps = [
+  { number: 1, label: "Apply" },
+  { number: 2, label: "Install App" },
+  { number: 3, label: "Go online!" },
+];
 
+const itemClass = "flex flex-col items-center justify-center px-7";
+const circleClass =
+  "m-5 flex h-35 w-35 items-center justify-center rounded-full bg-sky-600 text-5xl font-bold text-white";
+
+function RegisterProcessCircle() {
+  return (
+    <div className="mt-4 mb-5 flex flex-col items-center justify-center sm:flex-row">
+      {steps.map(({ number, label }) => (
+        <div key={number} className={itemClass}>
+          <div className={circleClass}>{number}</div>
+          <p className="text-xl font-bold">{label}</p>
         </div>
-    )
+      ))}
+    </div>
+  );
 }
 
-export default registerProcessCircle;
+export default RegisterProcessCircle;
