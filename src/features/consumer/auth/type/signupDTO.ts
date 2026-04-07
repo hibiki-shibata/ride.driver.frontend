@@ -10,7 +10,5 @@ export type SignupReqDTO = {
 }
 
 export type SignupResDTO = {
-  success: boolean;
-  message?: string;
-  userId?: string;
+  accessTokenDTO: string
 }

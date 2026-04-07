@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { loginReq } from "../api/login";
-import type { LoginReqDTO } from "../type/loginDTO";
+import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
+import { useAccessTokenContext } from "../context/accessTokenContext";
 
 type LoginStatus =
   | { status: "idle" }
@@ -12,11 +13,13 @@ function LoginForm() {
   const [loginData, setLoginData] = useState<LoginReqDTO>({
     emailAddress: "",
     password: "",
-  });
+  })
 
   const [loginStatus, setLoginStatus] = useState<LoginStatus>({
     status: "idle",
-  });
+  })
+
+  const { setContextAccessToken } = useAccessTokenContext()
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,11 +27,13 @@ function LoginForm() {
     setLoginStatus({ status: "loading" });
 
     try {
-      await loginReq(loginData);
+      const res: LoginResDTO = await loginReq(loginData)
+      setContextAccessToken(res.accessToken)
+
       setLoginStatus({
         status: "success",
         message: "Login successful",
-      });
+      })
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",

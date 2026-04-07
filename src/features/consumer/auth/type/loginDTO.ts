@@ -4,7 +4,5 @@ export type LoginReqDTO = {
 };
 
 export type LoginResDTO = {
-  success: boolean;
-  message?: string;
-  token?: string;
+  accessToken: string
 };
