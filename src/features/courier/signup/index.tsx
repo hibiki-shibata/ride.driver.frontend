@@ -1,13 +1,14 @@
 import ApplyForm from "./components/signupForm"
 import Header from "../../../shared/component/headers/courier"
 import Footer from '../../../shared/component/footer'
+import { COURIER_ROUTE } from "../../../shared/constant/hrefRoute"
 
 function CoureirSignup() {
     return (
         <>
             <Header />
             <div className="flex flex-col justify-center bg-sky-300 text-black lg:px-110 lg:py-20 px-10 py-10">
-                <a href="/ride.driver.frontend/courier"
+                <a href={COURIER_ROUTE.HOME}
                     className="bg-sky-500 hover:bg-sky-600 text-white absolute  text-black font-bold py-2 px-4 mb-4 rounded-lg top-25 left-5">
                     Back to Courier page
                 </a>

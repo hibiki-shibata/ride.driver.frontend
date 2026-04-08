@@ -9,7 +9,7 @@ export const CONSUMER_ROUTE = {
 
 export const COURIER_ROUTE = {
     HOME: "/ride.driver.frontend/courier",
-    APPLY: "/ride.driver.frontend/courier/apply",
+    SIGNUP: "/ride.driver.frontend/courier/apply",
 }
 
 export const MERCHANT_ROUTE = {
