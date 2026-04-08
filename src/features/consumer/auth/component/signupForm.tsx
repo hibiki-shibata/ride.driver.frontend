@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { signupReq } from "../api/signup";
-import type { SignupReqDTO } from "../type/signupDTO";
 import { useNavigate } from 'react-router-dom'
+import { signupReq } from "../api/signup";
+import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
+import { AccessTokenManager } from "../service/accessTokenManager";
 import { CONSUMER_PATH } from '../../../../shared/constant/hrefPath'
 
 type SignupStatus =
@@ -12,49 +13,30 @@ type SignupStatus =
 
 function SignupForm() {
   const navigate = useNavigate()
-  const [signupStatus, setSignupStatus] = useState<SignupStatus>({
-    status: "idle",
-  });
+  const [signupStatus, setSignupStatus] = useState<SignupStatus | null>(null)
 
-  const [signupData, setSignupData] = useState<SignupReqDTO>({
-    name: "",
-    emailAddress: "",
-    consumerAddress: "",
-    consumerAddressCoordinate: {
-      latitude: 0,
-      longitude: 0,
-    },
-    password: "",
-  });
+  const [signupData, setSignupData] = useState<SignupReqDTO | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setSignupData((prev) => ({
       ...prev,
       [name]: value,
-    }));
+    }) as SignupReqDTO);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSignupStatus({ status: "loading" });
-
+    setSignupStatus({ status: "loading" })
+    if (!signupData) throw new Error("Signup data is not set")
     try {
-      await signupReq(signupData)      
+      const res: SignupResDTO = await signupReq(signupData)
       setSignupStatus({
         status: "success",
         message: "Signup successful",
       })
-      setSignupData({
-        name: "",
-        emailAddress: "",
-        consumerAddress: "",
-        consumerAddressCoordinate: {
-          latitude: 0,
-          longitude: 0,
-        },
-        password: "",
-      })
+      setSignupData(null)
+      AccessTokenManager.getInstance().setAccessToken(res.accessToken)
       navigate(CONSUMER_PATH.EXPLORE)
     } catch (error: unknown) {
       setSignupStatus({
@@ -64,7 +46,7 @@ function SignupForm() {
     }
   }
 
-  const isLoading = signupStatus.status === "loading";
+  const isLoading = signupStatus?.status === "loading";
 
   return (
     <>
@@ -82,7 +64,7 @@ function SignupForm() {
           type="text"
           placeholder="Username"
           required
-          value={signupData.name}
+          value={signupData?.name}
           onChange={handleChange}
         />
 
@@ -97,7 +79,7 @@ function SignupForm() {
           placeholder="Email Address"
           autoComplete="email"
           required
-          value={signupData.emailAddress}
+          value={signupData?.emailAddress}
           onChange={handleChange}
         />
 
@@ -112,7 +94,7 @@ function SignupForm() {
           placeholder="Password"
           autoComplete="new-password"
           required
-          value={signupData.password}
+          value={signupData?.password}
           onChange={handleChange}
         />
 
@@ -126,7 +108,7 @@ function SignupForm() {
           type="text"
           placeholder="Delivery Address"
           required
-          value={signupData.consumerAddress}
+          value={signupData?.consumerAddress}
           onChange={handleChange}
         />
 
@@ -140,12 +122,12 @@ function SignupForm() {
       </form>
 
       <div aria-live="polite" className="mt-4">
-        {signupStatus.status === "success" && (
+        {signupStatus?.status === "success" && (
           <p className="text-green-600 font-bold">{signupStatus.message}</p>
         )}
-        {signupStatus.status === "failed" && (
+        {signupStatus?.status === "failed" && (
           <p className="text-red-600 font-bold">
-            Signup failed: {signupStatus.error}
+            Signup failed: {signupStatus?.error}
           </p>
         )}
       </div>

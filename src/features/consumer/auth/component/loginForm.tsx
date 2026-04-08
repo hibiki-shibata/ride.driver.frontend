@@ -1,48 +1,43 @@
 import { useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import { loginReq } from "../api/login"
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
-import { useConsumerAccessTokenContext } from "../context/accessTokenContext"
-import { useNavigate } from 'react-router-dom'
+import { AccessTokenManager } from "../service/accessTokenManager"
 import { CONSUMER_PATH } from '../../../../shared/constant/hrefPath'
 
 type LoginStatus =
   | { status: "idle" }
   | { status: "loading" }
   | { status: "success"; message: string }
-  | { status: "failed"; error: string };
+  | { status: "failed"; error: string }
 
 function LoginForm() {
   const navigate = useNavigate()
-  const [loginData, setLoginData] = useState<LoginReqDTO>({
-    emailAddress: "",
-    password: "",
-  })
+  const [loginData, setLoginData] = useState<LoginReqDTO | null>(null)
 
-  const [loginStatus, setLoginStatus] = useState<LoginStatus>({
-    status: "idle",
-  })
+  const [loginStatus, setLoginStatus] = useState<LoginStatus | null>(null)
 
-  const { setContextAccessToken } = useConsumerAccessTokenContext()
-
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    setLoginData((prev) => ({
+      ...prev,
+      [name]: value,
+    } as LoginReqDTO))
+  }
+  
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    setLoginStatus({ status: "loading" });
-
+    e.preventDefault()
+    setLoginStatus({ status: "loading" })
     try {
+      if (!loginData) throw new Error("Login data is not set")
       const res: LoginResDTO = await loginReq(loginData)
-      setContextAccessToken(res.accessToken)
-
+      AccessTokenManager.getInstance().setAccessToken(res.accessToken)
       setLoginStatus({
         status: "success",
         message: "Login successful",
       })
-      setLoginData({
-        emailAddress: "",
-        password: "",
-      })
+      setLoginData(null)
       navigate(CONSUMER_PATH.EXPLORE)
-      
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",
@@ -51,15 +46,7 @@ function LoginForm() {
     }
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setLoginData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  const isLoading = loginStatus.status === "loading";
+  const isLoading = loginStatus?.status === "loading"
 
   return (
     <>
@@ -78,7 +65,7 @@ function LoginForm() {
           placeholder="Email Address"
           autoComplete="email"
           required
-          value={loginData.emailAddress}
+          value={loginData?.emailAddress}
           onChange={handleChange}
         />
 
@@ -93,7 +80,7 @@ function LoginForm() {
           placeholder="Password"
           autoComplete="current-password"
           required
-          value={loginData.password}
+          value={loginData?.password}
           onChange={handleChange}
         />
 
@@ -107,10 +94,10 @@ function LoginForm() {
       </form>
 
       <div aria-live="polite" className="mt-4">
-        {loginStatus.status === "success" && (
+        {loginStatus?.status === "success" && (
           <p className="text-green-600 font-bold">{loginStatus.message}</p>
         )}
-        {loginStatus.status === "failed" && (
+        {loginStatus?.status === "failed" && (
           <p className="text-red-600 font-bold">
             Login failed: {loginStatus.error}
           </p>

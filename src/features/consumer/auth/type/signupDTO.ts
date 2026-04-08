@@ -10,5 +10,5 @@ export type SignupReqDTO = {
 }
 
 export type SignupResDTO = {
-  accessTokenDTO: string
+  accessToken: string
 }
