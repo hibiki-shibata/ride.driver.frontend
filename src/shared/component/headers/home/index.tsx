@@ -1,8 +1,8 @@
-import UserSignupButton from "../../../../features/consumer/auth/component/signupButton";
-import UserLoginButton from "../../../../features/consumer/auth/component/loginButton";
-import HrefToCourierPage from "./hrefToCourierPage";
-import UnknownAccountIcon from "./unknownAccountIcon";
-import AmazonesLogo from "../../../component/amazones-logo";
+import UserSignupButton from "../../../../features/consumer/auth/component/signupButton"
+import UserLoginButton from "../../../../features/consumer/auth/component/loginButton"
+import HrefToCourierPage from "./hrefToCourierPage"
+import UnknownAccountIcon from "../../../../features/consumer/home/component/consumerAuthButon"
+import AmazonesLogo from "../../../component/amazones-logo"
 
 function headerForUserPages() {
     return (
@@ -22,4 +22,4 @@ function headerForUserPages() {
     )
 }
 
-export default headerForUserPages;
+export default headerForUserPages

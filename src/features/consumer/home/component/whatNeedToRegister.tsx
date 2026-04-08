@@ -1,4 +1,4 @@
-import SignupButton from "../../auth/component/signupButton";
+import SignupButton from "../../auth/component/signupButton"
 
 const registrationRequirements = [
   {
@@ -18,7 +18,7 @@ const registrationRequirements = [
     title: "Destination address",
     description: "The courier will deliver the item to this address."
   }
-];
+]
 
 function WhatYouNeedToRegister() {
   return (
@@ -44,7 +44,7 @@ function WhatYouNeedToRegister() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default WhatYouNeedToRegister;
+export default WhatYouNeedToRegister

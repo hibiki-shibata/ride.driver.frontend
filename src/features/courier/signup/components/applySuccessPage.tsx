@@ -1,10 +1,10 @@
-import { Navigate } from "react-router-dom";
-import { FRONTEND_URI } from "../../../../shared/constant/apiUri";
+import { Navigate } from "react-router-dom"
+import { FRONTEND_URI } from "../../../../shared/constant/apiUri"
 
 function SignupSuccessPage() {
   const displaySuccessApplyPage: boolean = true
   if (!displaySuccessApplyPage) {
-    return <Navigate to="/ride.driver.frontend/courier/apply" />;
+    return <Navigate to="/ride.driver.frontend/courier/apply" />
   }
   return (
     <>

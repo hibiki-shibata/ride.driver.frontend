@@ -10,4 +10,4 @@ function AmazonesLogo() {
     )
 }
 
-export default AmazonesLogo;
+export default AmazonesLogo

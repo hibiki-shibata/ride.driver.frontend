@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { loginReq } from "../api/login"
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
 import { AccessTokenManager } from "../service/accessTokenManager"
-import { CONSUMER_PATH } from '../../../../shared/constant/hrefPath'
+import { CONSUMER_ROUTE } from '../../../../shared/constant/hrefRoute'
 
 type LoginStatus =
   | { status: "idle" }
@@ -37,7 +37,7 @@ function LoginForm() {
         message: "Login successful",
       })
       setLoginData(null)
-      navigate(CONSUMER_PATH.EXPLORE)
+      navigate(CONSUMER_ROUTE.EXPLORE)
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",

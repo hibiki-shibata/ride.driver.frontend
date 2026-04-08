@@ -1,4 +1,4 @@
-import SignupButton from "../../auth/component/signupButton";
+import SignupButton from "../../auth/component/signupButton"
 
 const reasonsToChooseUs = [
   {
@@ -15,7 +15,7 @@ const reasonsToChooseUs = [
     description:
       "You can build your own direct delivery network with couriers."
   }
-];
+]
 
 function WhenPeopleChooseUs() {
   return (
@@ -41,7 +41,7 @@ function WhenPeopleChooseUs() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default WhenPeopleChooseUs;
+export default WhenPeopleChooseUs

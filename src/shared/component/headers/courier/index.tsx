@@ -1,5 +1,5 @@
-import AmazonesLogo from "../../../component/amazones-logo";
-import ExploreAsCustomer from "./exploreAsCustomer";
+import AmazonesLogo from "../../../component/amazones-logo"
+import ExploreAsCustomer from "./exploreAsCustomer"
 
 function header() {
     return (
@@ -10,4 +10,4 @@ function header() {
     )
 }
 
-export default header;
+export default header

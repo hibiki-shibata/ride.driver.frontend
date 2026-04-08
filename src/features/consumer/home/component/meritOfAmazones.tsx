@@ -15,7 +15,7 @@ const merits = [
     title: "Freedom",
     description: "Minimal platform control. Most decisions are handled directly between couriers and customers."
   }
-];
+]
 
 function MeritsOfAmazones() {
   return (
@@ -35,7 +35,7 @@ function MeritsOfAmazones() {
         ))}
       </ul>
     </section>
-  );
+  )
 }
 
-export default MeritsOfAmazones;
+export default MeritsOfAmazones

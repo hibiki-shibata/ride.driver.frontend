@@ -15,4 +15,4 @@ function hrefToCourierPage() {
     )
 }
 
-export default hrefToCourierPage;
+export default hrefToCourierPage

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { signupReq } from "../api/signup";
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
 import { AccessTokenManager } from "../service/accessTokenManager";
-import { CONSUMER_PATH } from '../../../../shared/constant/hrefPath'
+import { CONSUMER_ROUTE } from '../../../../shared/constant/hrefRoute'
 
 type SignupStatus =
   | { status: "idle" }
@@ -37,7 +37,7 @@ function SignupForm() {
       })
       setSignupData(null)
       AccessTokenManager.getInstance().setAccessToken(res.accessToken)
-      navigate(CONSUMER_PATH.EXPLORE)
+      navigate(CONSUMER_ROUTE.EXPLORE)
     } catch (error: unknown) {
       setSignupStatus({
         status: "failed",

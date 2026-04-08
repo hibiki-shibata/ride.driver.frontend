@@ -1,6 +1,6 @@
-import RequiredInfo from "./requiredInfo";
-import MissionAndResponsibility from "./missionAndResponsibility";
-import RegisterProcessCircle from "./registerProcessCircle";
+import RequiredInfo from "./requiredInfo"
+import MissionAndResponsibility from "./missionAndResponsibility"
+import RegisterProcessCircle from "./registerProcessCircle"
 
 function descriptionContaners() {
     return (
@@ -12,4 +12,4 @@ function descriptionContaners() {
     )
 }
 
-export default descriptionContaners;
+export default descriptionContaners

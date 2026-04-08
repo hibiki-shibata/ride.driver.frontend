@@ -1,5 +1,5 @@
-import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
-import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
+import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
+import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
 
 export async function loginReq(
   body: LoginReqDTO,
@@ -13,14 +13,14 @@ export async function loginReq(
       },
       body: JSON.stringify(body),
     },
-  );
+  )
 
   if (!res.ok) {
-    const errorText = await res.text();
+    const errorText = await res.text()
     throw new Error(
       `Login request failed (${res.status}): ${errorText || res.statusText}`,
-    );
+    )
   }
 
-  return res.json() as Promise<LoginResDTO>;
+  return res.json() as Promise<LoginResDTO>
 }

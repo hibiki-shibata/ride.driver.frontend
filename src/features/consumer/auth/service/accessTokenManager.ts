@@ -1,3 +1,4 @@
+// Store access token in memory
 export class AccessTokenManager {
     private static instance: AccessTokenManager
     private accessToken: string | null = null

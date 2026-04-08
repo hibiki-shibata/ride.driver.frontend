@@ -1,9 +1,9 @@
-import { useState } from "react";
-import UserLoginForm from "./component/loginForm";
-import UserSigninForm from "./component/signupForm";
+import { useState } from "react"
+import UserLoginForm from "./component/loginForm"
+import UserSigninForm from "./component/signupForm"
 
 function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
-  const [isLoginMode, setLoginMode] = useState(isLogin);
+  const [isLoginMode, setLoginMode] = useState(isLogin)
 
   return (
     <div className="flex flex-col items-center px-20 py-24 sm:py-32 bg-gray-900 text-white">
@@ -37,7 +37,7 @@ function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
 
       {isLoginMode ? <UserLoginForm /> : <UserSigninForm />}
     </div>
-  );
+  )
 }
 
-export default SignupAndLogin;
+export default SignupAndLogin

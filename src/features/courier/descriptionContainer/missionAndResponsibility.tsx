@@ -1,4 +1,4 @@
-import SignupButton from "../auth/component/courierSignupButton";
+import SignupButton from "../auth/component/courierSignupButton"
 
 const responsibilities = [
   {
@@ -26,7 +26,7 @@ const responsibilities = [
   {
     title: "Earn a little extra in your free time, then go grab a drink with it!! 🍻",
   },
-];
+]
 
 function MissionAndResponsibility() {
   return (
@@ -55,7 +55,7 @@ function MissionAndResponsibility() {
         <SignupButton />
       </div>
     </div>
-  );
+  )
 }
 
-export default MissionAndResponsibility;
+export default MissionAndResponsibility

@@ -1,4 +1,4 @@
-import SignupButton from "../auth/component/courierSignupButton";
+import SignupButton from "../auth/component/courierSignupButton"
 
 const requiredFields = [
   {
@@ -17,7 +17,7 @@ const requiredFields = [
       "Customers may choose a courier depending on the required vehicle type.",
     ],
   },
-];
+]
 
 function RequiredInfo() {
   return (
@@ -51,7 +51,7 @@ function RequiredInfo() {
         <SignupButton />
       </div>
     </div>
-  );
+  )
 }
 
-export default RequiredInfo;
+export default RequiredInfo

@@ -8,4 +8,4 @@ function courierSignupButton() {
     )
 }
 
-export default courierSignupButton;
+export default courierSignupButton

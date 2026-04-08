@@ -1,4 +1,4 @@
-import { FRONTEND_URI } from "../constant/apiUri";
+import { FRONTEND_URI } from "../constant/apiUri"
 
 function Footer() {
     return (

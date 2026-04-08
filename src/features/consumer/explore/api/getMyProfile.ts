@@ -12,12 +12,12 @@
 //                 "Authorization": `Bearer ${useConsumerAccessTokenContext().contextAccessToken}`
 //             },
 //         },
-//     );
+//     )
 
 //     if (!res.ok) {
 //         throw new Error(
 //             `Get my profile request failed (${res.status}): ${res.statusText}`,
-//         );
+//         )
 //     }
 
 //     return res.json() as Promise<ConsumerProfile>

@@ -1,4 +1,4 @@
-import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri";
+import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO"
 
 export async function signupReq(
@@ -13,14 +13,14 @@ export async function signupReq(
       },
       body: JSON.stringify(body),
     },
-  );
+  )
 
   if (!res.ok) {
-    const errorText = await res.text();
+    const errorText = await res.text()
     throw new Error(
       `Signup request failed (${res.status}): ${errorText || res.statusText}`,
-    );
+    )
   }
 
-  return res.json() as Promise<SignupResDTO>;
+  return res.json() as Promise<SignupResDTO>
 }

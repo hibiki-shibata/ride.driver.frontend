@@ -6,4 +6,4 @@ function courierSignupForm() {
     )
 }
 
-export default courierSignupForm;
+export default courierSignupForm
