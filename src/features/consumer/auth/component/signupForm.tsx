@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { signupReq } from "../api/signup";
 import type { SignupReqDTO } from "../type/signupDTO";
+import { useNavigate } from 'react-router-dom'
+import { CONSUMER_PATH } from '../../../../shared/constant/hrefPath'
 
 type SignupStatus =
   | { status: "idle" }
@@ -9,6 +11,7 @@ type SignupStatus =
   | { status: "failed"; error: string };
 
 function SignupForm() {
+  const navigate = useNavigate()
   const [signupStatus, setSignupStatus] = useState<SignupStatus>({
     status: "idle",
   });
@@ -52,6 +55,7 @@ function SignupForm() {
         },
         password: "",
       })
+      navigate(CONSUMER_PATH.EXPLORE)
     } catch (error: unknown) {
       setSignupStatus({
         status: "failed",
