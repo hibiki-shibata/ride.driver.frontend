@@ -6,7 +6,7 @@ const links = [
   { href: CONSUMER_ROUTE.SIGNUP, label: "Create a new account" },
 ]
 
-export default function ConsumerAuthButton() {
+export default function SmallAuthButtons() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

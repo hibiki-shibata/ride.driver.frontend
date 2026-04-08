@@ -1,4 +1,4 @@
-import Header from "../../../shared/component/headers/home"
+import Header from "../shared/component/header"
 import ConsumerHomeBodySection from "../home/section/bodySection"
 import Footer from "../../../shared/component/footer"
 

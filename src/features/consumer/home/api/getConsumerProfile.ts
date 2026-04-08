@@ -1,6 +1,6 @@
 import type { ConsumerProfile } from "../../auth/type/consumerProfile"
 import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
-import { AccessTokenManager } from "../../auth/service/accessTokenManager"
+import { AccessTokenManager } from "../../shared/service/accessTokenManager"
 
 export async function getConsumerProfileReq(): Promise<ConsumerProfile> {
     const accessToken = AccessTokenManager.getInstance().getAccessToken()

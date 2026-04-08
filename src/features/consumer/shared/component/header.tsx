@@ -1,10 +1,10 @@
-import UserSignupButton from "../../../../features/consumer/auth/component/signupButton"
-import UserLoginButton from "../../../../features/consumer/auth/component/loginButton"
-import HrefToCourierPage from "./hrefToCourierPage"
-import UnknownAccountIcon from "../../../../features/consumer/home/component/consumerAuthButon"
-import AmazonesLogo from "../../../component/amazones-logo"
+import UserSignupButton from "./signupButton"
+import UserLoginButton from "./loginButton"
+import HrefToCourierPage from "./linkToCourierHome"
+import UnknownAccountIcon from "./smallAuthButtons"
+import AmazonesLogo from "../../../../shared/component/amazones-logo"
 
-function headerForUserPages() {
+function ConsumerHeader() {
     return (
         <div className="bg-black text-white flex justify-between md:py-0 py-5">
             <AmazonesLogo />
@@ -22,4 +22,4 @@ function headerForUserPages() {
     )
 }
 
-export default headerForUserPages
+export default ConsumerHeader

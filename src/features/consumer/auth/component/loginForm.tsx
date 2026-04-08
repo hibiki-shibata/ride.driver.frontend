@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { loginReq } from "../api/login"
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
-import { AccessTokenManager } from "../service/accessTokenManager"
+import { AccessTokenManager } from "../../shared/service/accessTokenManager"
 import { CONSUMER_ROUTE } from '../../../../shared/constant/hrefRoute'
 
 type LoginStatus =

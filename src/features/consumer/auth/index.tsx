@@ -1,5 +1,5 @@
 import Footer from "../../../shared/component/footer"
-import Header from "../../../shared/component/headers/home"
+import Header from "../shared/component/header"
 import SignupAndLogin from "./signupAndLogin"
 
 function ConsumerAuth({ isLogin }: { isLogin: boolean }) {
@@ -12,4 +12,4 @@ function ConsumerAuth({ isLogin }: { isLogin: boolean }) {
     )
 }
 
-export default ConsumerAuth;
+export default ConsumerAuth

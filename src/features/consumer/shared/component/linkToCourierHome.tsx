@@ -1,4 +1,4 @@
-function hrefToCourierPage() {
+function LinkToCourierHome() {
     return (
         <>
             <button className="hover:underline m-3 sm:block hidden">
@@ -15,4 +15,4 @@ function hrefToCourierPage() {
     )
 }
 
-export default hrefToCourierPage
+export default LinkToCourierHome
