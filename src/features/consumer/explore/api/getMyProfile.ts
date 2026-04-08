@@ -1,7 +1,8 @@
 import { useConsumerAccessTokenContext } from '../../auth/context/accessTokenContext'
 import { CONSUMER_PROFILE_API_URI } from '../../../../shared/constant/apiUri'
+import  type{ ConsumerProfile } from '../type/consumerProfile'
 
-async function getMyProfile() {
+async function getMyProfile(): Promise<ConsumerProfile> {
     const res = await fetch(
         CONSUMER_PROFILE_API_URI.ME,
         {
@@ -19,7 +20,7 @@ async function getMyProfile() {
         );
     }
 
-    return res.json();
+    return res.json() as Promise<ConsumerProfile>
 }
 
 export default getMyProfile
