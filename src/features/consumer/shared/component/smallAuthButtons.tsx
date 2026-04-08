@@ -2,8 +2,8 @@ import { useState } from "react"
 import { CONSUMER_ROUTE } from "../../../../shared/constant/hrefRoute";
 
 const links = [
-  { href: CONSUMER_ROUTE.LOGIN, label: "Login to your account" },
-  { href: CONSUMER_ROUTE.SIGNUP, label: "Create a new account" },
+  { href: CONSUMER_ROUTE.LOGIN, label: "Login" },
+  { href: CONSUMER_ROUTE.SIGNUP, label: "Signup" },
 ]
 
 export default function SmallAuthButtons() {

@@ -1,7 +1,7 @@
-import UserSignupButton from "./signupButton"
-import UserLoginButton from "./loginButton"
-import HrefToCourierPage from "./linkToCourierHome"
-import UnknownAccountIcon from "./smallAuthButtons"
+import UserSignupButton from "../component/signupButton"
+import UserLoginButton from "../component/loginButton"
+import HrefToCourierPage from "../component/linkToCourierHome"
+import SmallAuthButtons from "../component/smallAuthButtons"
 import AmazonesLogo from "../../../../shared/component/amazones-logo"
 
 function ConsumerHeader() {
@@ -15,7 +15,7 @@ function ConsumerHeader() {
                     <UserSignupButton />
                 </div>
                 <div className="block sm:hidden m-0 p-0 items-center flex px-2 pr-6">
-                    <UnknownAccountIcon />
+                    <SmallAuthButtons />
                 </div>
             </div>
         </div>

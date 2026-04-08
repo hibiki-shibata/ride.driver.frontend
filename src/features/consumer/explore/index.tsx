@@ -1,4 +1,4 @@
-import Header from "../shared/component/header"
+import Header from "../shared/section/header"
 import ConsumerExploreBodySection from "./section/bodySection"
 
 function ConsumerExplore() {

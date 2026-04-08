@@ -1,5 +1,5 @@
 import Footer from "../../../shared/component/footer"
-import Header from "../shared/component/header"
+import Header from "../shared/section/header"
 import SignupAndLogin from "./signupAndLogin"
 
 function ConsumerAuth({ isLogin }: { isLogin: boolean }) {
