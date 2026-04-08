@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { loginReq } from "../api/login";
-import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO";
-import { useConsumerAccessTokenContext } from "../context/accessTokenContext";
+import { useState } from "react"
+import { loginReq } from "../api/login"
+import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
+import { useConsumerAccessTokenContext } from "../context/accessTokenContext"
+import { useNavigate } from 'react-router-dom'
+import { CONSUMER_PATH } from '../../../../shared/constant/hrefPath'
 
 type LoginStatus =
   | { status: "idle" }
@@ -10,6 +12,7 @@ type LoginStatus =
   | { status: "failed"; error: string };
 
 function LoginForm() {
+  const navigate = useNavigate()
   const [loginData, setLoginData] = useState<LoginReqDTO>({
     emailAddress: "",
     password: "",
@@ -38,11 +41,13 @@ function LoginForm() {
         emailAddress: "",
         password: "",
       })
+      navigate(CONSUMER_PATH.EXPLORE)
+      
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",
         error: error instanceof Error ? error.message : "Something went wrong",
-      });
+      })
     }
   }
 
