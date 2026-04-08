@@ -1,17 +1,17 @@
-
+const BASE_ROUTE = "/ride.driver.frontend/"
 
 export const CONSUMER_ROUTE = {
-    SIGNUP: "/ride.driver.frontend/consumer/signup",
-    LOGIN: "/ride.driver.frontend/consumer/login",
-    HOME: "/ride.driver.frontend/consumer/home",
-    EXPLORE: "/ride.driver.frontend/consumer/explore",
+    SIGNUP: BASE_ROUTE + "consumer/signup",
+    LOGIN: BASE_ROUTE + "consumer/login",
+    HOME: BASE_ROUTE + "consumer/home",
+    EXPLORE: BASE_ROUTE + "consumer/explore",
 }
 
 export const COURIER_ROUTE = {
-    HOME: "/ride.driver.frontend/courier",
-    SIGNUP: "/ride.driver.frontend/courier/apply",
+    HOME: BASE_ROUTE + "courier/home",
+    SIGNUP: BASE_ROUTE + "courier/signup",
 }
 
 export const MERCHANT_ROUTE = {
-    HOME: "/ride.driver.frontend/merchant",
+    HOME: BASE_ROUTE + "merchant/home",
 }
