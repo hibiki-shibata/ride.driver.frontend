@@ -20,6 +20,10 @@ export class AccessTokenManager {
         return this.accessToken
     }
 
+    public refreshAccessToken(newToken: string) {
+        this.accessToken = newToken
+    }
+
     public clearAccessToken() {
         this.accessToken = null
     }
