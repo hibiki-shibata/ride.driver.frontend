@@ -1,5 +1,5 @@
 import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
-import { AccessTokenManager } from "../service/accessTokenManager"
+import { AccessTokenManager } from "../auth/service/accessTokenManager"
 
 // export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 

@@ -1,6 +1,6 @@
 import { useState } from "react"
-import UserLoginForm from "./component/loginForm"
-import UserSigninForm from "./component/signupForm"
+import LoginForm from "../component/loginForm"
+import SignupForm from "../component/signupForm"
 
 function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
   const [isLoginMode, setLoginMode] = useState(isLogin)
@@ -15,9 +15,8 @@ function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
         <button
           type="button"
           onClick={() => setLoginMode(true)}
-          className={`text-3xl font-bold cursor-pointer ${
-            isLoginMode ? "text-white" : "text-gray-400"
-          }`}
+          className={`text-3xl font-bold cursor-pointer ${isLoginMode ? "text-white" : "text-gray-400"
+            }`}
         >
           Login
         </button>
@@ -27,15 +26,14 @@ function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
         <button
           type="button"
           onClick={() => setLoginMode(false)}
-          className={`text-3xl font-bold cursor-pointer ${
-            !isLoginMode ? "text-white" : "text-gray-400"
-          }`}
+          className={`text-3xl font-bold cursor-pointer ${!isLoginMode ? "text-white" : "text-gray-400"
+            }`}
         >
           Signup
         </button>
       </div>
 
-      {isLoginMode ? <UserLoginForm /> : <UserSigninForm />}
+      {isLoginMode ? <LoginForm /> : <SignupForm />}
     </div>
   )
 }

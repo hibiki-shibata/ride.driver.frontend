@@ -1,7 +1,7 @@
-import UserSignupButton from "../component/signupButton"
-import UserLoginButton from "../component/loginButton"
-import HrefToCourierPage from "../component/linkToCourierHome"
-import SmallAuthButtons from "../component/smallAuthButtons"
+import SignupButton from "../auth/component/signupButton"
+import LoginButton from "../auth/component/loginButton"
+import LinkToCourierHome from "../component/linkToCourierHome"
+import SmallAuthButtons from "../auth/component/smallAuthButtons"
 import AmazonesLogo from "../../../../shared/component/amazones-logo"
 
 function ConsumerHeader() {
@@ -9,10 +9,10 @@ function ConsumerHeader() {
         <div className="bg-black text-white flex justify-between md:py-0 py-5">
             <AmazonesLogo />
             <div className="flex">
-                <HrefToCourierPage />
+                <LinkToCourierHome />
                 <div className="sm:flex hidden sm:block">
-                    <UserLoginButton />
-                    <UserSignupButton />
+                    <LoginButton />
+                    <SignupButton />
                 </div>
                 <div className="block sm:hidden m-0 p-0 items-center flex px-2 pr-6">
                     <SmallAuthButtons />

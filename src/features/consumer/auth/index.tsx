@@ -1,15 +1,15 @@
 import Footer from "../../../shared/component/footer"
 import Header from "../shared/section/header"
-import SignupAndLogin from "./signupAndLogin"
+import SignupAndLoginForm from "./section/signupAndLoginForm"
 
-function ConsumerAuth({ isLogin }: { isLogin: boolean }) {
+function LoginAndSignupPage({ isLogin }: { isLogin: boolean }) {
     return (
-        <div>
+        <>
             <Header />
-            <SignupAndLogin isLogin={isLogin} />
+            <SignupAndLoginForm isLogin={isLogin} />
             <Footer />
-        </div>
+        </>
     )
 }
 
-export default ConsumerAuth
+export default LoginAndSignupPage
