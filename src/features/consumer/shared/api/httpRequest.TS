@@ -1,11 +1,11 @@
 import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
 import { AccessTokenManager } from "../service/accessTokenManager"
 
-// export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
+export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 
 // type HttpRequestOptions<TBody = unknown> = {
 type HttpRequestOptions = {
-  method: string
+  method: HttpMethod
   uri: string
   headers?: Record<string, string>
   body?: unknown
@@ -38,6 +38,7 @@ export async function httpRequest<TResponse, TBody = unknown>(
     body: body !== undefined ? JSON.stringify(body) : undefined,
   })
 
+  // Retry once if unauthorized and requires auth, to handle access token expiration
   if (res.status === 401 && requiresAuth && !retried) {
     const newAccessToken = await refreshAccessToken()
 
@@ -60,11 +61,12 @@ export async function httpRequest<TResponse, TBody = unknown>(
 }
 
 async function refreshAccessToken(): Promise<string | null> {
+  // If there's already a refresh in progress, skip the duplicated request
   if (!refreshPromise) {
     refreshPromise = (async () => {
       const res = await fetch(CONSUMER_PROFILE_API_URI.REFRESH_TOKEN, {
         method: "POST",
-        credentials: "include",
+        credentials: "include", // include http only cookie
       })
 
       if (!res.ok) {
