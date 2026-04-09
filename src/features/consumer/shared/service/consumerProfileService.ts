@@ -1,5 +1,5 @@
 import type { ConsumerProfile } from "../type/consumerProfile"
-import { getConsumerProfileReq } from "../api/getConsumerProfile"
+import { getConsumerProfile } from "../api/getConsumerProfile"
 
 
 export class ConsumerProfileService {
@@ -23,9 +23,8 @@ export class ConsumerProfileService {
     }
 
     private async updateConsumerProfile() {
-        // get access token
         try {
-            ConsumerProfileService.consumerProfile = await getConsumerProfileReq()
+            ConsumerProfileService.consumerProfile = await getConsumerProfile()
         } catch (error) {
             console.error("Failed to fetch consumer profile:", error)
             throw error

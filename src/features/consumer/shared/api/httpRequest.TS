@@ -1,21 +1,22 @@
 import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
 import { AccessTokenManager } from "../service/accessTokenManager"
 
-export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
+// export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 
-export type HttpRequestOptions<TBody = unknown> = {
-  method: HttpMethod
+// type HttpRequestOptions<TBody = unknown> = {
+type HttpRequestOptions = {
+  method: string
   uri: string
   headers?: Record<string, string>
-  body?: TBody
+  body?: unknown
   requiresAuth?: boolean
 }
 
 let refreshPromise: Promise<string | null> | null = null
 
 export async function httpRequest<TResponse, TBody = unknown>(
-  options: HttpRequestOptions<TBody>,
-  retried = false,
+  options: HttpRequestOptions,
+  retried = false
 ): Promise<TResponse> {
   const { method, uri, headers, body, requiresAuth = false } = options
 
