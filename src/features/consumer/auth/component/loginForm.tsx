@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
-import { AccessTokenManager } from "../../shared/service/accessTokenManager"
-import { loginReq } from "../api/login"
+import { useConsumerAuthContext } from "../../shared/context/AuthProvider"
 import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
+import { loginReq } from "../api/login"
 
 type LoginStatus =
   | { status: "idle" }
@@ -11,10 +11,11 @@ type LoginStatus =
   | { status: "success"; message: string }
   | { status: "failed"; error: string }
 
+
 function LoginForm() {
   const navigate = useNavigate()
+  const { login } = useConsumerAuthContext()!
   const [loginData, setLoginData] = useState<LoginReqDTO | null>(null)
-
   const [loginStatus, setLoginStatus] = useState<LoginStatus | null>(null)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -30,8 +31,9 @@ function LoginForm() {
     setLoginStatus({ status: "loading" })
     try {
       if (!loginData) throw new Error("Login data is not set")
-      const res: LoginResDTO = await loginReq(loginData)
-      AccessTokenManager.getInstance().setAccessToken(res.accessToken)
+      const loginRes: LoginResDTO = await loginReq(loginData)
+      login(loginRes.accessToken)
+
       setLoginStatus({
         status: "success",
         message: "Login successful",

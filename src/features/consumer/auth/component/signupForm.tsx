@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
-import { AccessTokenManager } from "../../shared/service/accessTokenManager";
+import { useConsumerAuthContext } from "../../shared/context/AuthProvider";
 import { signupReq } from "../api/signup";
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
 
@@ -11,10 +11,11 @@ type SignupStatus =
   | { status: "success"; message: string }
   | { status: "failed"; error: string };
 
+
 function SignupForm() {
   const navigate = useNavigate()
+  const { login } = useConsumerAuthContext()!
   const [signupStatus, setSignupStatus] = useState<SignupStatus | null>(null)
-
   const [signupData, setSignupData] = useState<SignupReqDTO | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -27,22 +28,22 @@ function SignupForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSignupStatus({ status: "loading" })
-    if (!signupData) throw new Error("Signup data is not set")
     try {
+      setSignupStatus({ status: "loading" })
+      if (!signupData) throw new Error("Signup data is not set")
       const res: SignupResDTO = await signupReq(signupData)
+      login(res.accessToken)
       setSignupStatus({
         status: "success",
         message: "Signup successful",
       })
       setSignupData(null)
-      AccessTokenManager.getInstance().setAccessToken(res.accessToken)
       navigate(CONSUMER_ROUTE.EXPLORE)
     } catch (error: unknown) {
       setSignupStatus({
         status: "failed",
         error: error instanceof Error ? error.message : "Something went wrong",
-      });
+      })
     }
   }
 
