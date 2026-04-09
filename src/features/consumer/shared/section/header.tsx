@@ -1,11 +1,42 @@
+import { useEffect } from "react"
 import SignupButton from "../component/signupButton"
 import LoginButton from "../component/loginButton"
 import SmallAuthButtons from "../component/smallAuthButtons"
 import LinkToCourierHome from "../component/linkToCourierHome"
 import AmazonesLogo from "../../../../shared/component/amazones-logo"
+import { useConsumerAuthContext } from "../context/AuthProvider"
 
 function ConsumerHeader() {
-    return (
+    const { consumerProfile, setConsumerProfile } = useConsumerAuthContext()
+
+    //  This is just for demonstration. Delete later
+    useEffect(() => {
+        setConsumerProfile({
+            id: "123",
+            name: "John Doe",
+            emailAddress: "hibiki@gmail.com",
+            consumerAddress: "123 Main St, Anytown, USA",
+            consumerCoordinates: {
+                latitude: 37.7749,
+                longitude: -122.4194,
+            }
+        })
+    }, [setConsumerProfile])
+
+    return consumerProfile ? (
+        <>
+            <div className="bg-black text-white flex justify-between md:py-0 py-5">
+                <AmazonesLogo />
+                <div className="flex">
+                    <LinkToCourierHome />
+                    <span className="items-center flex px-2 pr-6 my-5 text-4xl">
+                        Welcome, {consumerProfile.name}
+                    </span>
+                </div>
+
+            </div>
+        </>
+    ) : (
         <div className="bg-black text-white flex justify-between md:py-0 py-5">
             <AmazonesLogo />
             <div className="flex">
