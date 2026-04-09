@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import { CONSUMER_ROUTE } from '../../../../shared/constant/hrefRoute'
+import { AccessTokenManager } from "../../shared/service/accessTokenManager";
 import { signupReq } from "../api/signup";
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
-import { AccessTokenManager } from "../../shared/auth/service/accessTokenManager";
-import { CONSUMER_ROUTE } from '../../../../shared/constant/hrefRoute'
 
 type SignupStatus =
   | { status: "idle" }

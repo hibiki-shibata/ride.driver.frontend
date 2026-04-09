@@ -1,7 +1,7 @@
-import SignupButton from "../auth/component/signupButton"
-import LoginButton from "../auth/component/loginButton"
+import SignupButton from "../component/signupButton"
+import LoginButton from "../component/loginButton"
+import SmallAuthButtons from "../component/smallAuthButtons"
 import LinkToCourierHome from "../component/linkToCourierHome"
-import SmallAuthButtons from "../auth/component/smallAuthButtons"
 import AmazonesLogo from "../../../../shared/component/amazones-logo"
 
 function ConsumerHeader() {

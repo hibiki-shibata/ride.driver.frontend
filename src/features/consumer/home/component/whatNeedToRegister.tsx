@@ -1,4 +1,4 @@
-import SignupButton from "../../shared/auth/component/signupButton"
+import SignupButton from "../../shared/component/signupButton"
 
 const registrationRequirements = [
   {
