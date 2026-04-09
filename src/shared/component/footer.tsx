@@ -1,4 +1,4 @@
-import { COURIER_ROUTE } from "../constant/hrefRoute"
+import { COURIER_ROUTE } from "../constant/routePath"
 
 const profilePageUri = "https://hibiki-shibata.github.io/"
 

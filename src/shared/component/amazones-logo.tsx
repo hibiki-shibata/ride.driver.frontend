@@ -1,4 +1,4 @@
-import { CONSUMER_ROUTE } from "../constant/hrefRoute"
+import { CONSUMER_ROUTE } from "../constant/routePath"
 function AmazonesLogo() {
     return (
 

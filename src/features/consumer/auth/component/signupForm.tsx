@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import { CONSUMER_ROUTE } from '../../../../shared/constant/hrefRoute'
+import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
 import { AccessTokenManager } from "../../shared/service/accessTokenManager";
 import { signupReq } from "../api/signup";
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";

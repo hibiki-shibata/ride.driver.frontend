@@ -1,7 +1,7 @@
 import ApplyForm from "./components/signupForm"
 import Header from "../../../shared/component/headers/courier"
 import Footer from '../../../shared/component/footer'
-import { COURIER_ROUTE } from "../../../shared/constant/hrefRoute"
+import { COURIER_ROUTE } from "../../../shared/constant/routePath"
 
 function CoureirSignup() {
     return (

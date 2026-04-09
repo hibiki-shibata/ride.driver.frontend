@@ -1,4 +1,4 @@
-import { CONSUMER_ROUTE } from "../../../../shared/constant/hrefRoute"
+import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 
 function LoginButton() {
     return (

@@ -7,7 +7,7 @@ import ConsumerAuth from './features/consumer/auth/'
 // import { ConsumerAccessTokenProvider } from './features/consumer/auth/context/accessTokenContext'
 import Courier from './features/courier'
 import CourierApply from './features/courier/signup'
-import { CONSUMER_ROUTE } from './shared/constant/hrefRoute'
+import { CONSUMER_ROUTE } from './shared/constant/routePath'
 import {
   BrowserRouter,
   Routes,

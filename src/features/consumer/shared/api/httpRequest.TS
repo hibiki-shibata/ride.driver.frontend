@@ -3,7 +3,6 @@ import { AccessTokenManager } from "../service/accessTokenManager"
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
 
-// type HttpRequestOptions<TBody = unknown> = {
 type HttpRequestOptions = {
   method: HttpMethod
   uri: string

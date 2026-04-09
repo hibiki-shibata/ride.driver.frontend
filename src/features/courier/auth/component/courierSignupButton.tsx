@@ -1,4 +1,4 @@
-import { COURIER_ROUTE } from "../../../../shared/constant/hrefRoute"
+import { COURIER_ROUTE } from "../../../../shared/constant/routePath"
 
 function courierSignupButton() {
     return (
