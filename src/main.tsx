@@ -7,7 +7,7 @@ import ConsumerAuth from './features/consumer/auth/'
 // import { ConsumerAccessTokenProvider } from './features/consumer/auth/context/accessTokenContext'
 import Courier from './features/courier'
 import CourierApply from './features/courier/signup'
-import { CONSUMER_ROUTE } from './shared/constant/routePath'
+import { CONSUMER_ROUTE, COURIER_ROUTE } from './shared/constant/routePath'
 import {
   BrowserRouter,
   Routes,
@@ -26,8 +26,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path={CONSUMER_ROUTE.SIGNUP} element={<ConsumerAuth isLogin={false} />} />
           <Route path={CONSUMER_ROUTE.LOGIN} element={<ConsumerAuth isLogin={true} />} />
         {/* </ConsumerAccessTokenProvider> */}
-        <Route path="/ride.driver.frontend/courier" element={<Courier />} />
-        <Route path="/ride.driver.frontend/courier/apply" element={<CourierApply />} />
+        <Route path={COURIER_ROUTE.HOME} element={<Courier />} />
+        <Route path={COURIER_ROUTE.SIGNUP} element={<CourierApply />} />
       </Routes>
     </StrictMode>
   </BrowserRouter>
