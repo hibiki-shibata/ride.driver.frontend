@@ -80,6 +80,5 @@ async function refreshAccessToken(): Promise<string | null> {
       refreshPromise = null
     })
   }
-
   return refreshPromise
 }
