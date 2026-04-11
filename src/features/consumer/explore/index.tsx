@@ -1,13 +1,12 @@
-import { ConsumerAuthContextProvider } from "../shared/context/AuthProvider"
-import Header from "../shared/section/header"
+import ConsumerLayout from "../shared/layout/consumerLayout"
 import ConsumerExploreBodySection from "./section/bodySection"
 
 function ConsumerExplore() {
     return (
-        <ConsumerAuthContextProvider>
-            <Header />
+        <ConsumerLayout>
             <ConsumerExploreBodySection />
-        </ConsumerAuthContextProvider>
+        </ConsumerLayout>
+
     )
 }
 export default ConsumerExplore

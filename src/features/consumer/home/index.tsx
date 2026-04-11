@@ -1,15 +1,11 @@
-import { ConsumerAuthContextProvider } from "../shared/context/AuthProvider"
-import Header from "../shared/section/header"
-import Footer from "../../../shared/component/footer"
+import ConsumerLayout from "../shared/layout/consumerLayout"
 import ConsumerHomeBodySection from "../home/section/bodySection"
 
 function ConsumerHome() {
     return (
-        <ConsumerAuthContextProvider>
-            <Header />
+        <ConsumerLayout>
             <ConsumerHomeBodySection />
-            <Footer />
-        </ConsumerAuthContextProvider>
+        </ConsumerLayout>
     )
 }
 

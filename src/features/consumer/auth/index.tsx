@@ -1,15 +1,11 @@
-import Footer from "../../../shared/component/footer"
-import Header from "../shared/section/header"
 import SignupAndLoginForm from "./section/signupAndLoginForm"
-import { ConsumerAuthContextProvider } from "../shared/context/AuthProvider"
+import ConsumerLayout from "../shared/layout/consumerLayout"
 
 function LoginAndSignupPage({ isLogin }: { isLogin: boolean }) {
     return (
-        <ConsumerAuthContextProvider>
-            <Header />
+        <ConsumerLayout>
             <SignupAndLoginForm isLogin={isLogin} />
-            <Footer />
-        </ConsumerAuthContextProvider>
+        </ConsumerLayout>
     )
 }
 
