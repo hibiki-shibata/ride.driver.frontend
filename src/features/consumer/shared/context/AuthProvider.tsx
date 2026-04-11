@@ -15,7 +15,7 @@ type ConsumerAuthContextType = {
 const ConsumerAuthContext = createContext<ConsumerAuthContextType | null>(null)
 
 export function ConsumerAuthContextProvider({ children }: { children: React.ReactNode }) {
-    const [status, setStatus] = useState<AuthStatus>('unauthenticated')
+    const [status, setStatus] = useState<AuthStatus>('authenticated')
     const [consumerProfileState, setConsumerProfileState] = useState<ConsumerProfile | null>(null)
 
     return (
