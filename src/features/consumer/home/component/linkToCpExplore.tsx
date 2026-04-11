@@ -1,6 +1,6 @@
 import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 
-function ExploreCpButton() {
+function LinkToCpExplore() {
     return (
         <a href={CONSUMER_ROUTE.EXPLORE}>
             <button className="bg-sky-600 hover:bg-sky-700 font-bold rounded-lg p-4 ml-7">
@@ -10,4 +10,4 @@ function ExploreCpButton() {
     )
 }
 
-export default ExploreCpButton
+export default LinkToCpExplore
