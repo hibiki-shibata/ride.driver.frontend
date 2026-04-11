@@ -16,7 +16,16 @@ const ConsumerAuthContext = createContext<ConsumerAuthContextType | null>(null)
 
 export function ConsumerAuthContextProvider({ children }: { children: React.ReactNode }) {
     const [status, setStatus] = useState<AuthStatus>('unauthenticated')
-    const [consumerProfileState, setConsumerProfileState] = useState<ConsumerProfile | null>(null)
+    const [consumerProfileState, setConsumerProfileState] = useState<ConsumerProfile | null>({
+        id: '1',
+        name: 'Hibiki Shibata',
+        emailAddress: '232',
+        consumerAddress: "Address not set",
+        consumerCoordinates: {
+            latitude: 0,
+            longitude: 0
+        }
+    })
 
     return (
         <ConsumerAuthContext.Provider value={{

@@ -53,7 +53,7 @@ function LoginForm() {
   return (
     <>
       <form
-        className="mt-5 rounded-3xl flex flex-col justify-center"
+        className="mt-16 rounded-3xl flex flex-col justify-center"
         onSubmit={handleSubmit}
       >
         <label htmlFor="emailAddress" className="mb-1">
