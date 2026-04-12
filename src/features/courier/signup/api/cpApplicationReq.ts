@@ -1,4 +1,4 @@
-import { COURIER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
+import { COURIER_API_URI } from "../../../../shared/constant/apiUri"
 
 export type CpApplicationData = {
     cpFirstName: string
@@ -11,7 +11,7 @@ export async function cpApplicationReq(cpApplyData: CpApplicationData): Promise<
     if (!cpApplyData.cpFirstName || !cpApplyData.cpLastName || !cpApplyData.phoneNumber || !cpApplyData.vehicleType) {
         throw new Error("All fields are required.")
     }
-    const res = await fetch(COURIER_PROFILE_API_URI.SIGNUP, {
+    const res = await fetch(COURIER_API_URI.SIGNUP, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

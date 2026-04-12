@@ -1,4 +1,4 @@
-import { CONSUMER_PROFILE_API_URI } from "../../../../shared/constant/apiUri"
+import { CONSUMER_API_URI } from "../../../../shared/constant/apiUri"
 import { AccessTokenManager } from "../service/accessTokenManager"
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"
@@ -63,7 +63,7 @@ async function refreshAccessToken(): Promise<string | null> {
   // If there's already a refresh in progress, skip the duplicated request
   if (!refreshPromise) {
     refreshPromise = (async () => {
-      const res = await fetch(CONSUMER_PROFILE_API_URI.REFRESH_TOKEN, {
+      const res = await fetch(CONSUMER_API_URI.REFRESH_TOKEN, {
         method: "POST",
         credentials: "include", // include http only cookie
       })

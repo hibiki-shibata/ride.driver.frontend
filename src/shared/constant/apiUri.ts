@@ -2,15 +2,16 @@ const API_BASE_URL = "http://localhost:3000"
 
 export const FRONTEND_URI = "https://hibiki-shibata.github.io/ride.driver.frontend"
 
-export const CONSUMER_PROFILE_API_URI = {
+export const CONSUMER_API_URI = {
     LOGIN: API_BASE_URL + "/api/v1/consumer/auth/login",
     SIGNUP: API_BASE_URL + "/api/v1/consumer/auth/signup",
     REFRESH_TOKEN: API_BASE_URL + "/api/v1/consumer/auth/refresh-token",
     ME: API_BASE_URL + "/api/v1/consumer/me",
     GET_ORDER_HISTORY: API_BASE_URL + "/api/v1/consumer/order/history",
+    GET_AVAILABLE_MERCHANTS: API_BASE_URL + `/api/v1/consumer/product/merchants`
 }
 
-export const COURIER_PROFILE_API_URI = {
+export const COURIER_API_URI = {
     LOGIN: API_BASE_URL + "/api/v1/courier/auth/login",
     SIGNUP: API_BASE_URL + "/api/v1/courier/auth/signup",
     REFRESH_TOKEN: API_BASE_URL + "/api/v1/courier/auth/refresh-token",
@@ -20,7 +21,7 @@ export const COURIER_PROFILE_API_URI = {
     GET_TASK_HISTORY: API_BASE_URL + "/api/v1/courier/tasks/history",
 }
 
-export const MERCHANT_PROFILE_API_URI = {
+export const MERCHANT_API_URI = {
     LOGIN: API_BASE_URL + "/api/v1/auth/merchant/login",
     SIGNUP: API_BASE_URL + "/api/v1/auth/merchant/signup",
     REFRESH_TOKEN: API_BASE_URL + "/api/v1/auth/merchant/refresh-token",

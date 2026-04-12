@@ -15,12 +15,12 @@ type LoginStatus =
 function LoginForm() {
   const navigate = useNavigate()
   const { login } = useConsumerAuthContext()!
-  const [loginData, setLoginData] = useState<LoginReqDTO | null>(null)
+  const [loginDataDraft, setLoginDataDraft] = useState<LoginReqDTO | null>(null)
   const [loginStatus, setLoginStatus] = useState<LoginStatus | null>(null)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    setLoginData((prev) => ({
+    setLoginDataDraft((prev) => ({
       ...prev,
       [name]: value,
     } as LoginReqDTO))
@@ -30,15 +30,15 @@ function LoginForm() {
     e.preventDefault()
     setLoginStatus({ status: "loading" })
     try {
-      if (!loginData) throw new Error("Login data is not set")
-      const loginRes: LoginResDTO = await loginReq(loginData)
+      if (!loginDataDraft) throw new Error("Login data is not set")
+      const loginRes: LoginResDTO = await loginReq(loginDataDraft)
       login(loginRes.accessToken)
 
       setLoginStatus({
         status: "success",
         message: "Login successful",
       })
-      setLoginData(null)
+      setLoginDataDraft(null)
       navigate(CONSUMER_ROUTE.EXPLORE)
     } catch (error: unknown) {
       setLoginStatus({
@@ -67,7 +67,7 @@ function LoginForm() {
           placeholder="Email Address"
           autoComplete="email"
           required
-          value={loginData?.emailAddress}
+          value={loginDataDraft?.emailAddress}
           onChange={handleChange}
         />
 
@@ -82,7 +82,7 @@ function LoginForm() {
           placeholder="Password"
           autoComplete="current-password"
           required
-          value={loginData?.password}
+          value={loginDataDraft?.password}
           onChange={handleChange}
         />
 
