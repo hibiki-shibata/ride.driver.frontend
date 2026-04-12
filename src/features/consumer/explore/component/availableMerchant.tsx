@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAvailableMerchants } from "../api/getAvailableMerchants"
 import type { MerchantProfile } from "../type/merchantProfile"
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 
 const testMerchants: MerchantProfile[] = [
     {
@@ -30,11 +30,8 @@ const testMerchants: MerchantProfile[] = [
     },
 ]
 
-
-
 function AvailableMerchant() {
     const [merchants, setMerchants] = useState<MerchantProfile[]>([])
-    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchData() {
@@ -50,20 +47,24 @@ function AvailableMerchant() {
     }, [])
 
     return (
-        <div className="text-3xl">
-            <ul>
+        <div className="min-h-screen bg-gray-900 p-4">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {merchants.map((merchant) => (
-                    <li className="bg-gray-800 m-5 p-10 rounded-lg hover:bg-gray-700 cursor-pointer"
+                    <div className="bg-gray-800 m-1 p-8 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer"
                         key={merchant.id}
-                        onClick={() => navigate(`/consumer/explore/merchant/${merchant.id}`)}>
-                        <div className="font-bold pb-3">{merchant.name}</div>
-                        <div>{merchant.merchantComment}</div>
-                        <div>Status: <span className="text-green-500">{merchant.merchantStatus}</span></div>
-                        <div>Address: {merchant.merchantAddress}</div>
-                    </li>
+                        onClick={() => console.error(`Clicked on merchant: ${merchant.name}`)}>
+                        <div className="font-bold pb-2 text-4xl">{merchant.name}</div>
+                        <div className="pb-4 text-2xl">{merchant.merchantComment}</div>
+                        <div className="bg-gray-700 p-2 rounded-lg">
+                            <p>Status: <span className="text-green-500">{merchant.merchantStatus}</span></p>
+                            <p>Address: {merchant.merchantAddress}</p>
+                        </div>
+
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
+
     )
 }
 
