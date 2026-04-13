@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getMenu } from "../api/getMenu"
-import type { MenuItem } from "../type/menu"
+import type { MenuItem } from "../type/menuItem"
 import { useSearchParams } from "react-router-dom"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready

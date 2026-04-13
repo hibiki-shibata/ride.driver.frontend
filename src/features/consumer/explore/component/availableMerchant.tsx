@@ -33,7 +33,7 @@ const testMerchants: MerchantProfile[] = [ // Remove
 
 function AvailableMerchant() {
     const [merchants, setMerchants] = useState<MerchantProfile[]>([])
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function fetchMerchants() {
