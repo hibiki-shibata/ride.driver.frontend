@@ -57,10 +57,19 @@ function AvailableMenu() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {menu.map(item => (
                     <div key={item.id}
-                        className="bg-gray-800 m-1 p-8 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer">
+                        className="bg-gray-800 m-1 px-7 pt-7 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer">
+                        {/* below item position in between  */}
                         <h3 className="font-bold text-2xl mb-4">{item.name}</h3>
-                        <p className="text-green-500 mb-2">${item.price.toFixed(2)}</p>
-                        <p>{item.description}</p>
+                        <p className="mb-2">
+                            <span className="text-green-500">${item.price.toFixed(2)}</span>
+                            <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-2 hover:bg-gray-500">
+                                -
+                            </span>
+                            <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-1 hover:bg-gray-500">
+                                +
+                            </span>
+                        </p>
+                        <p className="bg-gray-600 p-4 rounded-xl">{item.description}</p>
                         {!item.enabled && <p>(Currently unavailable)</p>}
                     </div>
                 ))}
