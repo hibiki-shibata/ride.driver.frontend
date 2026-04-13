@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getMenu } from "../api/getMenu"
 import type { MenuItem } from "../type/menu"
+import { useSearchParams } from "react-router-dom"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
     {
@@ -35,9 +36,12 @@ const testMenu: MenuItem[] = [ // Remove this when API is ready
 
 function AvailableMenu() {
     const [menu, setMenu] = useState<MenuItem[] | null>(null)
+    const [searchParams] = useSearchParams()
+    const merchantId = searchParams.get("merchantId") || "Unknown Merchant"
+
     useEffect(() => {
         async function fetchMenu() {
-            const res: MenuItem[] = await getMenu("merchant-id-123") // Replace with actual merchant ID
+            const res: MenuItem[] = await getMenu(merchantId)
             setMenu(res)
         }
         setMenu(testMenu) // Remove this line when API is ready
@@ -49,7 +53,7 @@ function AvailableMenu() {
     return (
         <div className="min-h-screen bg-gray-900 p-4 text-white">
             {/* Merchant name */}
-            <h1 className="text-4xl font-bold mb-6">Merchant Name</h1>
+            <h1 className="text-4xl font-bold mb-6">{merchantId}</h1>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {menu.map(item => (
                     <div key={item.id}
