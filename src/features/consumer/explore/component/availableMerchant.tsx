@@ -3,9 +3,9 @@ import { getAvailableMerchants } from "../api/getAvailableMerchants"
 import type { MerchantProfile } from "../type/merchantProfile"
 // import { useNavigate } from "react-router-dom"
 
-const testMerchants: MerchantProfile[] = [
+const testMerchants: MerchantProfile[] = [ // Remove this when API is ready
     {
-        id: "1",
+        id: "12345678",
         name: "Merchant A",
         phoneNumber: "1234567890",
         merchantAddress: "123 Main St",
@@ -17,7 +17,7 @@ const testMerchants: MerchantProfile[] = [
         },
     },
     {
-        id: "2",
+        id: "0987654e",
         name: "Merchant B",
         phoneNumber: "0987654321",
         merchantAddress: "456 Elm St",
