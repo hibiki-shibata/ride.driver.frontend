@@ -3,7 +3,7 @@ import { getAvailableMerchants } from "../api/getAvailableMerchants"
 import type { MerchantProfile } from "../type/merchantProfile"
 // import { useNavigate } from "react-router-dom"
 
-const testMerchants: MerchantProfile[] = [ // Remove this when API is ready
+const testMerchants: MerchantProfile[] = [ // Remove 
     {
         id: "12345678",
         name: "Merchant A",
@@ -34,18 +34,14 @@ function AvailableMerchant() {
     const [merchants, setMerchants] = useState<MerchantProfile[]>([])
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const res = await getAvailableMerchants()
-                setMerchants(res)
-            } catch (err) {
-                console.error("Failed to fetch available merchants:", err)
-            }
+        async function fetchMerchants() {
+            const res: MerchantProfile[] = await getAvailableMerchants()
+            setMerchants(res)
         }
-        fetchData()
+        fetchMerchants()
         setMerchants(testMerchants) // Remove this line when API is ready
     }, [])
-
+    
     return (
         <div className="min-h-screen bg-gray-900 p-4">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
