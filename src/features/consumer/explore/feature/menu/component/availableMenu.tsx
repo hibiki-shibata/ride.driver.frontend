@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getMenu } from "../api/getMenu"
+import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
 import type { MenuItem } from "../type/menuItem"
 import { useSearchParams } from "react-router-dom"
 
@@ -52,8 +53,12 @@ function AvailableMenu() {
 
     return (
         <div className="min-h-screen bg-gray-900 p-4 text-white">
-            {/* Merchant name */}
-            <h1 className="text-4xl font-bold mb-6">{merchantId}</h1>
+            <div>
+                <a href={CONSUMER_ROUTE.EXPLORE} className="text-lg font-semibold mb-4 underline hover:text-gray-400">
+                    Back to List
+                </a>
+                <h1 className="text-4xl font-bold m-10">{merchantId}</h1>
+            </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {menu.map(item => (
                     <div key={item.id}
