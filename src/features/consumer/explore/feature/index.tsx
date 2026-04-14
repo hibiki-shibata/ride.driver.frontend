@@ -1,9 +1,10 @@
 import { CartContextProvider } from "./shared/context/cartContext"
+import AvailableMenu from "./menu/component/availableMenu"
 
 function ConsumerMenuCheckout() {
     return (
         <CartContextProvider>
-            <h1>Menu Checkout</h1>
+            <AvailableMenu />
         </CartContextProvider>
     )
 }

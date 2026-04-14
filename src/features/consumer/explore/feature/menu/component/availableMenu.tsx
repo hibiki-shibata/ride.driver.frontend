@@ -4,6 +4,7 @@ import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
 import type { MenuItem } from "../../shared/type/menuItem"
 import { getMenu } from "../api/getMenu"
 import { useCartContext } from "../../shared/context/cartContext"
+import OrderCart from "./orderCart"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
     {
@@ -82,6 +83,7 @@ function AvailableMenu() {
                     </div>
                 ))}
             </div>
+            <OrderCart />
         </div>
     )
 }
