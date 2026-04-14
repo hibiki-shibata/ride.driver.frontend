@@ -1,4 +1,4 @@
 export type OrderItem = {
-    itemID: string
+    itemId: string
     quantity: number
 }

@@ -14,11 +14,11 @@ export function CartContextProvider({ children }: { children: React.ReactNode })
     const [items, setOrderItems] = useState<OrderItem[]>([])
     function addItem(itemId: string) { 
         setOrderItems(prevItems => {
-            const existingItem = prevItems.find(i => i.itemID === itemId)
+            const existingItem = prevItems.find(i => i.itemId === itemId)
             if (existingItem) {
-                return prevItems.map(i => i.itemID === itemId ? { ...i, quantity: i.quantity + 1 } : i)
+                return prevItems.map(i => i.itemId === itemId ? { ...i, quantity: i.quantity + 1 } : i)
             } else {
-                return [...prevItems, { itemID: itemId, quantity: 1 }]
+                return [...prevItems, { itemId: itemId, quantity: 1 }]
             }
         })
     }
@@ -27,7 +27,7 @@ export function CartContextProvider({ children }: { children: React.ReactNode })
         <CartContext.Provider value={{
             orderItems: items,
             addItem: addItem,
-            removeItem: (itemId: string) => setOrderItems(prevItems => prevItems.filter(i => i.itemID !== itemId)),
+            removeItem: (itemId: string) => setOrderItems(prevItems => prevItems.filter(i => i.itemId !== itemId)),
             clearCart: () => setOrderItems([])
         }}>
             {children}
