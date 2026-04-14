@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { getMenu } from "../api/getMenu"
-import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
-import type { MenuItem } from "../../../type/menuItem"
 import { useSearchParams } from "react-router-dom"
+import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
+import type { MenuItem } from "../../shared/type/menuItem"
+import { getMenu } from "../api/getMenu"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
     {
@@ -36,20 +36,20 @@ const testMenu: MenuItem[] = [ // Remove this when API is ready
 ]
 
 function AvailableMenu() {
-    const [menu, setMenu] = useState<MenuItem[] | null>(null)
+    const [merchantItemList, setMerchantItemList] = useState<MenuItem[] | null>(null)
     const [searchParams] = useSearchParams()
     const merchantId = searchParams.get("merchantId") || "Unknown Merchant"
 
     useEffect(() => {
         async function fetchMenu() {
             const res: MenuItem[] = await getMenu(merchantId)
-            setMenu(res)
+            setMerchantItemList(res)
         }
-        setMenu(testMenu) // Remove this line when API is ready
+        setMerchantItemList(testMenu) // Remove this line when API is ready
         fetchMenu()
     }, [])
 
-    if (!menu) return <div>Loading...</div>
+    if (!merchantItemList) return <div>Loading...</div>
 
     return (
         <div className="min-h-screen bg-gray-900 p-4 text-white">
@@ -60,7 +60,7 @@ function AvailableMenu() {
                 <h1 className="text-4xl font-bold m-10  ">{merchantId}</h1>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {menu.map(item => (
+                {merchantItemList.map(item => (
                     <div key={item.id}
                         className="bg-gray-800 m-1 px-7 pt-7 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer">
                         <h3 className="font-bold text-2xl mb-4">{item.name}</h3>

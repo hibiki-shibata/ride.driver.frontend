@@ -32,8 +32,8 @@ const testMerchants: MerchantProfile[] = [ // Remove
 ]
 
 function AvailableMerchant() {
-    const [merchants, setMerchants] = useState<MerchantProfile[]>([])
     const navigate = useNavigate()
+    const [merchants, setMerchants] = useState<MerchantProfile[]>([])
 
     useEffect(() => {
         async function fetchMerchants() {
@@ -45,24 +45,28 @@ function AvailableMerchant() {
     }, [])
 
     return (
-        <div className="min-h-screen bg-gray-900 p-4">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {merchants.map((merchant) => (
-                    <div className="bg-gray-800 m-1 p-8 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer"
-                        key={merchant.id}
-                        onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}`)}>
-                        <div className="font-bold pb-2 text-4xl">{merchant.name}</div>
-                        <div className="pb-4 text-2xl">{merchant.merchantComment}</div>
-                        <div className="bg-gray-700 p-2 rounded-lg">
-                            <p>Status: <span className="text-green-500">{merchant.merchantStatus}</span></p>
-                            <p>Address: {merchant.merchantAddress}</p>
+        <div className="text-white bg-gray-900 py-10 px-13">
+            <div className="items-center justify-center text-5xl font-bold mb-10">
+                Explore Available Merchants
+            </div >
+            <div className="min-h-screen bg-gray-900 p-4">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {merchants.map((merchant) => (
+                        <div className="bg-gray-800 m-1 p-8 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer"
+                            key={merchant.id}
+                            onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}`)}>
+                            <div className="font-bold pb-2 text-4xl">{merchant.name}</div>
+                            <div className="pb-4 text-2xl">{merchant.merchantComment}</div>
+                            <div className="bg-gray-700 p-2 rounded-lg">
+                                <p>Status: <span className="text-green-500">{merchant.merchantStatus}</span></p>
+                                <p>Address: {merchant.merchantAddress}</p>
+                            </div>
+
                         </div>
-
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
-
+        </div >
     )
 }
 

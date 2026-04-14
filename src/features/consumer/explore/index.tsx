@@ -1,10 +1,10 @@
 import ConsumerLayout from "../shared/layout/consumerLayout"
-import ConsumerExploreBodySection from "./section/bodySection"
+import AvailableMerchant from "./component/availableMerchant"
 
 function ConsumerExplore() {
     return (
         <ConsumerLayout>
-            <ConsumerExploreBodySection />
+            <AvailableMerchant />
         </ConsumerLayout>
 
     )
