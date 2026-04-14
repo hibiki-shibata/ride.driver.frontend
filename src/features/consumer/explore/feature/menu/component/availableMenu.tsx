@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
 import type { MenuItem } from "../../shared/type/menuItem"
 import { getMenu } from "../api/getMenu"
 import { useCartContext } from "../../shared/context/cartContext"
 import OrderCart from "./orderCart"
+import BackToMxListBtn  from "./backToMxListBtn"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
     {
@@ -57,9 +57,7 @@ function AvailableMenu() {
     return (
         <div className="min-h-screen bg-gray-900 p-4 text-white">
             <div>
-                <a href={CONSUMER_ROUTE.EXPLORE} className="text-lg font-semibold mb-4 underline hover:text-gray-400">
-                    Back to List
-                </a>
+                <BackToMxListBtn />
                 <h1 className="text-4xl font-bold m-10  ">{merchantId}</h1>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
