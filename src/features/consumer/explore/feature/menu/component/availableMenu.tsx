@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom"
 import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
 import type { MenuItem } from "../../shared/type/menuItem"
 import { getMenu } from "../api/getMenu"
+import { useCartContext } from "../../shared/context/cartContext"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
     {
@@ -36,6 +37,7 @@ const testMenu: MenuItem[] = [ // Remove this when API is ready
 ]
 
 function AvailableMenu() {
+    const { addItem, removeItem } = useCartContext()
     const [merchantItemList, setMerchantItemList] = useState<MenuItem[] | null>(null)
     const [searchParams] = useSearchParams()
     const merchantId = searchParams.get("merchantId") || "Unknown Merchant"
@@ -66,10 +68,12 @@ function AvailableMenu() {
                         <h3 className="font-bold text-2xl mb-4">{item.name}</h3>
                         <p className="mb-2">
                             <span className="text-green-500">${item.price.toFixed(2)}</span>
-                            <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-2 hover:bg-gray-500">
+                            <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-2 hover:bg-gray-500"
+                                onClick={() => removeItem(item.id)}>
                                 -
                             </span>
-                            <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-1 hover:bg-gray-500">
+                            <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-1 hover:bg-gray-500"
+                                onClick={() => addItem(item.id)}>
                                 +
                             </span>
                         </p>
