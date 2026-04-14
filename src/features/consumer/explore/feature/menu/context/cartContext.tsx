@@ -1,10 +1,11 @@
 import { createContext, useContext, useState } from 'react'
 import type { OrderItem } from "../type/orderItem"
+import type { MenuItem } from '../type/menuItem'
 
 type CartContextType = {
-    orderItems: OrderItem[]
-    addItem: (itemId: string) => void
-    removeItem: (itemId: string) => void
+    cartItems: OrderItem[]
+    addItem: (item: MenuItem) => void
+    removeItem: (item: MenuItem) => void
     clearCart: () => void
 }
 
@@ -12,22 +13,22 @@ const CartContext = createContext<CartContextType | null>(null)
 
 export function CartContextProvider({ children }: { children: React.ReactNode }) {
     const [items, setOrderItems] = useState<OrderItem[]>([])
-    function addItem(itemId: string) { 
+    function addItem(item: MenuItem) {
         setOrderItems(prevItems => {
-            const existingItem = prevItems.find(i => i.itemId === itemId)
+            const existingItem = prevItems.find(i => i.itemId === item.id)
             if (existingItem) {
-                return prevItems.map(i => i.itemId === itemId ? { ...i, quantity: i.quantity + 1 } : i)
+                return prevItems.map(i => i.itemId === item.id ? { ...i, quantity: i.quantity + 1 } : i)
             } else {
-                return [...prevItems, { itemId: itemId, quantity: 1 }]
+                return [...prevItems, { itemId: item.id, name: item.name, price: item.price, quantity: 1 }]
             }
         })
     }
 
     return (
         <CartContext.Provider value={{
-            orderItems: items,
+            cartItems: items,
             addItem: addItem,
-            removeItem: (itemId: string) => setOrderItems(prevItems => prevItems.filter(i => i.itemId !== itemId)),
+            removeItem: (item: MenuItem) => setOrderItems(prevItems => prevItems.filter(i => i.itemId !== item.id)),
             clearCart: () => setOrderItems([])
         }}>
             {children}

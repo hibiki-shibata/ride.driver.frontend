@@ -1,4 +1,4 @@
-import { CartContextProvider } from "./shared/context/cartContext"
+import { CartContextProvider } from "./menu/context/cartContext"
 import AvailableMenu from "./menu/component/availableMenu"
 
 function ConsumerMenuCheckout() {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
-import type { MenuItem } from "../../shared/type/menuItem"
+import type { MenuItem } from "../type/menuItem"
 import { getMenu } from "../api/getMenu"
-import { useCartContext } from "../../shared/context/cartContext"
+import { useCartContext } from "../context/cartContext"
 import OrderCart from "./orderCart"
-import BackToMxListBtn  from "./backToMxListBtn"
+import BackToMxListBtn from "./backToMxListBtn"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
     {
@@ -68,11 +68,11 @@ function AvailableMenu() {
                         <p className="mb-2">
                             <span className="text-green-500">${item.price.toFixed(2)}</span>
                             <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-2 hover:bg-gray-500"
-                                onClick={() => removeItem(item.id)}>
+                                onClick={() => removeItem(item)}>
                                 -
                             </span>
                             <span className="rounded-full bg-gray-600 font-bold text-xs px-2 py-1 ml-1 hover:bg-gray-500"
-                                onClick={() => addItem(item.id)}>
+                                onClick={() => addItem(item)}>
                                 +
                             </span>
                         </p>

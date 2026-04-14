@@ -1,12 +1,24 @@
 // import CheckoutCard from "./checkoutCard"
 import { useState } from "react"
+import { useCartContext } from "../context/cartContext"
 
 function OrderCart() {
+    const { cartItems } = useCartContext()
+
     const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
     return isCartOpen ? (
         <div className="fixed bg-gray-600 right-0 h-screen top-0 p-10">
             <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-            <p className="mb-2">Total: $XX.XX</p>
+            {cartItems.length === 0 ? (
+                <p>Your cart is empty.</p>
+            ) : (<>
+                {cartItems.map(item => (
+                    <li key={item.itemId} className="mb-2">
+                        {item.name} x {item.quantity} - ${(item.price * item.quantity).toFixed(2)}
+                    </li>
+                ))}
+            </>)}
+            <h3 className="text-xl font-bold mt-4">Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
             <button className="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded my-1">
                 Proceed to Checkout
             </button>
