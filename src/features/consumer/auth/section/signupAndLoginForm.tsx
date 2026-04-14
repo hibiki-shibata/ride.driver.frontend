@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useConsumerAuthContext } from "../../shared/context/AuthProvider"
+import { useConsumerAuthContext } from "../../shared/context/authContext"
 import LoginForm from "../component/loginForm"
 import SignupForm from "../component/signupForm"
 import AlreadyLoggedIn from "../component/alreadyLoggedIn"

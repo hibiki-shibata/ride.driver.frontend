@@ -3,7 +3,7 @@ import LoginButton from "../component/loginButton"
 import SmallAuthButtons from "../component/smallAuthButtons"
 import LinkToCourierHome from "../component/linkToCourierHome"
 import AmazonesLogo from "../../../../shared/component/amazones-logo"
-import { useConsumerAuthContext } from "../context/AuthProvider"
+import { useConsumerAuthContext } from "../context/authContext"
 
 function ConsumerHeader() {
     const { consumerProfile, authStatus } = useConsumerAuthContext() ?? {}

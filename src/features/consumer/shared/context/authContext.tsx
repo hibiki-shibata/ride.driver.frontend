@@ -24,7 +24,7 @@ export function ConsumerAuthContextProvider({ children }: { children: React.Reac
             consumerProfile: consumerProfileState,
             login: async (accessToken: string) => {
                 AccessTokenManager.getInstance().setAccessToken(accessToken)
-                const consumerProfile = await getConsumerProfile()
+                const consumerProfile: ConsumerProfile = await getConsumerProfile()
                 setConsumerProfileState(consumerProfile)
                 setStatus('authenticated')
             },

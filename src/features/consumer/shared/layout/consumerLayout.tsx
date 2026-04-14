@@ -1,4 +1,4 @@
-import { ConsumerAuthContextProvider } from "../../shared/context/AuthProvider"
+import { ConsumerAuthContextProvider } from "../context/authContext"
 import Header from "../section/header"
 import Footer from "../../../../shared/component/footer"
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getMenu } from "../api/getMenu"
 import { CONSUMER_ROUTE } from "../../../../../../shared/constant/routePath"
-import type { MenuItem } from "../type/menuItem"
+import type { MenuItem } from "../../../type/menuItem"
 import { useSearchParams } from "react-router-dom"
 
 const testMenu: MenuItem[] = [ // Remove this when API is ready
@@ -57,13 +57,12 @@ function AvailableMenu() {
                 <a href={CONSUMER_ROUTE.EXPLORE} className="text-lg font-semibold mb-4 underline hover:text-gray-400">
                     Back to List
                 </a>
-                <h1 className="text-4xl font-bold m-10">{merchantId}</h1>
+                <h1 className="text-4xl font-bold m-10  ">{merchantId}</h1>
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {menu.map(item => (
                     <div key={item.id}
                         className="bg-gray-800 m-1 px-7 pt-7 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer">
-                        {/* below item position in between  */}
                         <h3 className="font-bold text-2xl mb-4">{item.name}</h3>
                         <p className="mb-2">
                             <span className="text-green-500">${item.price.toFixed(2)}</span>
