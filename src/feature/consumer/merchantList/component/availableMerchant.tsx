@@ -4,32 +4,24 @@ import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 import { getAvailableMerchants } from "../api/getAvailableMerchants"
 import type { MerchantProfile } from "../type/merchantProfile"
 
-const testMerchants: MerchantProfile[] = [ // Remove 
-    {
-        id: "12345678",
-        name: "Merchant A",
-        phoneNumber: "1234567890",
-        merchantAddress: "123 Main St",
-        merchantComment: "Best food in town!",
-        merchantStatus: "OPEN",
-        merchantAddressCoordinates: {
-            latitude: 37.7749,
-            longitude: -122.4194,
-        },
-    },
-    {
-        id: "0987654e",
-        name: "Merchant B",
-        phoneNumber: "0987654321",
-        merchantAddress: "456 Elm St",
-        merchantComment: "Delicious meals!",
-        merchantStatus: "CLOSED",
-        merchantAddressCoordinates: {
-            latitude: 34.0522,
-            longitude: -118.2437,
-        },
-    },
-]
+function testMerchants(): MerchantProfile[] { // Remove
+    const merchants: MerchantProfile[] = []
+    for (let i = 0; i < 10; i++) {
+        merchants.push({
+            id: `${i}`,
+            name: `Restaurant ${i}`,
+            phoneNumber: `123456789${i}`,
+            merchantAddress: `${i} Main St`,
+            merchantComment: `This is merchant ${i}'s comment.`,
+            merchantStatus: i % 2 === 0 ? "OPEN" : "CLOSED",
+            merchantAddressCoordinates: {
+                latitude: 37.7749 + i * 0.01,
+                longitude: -122.4194 + i * 0.01,
+            },
+        })
+    }
+    return merchants
+}
 
 function AvailableMerchant() {
     const navigate = useNavigate()
@@ -55,7 +47,7 @@ function AvailableMerchant() {
                         <div className="bg-gray-800 m-1 p-8 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer"
                             key={merchant.id}
                             // onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}`)}>
-                            onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}`)}>
+                            onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}` + `&merchantName=${merchant.name}`)}>
                             <div className="font-bold pb-2 text-4xl">{merchant.name}</div>
                             <div className="pb-4 text-2xl">{merchant.merchantComment}</div>
                             <div className="bg-gray-700 p-2 rounded-lg">

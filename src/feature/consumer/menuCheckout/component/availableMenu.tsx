@@ -25,7 +25,7 @@ function testMenu(): MenuItem[] {
 function AvailableMenu() {
     const orderCartRef = useRef<HTMLDivElement | null>(null)
     const [searchParams] = useSearchParams()
-    const merchantId: string = searchParams.get("merchantId") || "Unknown Merchant"
+    const merchantName: string = searchParams.get("merchantName") || "Unknown Merchant"
     const { addItem, removeItem } = useCartContext()
     const [merchantItemList, setMerchantItemList] = useState<MenuItem[] | null>(null)
 
@@ -33,7 +33,7 @@ function AvailableMenu() {
 
     useEffect(() => {
         async function fetchMenu() {
-            const res: MenuItem[] = await getMenu(merchantId)
+            const res: MenuItem[] = await getMenu(merchantName)
             setMerchantItemList(res)
         }
         setMerchantItemList(testMenu) // Remove this line when API is ready
@@ -45,7 +45,7 @@ function AvailableMenu() {
     return (
         <div className="min-h-screen bg-gray-900 p-4 text-white scroll-smooth">
             <BackToMxListBtn />
-            <h1 className="text-4xl font-bold m-10  ">{merchantId}</h1>
+            <h1 className="text-4xl font-bold m-10  ">{merchantName}</h1>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {merchantItemList.map(item => (
                     <div key={item.id}
