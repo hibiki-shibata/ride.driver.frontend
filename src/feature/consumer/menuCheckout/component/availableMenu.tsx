@@ -24,12 +24,11 @@ function testMenu(): MenuItem[] {
 
 function AvailableMenu() {
     const orderCartRef = useRef<HTMLDivElement | null>(null)
-    const [searchParams] = useSearchParams()
-    const merchantName: string = searchParams.get("merchantName") || "Unknown Merchant"
     const { addItem, removeItem } = useCartContext()
     const [merchantItemList, setMerchantItemList] = useState<MenuItem[] | null>(null)
-
-
+    const [searchParams] = useSearchParams()
+    const merchantName: string = searchParams.get("merchantName") || "Unknown Merchant"
+    const merchantId: string = searchParams.get("merchantId") || "Unknown Merchant Id"
 
     useEffect(() => {
         async function fetchMenu() {
@@ -69,7 +68,7 @@ function AvailableMenu() {
             </div>
             <div ref={orderCartRef}
                 onClick={() => orderCartRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}>
-                <OrderCart />
+                <OrderCart merchantId={merchantId} />
             </div>
         </div >
     )

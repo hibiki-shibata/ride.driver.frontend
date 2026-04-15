@@ -6,7 +6,6 @@ function ConsumerExplore() {
         <ConsumerLayout>
             <AvailableMerchant />
         </ConsumerLayout>
-
     )
 }
 

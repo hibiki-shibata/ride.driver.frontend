@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from 'react'
-import type { OrderItem } from "../type/orderItem"
+import type { CartItem } from "../type/cartItem"
 import type { MenuItem } from '../type/menuItem'
 
 type CartContextType = {
-    cartItems: OrderItem[]
+    cartItems: CartItem[]
     addItem: (item: MenuItem) => void
     removeItem: (item: MenuItem) => void
     clearCart: () => void
@@ -12,7 +12,7 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null)
 
 export function CartContextProvider({ children }: { children: React.ReactNode }) {
-    const [items, setOrderItems] = useState<OrderItem[]>([])
+    const [items, setOrderItems] = useState<CartItem[]>([])
     function addItem(item: MenuItem) {
         setOrderItems(prevItems => {
             const existingItem = prevItems.find(i => i.itemId === item.id)

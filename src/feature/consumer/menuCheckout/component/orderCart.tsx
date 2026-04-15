@@ -1,15 +1,24 @@
 // import CheckoutCard from "./checkoutCard"
 import { useState } from "react"
 import { useCartContext } from "../context/cartContext"
+import { sendOrder } from "../api/sendOrder"
 
-function OrderCart() {
+function OrderCart({ merchantId }: { merchantId: string }) {
     const { cartItems } = useCartContext()
+
+    async function proceedToCheckout() {
+        await sendOrder({
+            merchantId: merchantId,
+            cartItems: cartItems,
+        })
+    }
 
     const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
     return isCartOpen ? (
         <div className="bg-gray-600 right-0 top-0 p-10 mt-10 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Cart Details</h2>
-            <button className="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded my-1">
+            <button className="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded my-1"
+                onClick={proceedToCheckout}>
                 Proceed to Checkout
             </button>
             <button className="w-full bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded my-1"

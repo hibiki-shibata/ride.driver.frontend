@@ -10,6 +10,7 @@ export const CONSUMER_API_URI = {
     GET_ORDER_HISTORY: API_BASE_URL + "/api/v1/consumer/order/history",
     GET_AVAILABLE_MERCHANTS: API_BASE_URL + `/api/v1/consumer/product/merchants`, // + ?page={page}&size={pageSize}
     GET_MERCHANT_MENU: API_BASE_URL + `/api/v1/consumer/product/merchants`, // + /{merchantId}
+    CREATE_ORDER: API_BASE_URL + `/api/v1/consumer/task/create`,
 }
 
 export const COURIER_API_URI = {
