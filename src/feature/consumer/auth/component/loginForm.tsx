@@ -1,59 +1,73 @@
 import { useState } from "react"
-import { useNavigate } from 'react-router-dom'
-import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
+import { useNavigate } from "react-router-dom"
+import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 import { useConsumerAuthContext } from "../../shared/context/authContext"
-import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
 import { loginReq } from "../api/login"
+import type { LoginReqDTO } from "../type/loginReqDTO"
 
 type LoginStatus =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "success"; message: string }
   | { status: "failed"; error: string }
 
+const INITIAL_LOGIN_FORM: LoginReqDTO = {
+  emailAddress: "",
+  password: "",
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : "Something went wrong"
+}
 
 function LoginForm() {
   const navigate = useNavigate()
-  const { login } = useConsumerAuthContext()!
-  const [loginDataDraft, setLoginDataDraft] = useState<LoginReqDTO | null>(null)
-  const [loginStatus, setLoginStatus] = useState<LoginStatus | null>(null)
+  const authContext = useConsumerAuthContext()
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setLoginDataDraft((prev) => ({
-      ...prev,
-      [name]: value,
-    } as LoginReqDTO))
+  const [formData, setFormData] = useState<LoginReqDTO>(INITIAL_LOGIN_FORM)
+  const [loginStatus, setLoginStatus] = useState<LoginStatus>({ status: "idle" })
+
+  if (!authContext) {
+    throw new Error("LoginForm must be used within ConsumerAuthContextProvider")
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setLoginStatus({ status: "loading" })
-    try {
-      if (!loginDataDraft) throw new Error("Login data is not set")
-      const loginRes: LoginResDTO = await loginReq(loginDataDraft)
-      login(loginRes.accessToken)
+  const { login } = authContext
 
-      setLoginStatus({
-        status: "success",
-        message: "Login successful",
-      })
-      setLoginDataDraft(null)
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    setLoginStatus({ status: "loading" })
+
+    try {
+      const loginResponse = await loginReq(formData)
+
+      login(loginResponse.accessToken)
+      setFormData(INITIAL_LOGIN_FORM)
       navigate(CONSUMER_ROUTE.MERCHANTS)
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",
-        error: error instanceof Error ? error.message : "Something went wrong",
+        error: getErrorMessage(error),
       })
     }
   }
 
-  const isLoading = loginStatus?.status === "loading"
+  const isLoading = loginStatus.status === "loading"
+  const isSubmitDisabled =
+    isLoading || !formData.emailAddress.trim() || !formData.password.trim()
 
   return (
     <>
       <form
-        className="mt-16 rounded-3xl flex flex-col justify-center"
+        className="mt-16 flex flex-col justify-center rounded-3xl"
         onSubmit={handleSubmit}
       >
         <label htmlFor="emailAddress" className="mb-1">
@@ -62,13 +76,13 @@ function LoginForm() {
         <input
           id="emailAddress"
           name="emailAddress"
-          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="email"
           placeholder="Email Address"
           autoComplete="email"
           required
-          value={loginDataDraft?.emailAddress}
+          value={formData.emailAddress}
           onChange={handleChange}
+          className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
 
         <label htmlFor="password" className="mb-1">
@@ -77,36 +91,33 @@ function LoginForm() {
         <input
           id="password"
           name="password"
-          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="password"
           placeholder="Password"
           autoComplete="current-password"
           required
-          value={loginDataDraft?.password}
+          value={formData.password}
           onChange={handleChange}
+          className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
 
         <button
-          className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg disabled:opacity-50"
           type="submit"
-          disabled={isLoading}
+          disabled={isSubmitDisabled}
+          className="rounded-lg bg-sky-600 px-6 py-3 font-bold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isLoading ? "Logging in..." : "Continue to login"}
         </button>
       </form>
 
-      <div aria-live="polite" className="mt-4">
-        {loginStatus?.status === "success" && (
-          <p className="text-green-600 font-bold">{loginStatus.message}</p>
-        )}
-        {loginStatus?.status === "failed" && (
-          <p className="text-red-600 font-bold">
+      <div aria-live="polite" className="mt-4 min-h-6">
+        {loginStatus.status === "failed" && (
+          <p className="font-bold text-red-600">
             Login failed: {loginStatus.error}
           </p>
         )}
       </div>
     </>
-  );
+  )
 }
 
-export default LoginForm;
+export default LoginForm

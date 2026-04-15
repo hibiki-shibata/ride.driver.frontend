@@ -1,5 +1,5 @@
 import { CONSUMER_API_URI } from "../../../../shared/constant/apiURI"
-import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO"
+import type { SignupReqDTO, SignupResDTO } from "../type/signupReqDTO"
 import { httpRequest } from "../../shared/api/httpRequest"
 
 export async function signupReq(

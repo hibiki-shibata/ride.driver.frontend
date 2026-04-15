@@ -1,58 +1,85 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
-import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
-import { useConsumerAuthContext } from "../../shared/context/authContext";
-import { signupReq } from "../api/signup";
-import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO";
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
+import { useConsumerAuthContext } from "../../shared/context/authContext"
+import { signupReq } from "../api/signup"
+import type { SignupReqDTO } from "../type/signupReqDTO"
 
 type SignupStatus =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "success"; message: string }
-  | { status: "failed"; error: string };
+  | { status: "failed"; error: string }
 
+const INITIAL_SIGNUP_FORM: SignupReqDTO = {
+  name: "",
+  emailAddress: "",
+  password: "",
+  consumerAddress: "",
+  consumerAddressCoordinate: {
+    latitude: 0,
+    longitude: 0,
+  },
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : "Something went wrong"
+}
 
 function SignupForm() {
   const navigate = useNavigate()
-  const { login } = useConsumerAuthContext()!
-  const [signupStatus, setSignupStatus] = useState<SignupStatus | null>(null)
-  const [signupData, setSignupData] = useState<SignupReqDTO | null>(null);
+  const authContext = useConsumerAuthContext()
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    setSignupData((prev) => ({
-      ...prev,
-      [name]: value,
-    }) as SignupReqDTO);
+  const [formData, setFormData] = useState<SignupReqDTO>(INITIAL_SIGNUP_FORM)
+  const [signupStatus, setSignupStatus] = useState<SignupStatus>({
+    status: "idle",
+  })
+
+  if (!authContext) {
+    throw new Error("SignupForm must be used within ConsumerAuthContextProvider")
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const { login } = authContext
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const field = event.target.name as keyof SignupReqDTO
+    const { value } = event.target
+
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }))
+  }
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setSignupStatus({ status: "loading" })
+
     try {
-      setSignupStatus({ status: "loading" })
-      if (!signupData) throw new Error("Signup data is not set")
-      const res: SignupResDTO = await signupReq(signupData)
-      login(res.accessToken)
-      setSignupStatus({
-        status: "success",
-        message: "Signup successful",
-      })
-      setSignupData(null)
+      const signupResponse = await signupReq(formData)
+
+      login(signupResponse.accessToken)
+      setFormData(INITIAL_SIGNUP_FORM)
       navigate(CONSUMER_ROUTE.MERCHANTS)
     } catch (error: unknown) {
       setSignupStatus({
         status: "failed",
-        error: error instanceof Error ? error.message : "Something went wrong",
+        error: getErrorMessage(error),
       })
     }
   }
 
-  const isLoading = signupStatus?.status === "loading";
+  const isLoading = signupStatus.status === "loading"
+  const isSubmitDisabled =
+    isLoading ||
+    !formData.name.trim() ||
+    !formData.emailAddress.trim() ||
+    !formData.password.trim() ||
+    !formData.consumerAddress.trim()
 
   return (
     <>
       <form
-        className="mt-5 rounded-3xl flex flex-col justify-center"
+        className="mt-5 flex flex-col justify-center rounded-3xl"
         onSubmit={handleSubmit}
       >
         <label htmlFor="name" className="mb-1">
@@ -61,12 +88,12 @@ function SignupForm() {
         <input
           id="name"
           name="name"
-          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="text"
           placeholder="Username"
           required
-          value={signupData?.name}
+          value={formData.name}
           onChange={handleChange}
+          className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
 
         <label htmlFor="emailAddress" className="mb-1">
@@ -75,13 +102,13 @@ function SignupForm() {
         <input
           id="emailAddress"
           name="emailAddress"
-          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="email"
           placeholder="Email Address"
           autoComplete="email"
           required
-          value={signupData?.emailAddress}
+          value={formData.emailAddress}
           onChange={handleChange}
+          className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
 
         <label htmlFor="password" className="mb-1">
@@ -90,13 +117,13 @@ function SignupForm() {
         <input
           id="password"
           name="password"
-          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="password"
           placeholder="Password"
           autoComplete="new-password"
           required
-          value={signupData?.password}
+          value={formData.password}
           onChange={handleChange}
+          className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
 
         <label htmlFor="consumerAddress" className="mb-1">
@@ -105,35 +132,32 @@ function SignupForm() {
         <input
           id="consumerAddress"
           name="consumerAddress"
-          className="p-3 rounded-lg text-black mb-5 bg-white w-80"
           type="text"
           placeholder="Delivery Address"
           required
-          value={signupData?.consumerAddress}
+          value={formData.consumerAddress}
           onChange={handleChange}
+          className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
 
         <button
-          className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg disabled:opacity-50"
           type="submit"
-          disabled={isLoading}
+          disabled={isSubmitDisabled}
+          className="rounded-lg bg-sky-600 px-6 py-3 font-bold text-white transition-colors hover:bg-sky-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {isLoading ? "Signing up..." : "Continue to Signup"}
+          {isLoading ? "Signing up..." : "Continue to sign up"}
         </button>
       </form>
 
-      <div aria-live="polite" className="mt-4">
-        {signupStatus?.status === "success" && (
-          <p className="text-green-600 font-bold">{signupStatus.message}</p>
-        )}
-        {signupStatus?.status === "failed" && (
-          <p className="text-red-600 font-bold">
-            Signup failed: {signupStatus?.error}
+      <div aria-live="polite" className="mt-4 min-h-6">
+        {signupStatus.status === "failed" && (
+          <p className="font-bold text-red-600">
+            Signup failed: {signupStatus.error}
           </p>
         )}
       </div>
     </>
-  );
+  )
 }
 
-export default SignupForm;
+export default SignupForm

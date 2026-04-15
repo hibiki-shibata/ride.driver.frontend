@@ -1,4 +1,4 @@
-import type { LoginReqDTO, LoginResDTO } from "../type/loginDTO"
+import type { LoginReqDTO, LoginResDTO } from "../type/loginReqDTO"
 import { CONSUMER_API_URI } from "../../../../shared/constant/apiURI"
 import { httpRequest } from "../../shared/api/httpRequest"
 

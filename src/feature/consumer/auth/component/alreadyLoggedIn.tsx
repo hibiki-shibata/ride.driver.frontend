@@ -1,17 +1,23 @@
-import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
+import { Link } from "react-router-dom"
+import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 
 function AlreadyLoggedIn() {
     return (
-        <div className="flex flex-col items-center px-20 min-h-screen sm:py-32 bg-gray-900 text-white">
-            <h1 className="mb-10 text-4xl font-bold">
-                You are already logged in!
+        <section className="flex min-h-screen flex-col items-center justify-center bg-gray-900 px-6 text-center text-white sm:px-20">
+            <h1 className="mb-4 text-4xl font-bold">
+                You are already logged in
             </h1>
-            <a href={CONSUMER_ROUTE.MERCHANTS}>
-                <button className="bg-sky-600 hover:bg-sky-700 font-bold rounded-lg p-4">
-                    Explore Amazones
-                </button>
-            </a>
-        </div>
+
+            <p className="mb-10 text-sm text-gray-300 sm:text-base">
+                You can continue browsing available merchants.
+            </p>
+
+            <Link
+                to={CONSUMER_ROUTE.MERCHANTS}
+                className="rounded-lg bg-sky-600 px-6 py-4 font-bold transition-colors hover:bg-sky-700">
+                Explore Amazones
+            </Link>
+        </section>
     )
 }
 
