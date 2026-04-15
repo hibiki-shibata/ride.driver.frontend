@@ -1,4 +1,4 @@
-import { COURIER_API_URI } from "../../../../shared/constant/apiUri"
+import { COURIER_API_URI } from "../../../../shared/constant/apiURI"
 
 export type CpApplicationData = {
     cpFirstName: string

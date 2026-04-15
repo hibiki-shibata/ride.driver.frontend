@@ -1,5 +1,5 @@
-import { CONSUMER_API_URI } from "../../../../../../shared/constant/apiUri"
-import { httpRequest } from "../../../../shared/api/httpRequest"
+import { CONSUMER_API_URI } from '../../../../shared/constant/apiURI'
+import { httpRequest } from "../../shared/api/httpRequest"
 import type { MenuItem } from "../type/menuItem"
 
 export async function getMenu(merchantId: string): Promise<MenuItem[]> {

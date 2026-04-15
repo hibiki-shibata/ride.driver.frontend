@@ -1,4 +1,4 @@
-import { CONSUMER_API_URI } from "../../../../shared/constant/apiUri"
+import { CONSUMER_API_URI } from "../../../../shared/constant/apiURI"
 import type { SignupReqDTO, SignupResDTO } from "../type/signupDTO"
 import { httpRequest } from "../../shared/api/httpRequest"
 

@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom"
-import { FRONTEND_URI } from "../../../../shared/constant/apiUri"
+import { FRONTEND_URI } from "../../../../shared/constant/apiURI"
 
 function SignupSuccessPage() {
   const displaySuccessApplyPage: boolean = true

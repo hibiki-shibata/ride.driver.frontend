@@ -54,6 +54,7 @@ function AvailableMerchant() {
                     {merchants.map((merchant) => (
                         <div className="bg-gray-800 m-1 p-8 rounded-xl overflow-hidden hover:bg-gray-700 cursor-pointer"
                             key={merchant.id}
+                            // onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}`)}>
                             onClick={() => navigate(CONSUMER_ROUTE.MENU + `?merchantId=${merchant.id}`)}>
                             <div className="font-bold pb-2 text-4xl">{merchant.name}</div>
                             <div className="pb-4 text-2xl">{merchant.merchantComment}</div>

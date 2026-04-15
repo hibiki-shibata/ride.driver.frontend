@@ -1,4 +1,4 @@
-import { CONSUMER_API_URI } from "../../../../shared/constant/apiUri"
+import { CONSUMER_API_URI } from "../../../../shared/constant/apiURI"
 import { AccessTokenManager } from "../service/accessTokenManager"
 
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH"

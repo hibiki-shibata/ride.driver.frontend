@@ -9,7 +9,7 @@ export const CONSUMER_API_URI = {
     ME: API_BASE_URL + "/api/v1/consumer/me",
     GET_ORDER_HISTORY: API_BASE_URL + "/api/v1/consumer/order/history",
     GET_AVAILABLE_MERCHANTS: API_BASE_URL + `/api/v1/consumer/product/merchants`, // + ?page={page}&size={pageSize}
-    GET_MERCHANT_MENU: API_BASE_URL + `/api/v1/consumer/product/merchant`, // + /{merchantId}
+    GET_MERCHANT_MENU: API_BASE_URL + `/api/v1/consumer/product/merchants`, // + /{merchantId}
 }
 
 export const COURIER_API_URI = {
