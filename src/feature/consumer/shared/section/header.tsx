@@ -26,8 +26,16 @@ function ConsumerHeader() {
                     {isOpenMenuOptions && (
                         <div className="absolute right-5 top-16 bg-gray-800 rounded-lg p-4">
                             <a className="block w-full text-left px-4 py-2 hover:bg-gray-700 rounded"
+                                href={CONSUMER_ROUTE.HOME}>
+                                Home
+                            </a>
+                            <a className="block w-full text-left px-4 py-2 hover:bg-gray-700 rounded"
                                 href={CONSUMER_ROUTE.ORDER_STATUS}>
                                 Active Order
+                            </a>
+                            <a className="block w-full text-left px-4 py-2 hover:bg-gray-700 rounded"
+                                href={CONSUMER_ROUTE.MERCHANTS}>
+                                Explore Merchants
                             </a>
                             <a className="block w-full text-left px-4 py-2 hover:bg-gray-700 rounded">
                                 Logout
