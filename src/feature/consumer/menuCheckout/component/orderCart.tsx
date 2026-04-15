@@ -4,13 +4,14 @@ import { useCartContext } from "../context/cartContext"
 import { sendOrder } from "../api/sendOrder"
 
 function OrderCart({ merchantId }: { merchantId: string }) {
-    const { cartItems } = useCartContext()
+    const { cartItems, clearCart } = useCartContext()
 
     async function proceedToCheckout() {
         await sendOrder({
             merchantId: merchantId,
             cartItems: cartItems,
         })
+        clearCart()
     }
 
     const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
