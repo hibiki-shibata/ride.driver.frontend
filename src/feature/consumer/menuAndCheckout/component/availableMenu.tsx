@@ -97,10 +97,7 @@ function AvailableMenu() {
             </div>
             <div ref={orderCartRef}
                 onClick={() =>
-                    orderCartRef.current?.scrollIntoView({
-                        behavior: "smooth",
-                        block: "center",
-                    })
+                    orderCartRef.current?.scrollIntoView({behavior: "smooth" })
                 }>
                 <OrderCart merchantId={merchantId} />
             </div>

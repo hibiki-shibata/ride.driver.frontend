@@ -38,7 +38,7 @@ function SignupForm() {
         message: "Signup successful",
       })
       setSignupData(null)
-      navigate(CONSUMER_ROUTE.EXPLORE)
+      navigate(CONSUMER_ROUTE.MERCHANTS)
     } catch (error: unknown) {
       setSignupStatus({
         status: "failed",

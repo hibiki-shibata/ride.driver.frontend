@@ -39,7 +39,7 @@ function LoginForm() {
         message: "Login successful",
       })
       setLoginDataDraft(null)
-      navigate(CONSUMER_ROUTE.EXPLORE)
+      navigate(CONSUMER_ROUTE.MERCHANTS)
     } catch (error: unknown) {
       setLoginStatus({
         status: "failed",

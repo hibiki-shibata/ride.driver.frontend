@@ -24,7 +24,7 @@ function ConsumerHeader() {
                         {consumerProfile ? consumerProfile.name : "Unknown User"}
                     </button>
                     {isOpenMenuOptions && (
-                        <div className="absolute right-5 top-16 bg-gray-800 rounded-lg p-4">
+                        <div className="absolute right-5 top-16 bg-gray-600 rounded-lg p-4">
                             <a className="block w-full text-left px-4 py-2 hover:bg-gray-700 rounded"
                                 href={CONSUMER_ROUTE.HOME}>
                                 Home
