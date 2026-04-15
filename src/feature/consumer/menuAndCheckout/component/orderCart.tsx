@@ -33,32 +33,30 @@ function OrderCart({ merchantId }: { merchantId: string }) {
     }
 
     return isCartOpen ? (
-        <div className="mt-10 rounded-2xl border border-slate-700 bg-slate-800 p-6 text-white shadow-xl sm:p-8">
+        <div className="rounded-2xl border border-slate-700 bg-slate-700 p-6 text-white shadow-xl h-full">
             <h2 className="mb-4 text-center text-2xl font-bold text-amber-200">
                 Cart Details
             </h2>
+
+            <h3 className="mb-4 text-center text-xl font-bold text-amber-100">
+                Total: ${totalPrice.toFixed(2)}
+            </h3>
 
             <div className="mb-5 space-y-2">
                 <button
                     className="w-full rounded-xl bg-emerald-600 py-3 px-4 font-bold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
                     onClick={proceedToCheckout}
-                    disabled={cartItems.length === 0 || isSubmitting}
-                >
+                    disabled={cartItems.length === 0 || isSubmitting}>
                     {isSubmitting ? "Processing..." : "Proceed to Checkout"}
                 </button>
 
                 <button
                     className="w-full rounded-xl bg-rose-600 py-3 px-4 font-bold text-white transition-colors hover:bg-rose-700"
                     onClick={() => setIsCartOpen(false)}
-                    disabled={isSubmitting}
-                >
+                    disabled={isSubmitting}>
                     Close
                 </button>
             </div>
-
-            <h3 className="mb-4 text-center text-xl font-bold text-amber-100">
-                Total: ${totalPrice.toFixed(2)}
-            </h3>
 
             {cartItems.length === 0 ? (
                 <p className="text-center text-slate-300">Your cart is empty.</p>
