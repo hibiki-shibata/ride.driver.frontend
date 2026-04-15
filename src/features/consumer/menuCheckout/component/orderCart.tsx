@@ -7,8 +7,16 @@ function OrderCart() {
 
     const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
     return isCartOpen ? (
-        <div className="fixed bg-gray-600 right-0 h-screen top-0 p-10">
-            <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
+        <div className="bg-gray-600 right-0 top-0 p-10 mt-10 rounded-lg">
+            <h2 className="text-2xl font-bold mb-4">Cart Details</h2>
+            <button className="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded my-1">
+                Proceed to Checkout
+            </button>
+            <button className="w-full bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded my-1"
+                onClick={() => setIsCartOpen(false)}>
+                Close
+            </button>
+            <h3 className="text-xl font-bold mt-4">Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
             {cartItems.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (<>
@@ -18,14 +26,6 @@ function OrderCart() {
                     </li>
                 ))}
             </>)}
-            <h3 className="text-xl font-bold mt-4">Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}</h3>
-            <button className="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded my-1">
-                Proceed to Checkout
-            </button>
-            <button className="w-full bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded my-1"
-                onClick={() => setIsCartOpen(false)}>
-                Close
-            </button>
         </div>
     ) : (
         <button className="fixed rounded-full bg-gray-600 hover:bg-gray-500 p-4 bottom-10 right-10 cursor-pointer border-1"

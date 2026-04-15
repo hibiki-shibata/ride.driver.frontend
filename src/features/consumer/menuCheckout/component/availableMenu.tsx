@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useSearchParams } from "react-router-dom"
 import type { MenuItem } from "../type/menuItem"
 import { getMenu } from "../api/getMenu"
@@ -6,42 +6,30 @@ import { useCartContext } from "../context/cartContext"
 import OrderCart from "./orderCart"
 import BackToMxListBtn from "./backToMxListBtn"
 
-const testMenu: MenuItem[] = [ // Remove this when API is ready
-    {
-        id: "1",
-        name: "Burger",
-        description: "A delicious beef burger with lettuce, tomato, and cheese.",
-        price: 8.99,
-        enabled: true,
-    },
-    {
-        id: "2",
-        name: "Fries",
-        description: "Crispy golden fries with a side of ketchup.",
-        price: 3.49,
-        enabled: true,
-    },
-    {
-        id: "3",
-        name: "Soda",
-        description: "Refreshing carbonated drink available in various flavors.",
-        price: 1.99,
-        enabled: false,
-    },
-    {
-        id: "3",
-        name: "Soda",
-        description: "Refreshing carbonated drink available in various flavors.",
-        price: 1.99,
-        enabled: false,
-    },
-]
+function testMenu(): MenuItem[] {
+    const testMenuList: MenuItem[] = []
+    for (let i = 1; i <= 10; i++) {
+        const item: MenuItem = {
+            id: `item-${i}`,
+            name: `Menu Item ${i}`,
+            price: 9.99 + i,
+            description: `This is the description for Menu Item ${i}. It is a delicious dish that you will love!`,
+            enabled: i % 3 !== 0, // Every 3rd item is unavailable
+        }
+        testMenuList.push(item)
+    }
+    return testMenuList
+}
+
 
 function AvailableMenu() {
+    const orderCartRef = useRef<HTMLDivElement | null>(null)
+    const [searchParams] = useSearchParams()
+    const merchantId: string = searchParams.get("merchantId") || "Unknown Merchant"
     const { addItem, removeItem } = useCartContext()
     const [merchantItemList, setMerchantItemList] = useState<MenuItem[] | null>(null)
-    const [searchParams] = useSearchParams()
-    const merchantId = searchParams.get("merchantId") || "Unknown Merchant"
+
+
 
     useEffect(() => {
         async function fetchMenu() {
@@ -55,11 +43,9 @@ function AvailableMenu() {
     if (!merchantItemList) return <div>Loading...</div>
 
     return (
-        <div className="min-h-screen bg-gray-900 p-4 text-white">
-            <div>
-                <BackToMxListBtn />
-                <h1 className="text-4xl font-bold m-10  ">{merchantId}</h1>
-            </div>
+        <div className="min-h-screen bg-gray-900 p-4 text-white scroll-smooth">
+            <BackToMxListBtn />
+            <h1 className="text-4xl font-bold m-10  ">{merchantId}</h1>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {merchantItemList.map(item => (
                     <div key={item.id}
@@ -81,8 +67,11 @@ function AvailableMenu() {
                     </div>
                 ))}
             </div>
-            <OrderCart />
-        </div>
+            <div ref={orderCartRef}
+                onClick={() => orderCartRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}>
+                <OrderCart />
+            </div>
+        </div >
     )
 }
 
