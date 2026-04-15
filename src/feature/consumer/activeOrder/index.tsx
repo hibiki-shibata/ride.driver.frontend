@@ -1,5 +1,5 @@
 import ConsumerLayout from "../shared/layout/consumerLayout"
-import ActiveOrderList from "./component/activeOrderList"
+import ActiveOrderList from "./component/ActiveOrderList"
 
 function ActiveOrder() {
     return (

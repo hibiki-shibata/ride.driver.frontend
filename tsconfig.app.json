@@ -8,8 +8,13 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
 
-    /* Bundler mode */
+    // Path mapping
     "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* Bundler mode */
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
@@ -23,6 +28,5 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
-  },
-  "include": ["src"]
+  }
 }
