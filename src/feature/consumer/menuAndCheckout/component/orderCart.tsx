@@ -14,7 +14,6 @@ function OrderCart({ merchantId }: { merchantId: string }) {
 
     async function proceedToCheckout() {
         if (cartItems.length === 0 || isSubmitting) return
-
         try {
             setIsSubmitting(true)
 
@@ -22,7 +21,6 @@ function OrderCart({ merchantId }: { merchantId: string }) {
                 merchantId,
                 cartItems,
             })
-
             clearCart()
             setIsCartOpen(false)
         } catch (error) {
@@ -51,7 +49,7 @@ function OrderCart({ merchantId }: { merchantId: string }) {
                 </button>
 
                 <button
-                    className="w-full rounded-xl bg-rose-600 py-3 px-4 font-bold text-white transition-colors hover:bg-rose-700"
+                    className="w-full rounded-xl bg-gray-600 py-3 px-4 font-bold text-white transition-colors hover:bg-gray-500"
                     onClick={() => setIsCartOpen(false)}
                     disabled={isSubmitting}>
                     Close
@@ -110,12 +108,21 @@ function OrderCart({ merchantId }: { merchantId: string }) {
                     ))}
                 </ul>
             )}
+            <button
+                className="w-full rounded-xl bg-rose-600 mt-5 py-3 px-4 font-bold text-white transition-colors hover:bg-rose-700"
+                onClick={() => {
+                    clearCart()
+                    setIsCartOpen(false)
+                }}
+                disabled={isSubmitting}>
+                Clear Cart
+            </button>
         </div>
     ) : (
         <>
             {cartItems.length !== 0 && (
                 <div className="fixed bottom-27 right-12 rounded-full bg-rose-500 px-2 text-white font-bold shadow-md">
-                    !
+                    {cartItems.reduce((total, item) => total + item.quantity, 0)}
                 </div>
             )}
 
