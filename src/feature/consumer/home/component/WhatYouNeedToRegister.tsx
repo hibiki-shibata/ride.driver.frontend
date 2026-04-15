@@ -1,4 +1,4 @@
-import SignupButton from "../../shared/component/signupButton"
+import SignupButton from "../../shared/component/SignupButton"
 import ServiceInfoSection, { type ServiceInfoItem } from "./ServiceInfoSection"
 
 const registrationRequirements: ServiceInfoItem[] = [

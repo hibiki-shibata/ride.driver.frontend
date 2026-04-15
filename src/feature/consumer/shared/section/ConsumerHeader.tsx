@@ -1,0 +1,58 @@
+import { useState } from "react"
+import AmazonesLogo from "../../../../shared/component/amazones-logo"
+import SignupButton from "../component/SignupButton"
+import LoginButton from "../component/LoginButton"
+import AccountMenuBar from "../component/AccountMenuBar"
+import SmallAuthButtons from "../component/SmallAuthButtons"
+import LinkToCourierHome from "../component/LinkToCourierHome"
+import { useConsumerAuthContext } from "../context/authContext"
+
+function ConsumerHeader() {
+  const authContext = useConsumerAuthContext()
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
+
+  if (!authContext) {
+    throw new Error("ConsumerHeader must be used within ConsumerAuthContextProvider")
+  }
+
+  const { consumerProfile, authStatus } = authContext
+  const isAuthenticated: boolean = authStatus === "authenticated"
+  const accountName: string = consumerProfile?.name ?? "Unknown Account"
+
+  return (
+    <header className="flex justify-between bg-black py-5 text-white md:py-0">
+      <AmazonesLogo />
+
+      <nav className="flex items-center">
+        <LinkToCourierHome />
+
+        {isAuthenticated ? (
+          <div className="relative flex items-center">
+            <button
+              type="button"
+              onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
+              className="my-5 flex items-center px-2 pr-6 text-2xl underline transition-colors hover:text-gray-300"
+              aria-expanded={isAccountMenuOpen}
+              aria-haspopup="menu">
+              {accountName}
+            </button>
+            {isAccountMenuOpen && <AccountMenuBar />}
+          </div>
+        ) : (
+          <>
+            <div className="hidden sm:flex">
+              <LoginButton />
+              <SignupButton />
+            </div>
+
+            <div className="flex items-center px-2 pr-6 sm:hidden">
+              <SmallAuthButtons />
+            </div>
+          </>
+        )}
+      </nav>
+    </header>
+  )
+}
+
+export default ConsumerHeader

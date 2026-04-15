@@ -1,10 +1,6 @@
 import { useState } from "react"
-import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath";
-
-const links = [
-  { href: CONSUMER_ROUTE.LOGIN, label: "Login" },
-  { href: CONSUMER_ROUTE.SIGNUP, label: "Signup" },
-]
+import SignupButton from "./SignupButton";
+import LoginButton from "./LoginButton";
 
 export default function SmallAuthButtons() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +9,7 @@ export default function SmallAuthButtons() {
     <div className="relative">
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() => setIsOpen(!isOpen)}
         className="cursor-pointer"
         aria-expanded={isOpen}
         aria-label="Open account menu"
@@ -22,7 +18,7 @@ export default function SmallAuthButtons() {
           className="hover:fill-gray-300"
           width="38"
           height="38"
-          viewBox="0 0 24 24"
+          viewBox="0 0 24 20"
           xmlns="http://www.w3.org/2000/svg"
           fill="white"
           stroke="black"
@@ -39,22 +35,12 @@ export default function SmallAuthButtons() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-2 top-15 z-50 mt-2 rounded-lg bg-gray-700 p-2 text-white font-bold shadow-lg">
-          {links.map((link, index) => (
-            <div key={link.href}>
-              <a
-                href={link.href}
-                className="block rounded-lg px-10 py-4 hover:bg-gray-600"
-              >
-                {link.label}
-              </a>
-              {index < links.length - 1 && (
-                <span className="my-2 block border-t border-gray-500" />
-              )}
-            </div>
-          ))}
+        <div className="absolute bg-gray-700 rounded-lg right-0 w-30 flex flex-col items-center justify-center">
+          <SignupButton />
+          <LoginButton />
         </div>
       )}
     </div>
-  );
+
+  )
 }
