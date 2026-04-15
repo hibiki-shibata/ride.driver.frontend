@@ -32,17 +32,12 @@ function ActiveOrderList() {
         setActiveTask(res ? res : null)
     }
 
-    useEffect(() => {
-        fetchActiveTask()
-        setActiveTask(testActiveOrderList()) // Remove this line after testing
-    }, [])
-
     // poll every 10 seconds to update active order status
     useEffect(() => {
-        const interval = setInterval(() => {
-            fetchActiveTask()
-        }, 10000)
-        return () => clearInterval(interval) // Cleanup on unmount
+        setActiveTask(testActiveOrderList()) // Remove this line after testing        
+        fetchActiveTask()
+        const intervalId = setInterval(fetchActiveTask, 30000)
+        return () => clearInterval(intervalId)
     }, [])
 
     return (
