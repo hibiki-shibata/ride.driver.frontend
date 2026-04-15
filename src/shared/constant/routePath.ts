@@ -6,6 +6,7 @@ export const CONSUMER_ROUTE = {
     HOME: BASE_ROUTE + "consumer/home",
     MERCHANTS: BASE_ROUTE + "consumer/explore/merchants",
     MENU: BASE_ROUTE + "consumer/explore/menu",
+    ORDER_STATUS: BASE_ROUTE + "consumer/order/status",
 }
 
 export const COURIER_ROUTE = {
