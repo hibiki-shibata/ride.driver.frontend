@@ -5,16 +5,17 @@ import { sendOrder } from "../api/sendOrder"
 
 function OrderCart({ merchantId }: { merchantId: string }) {
     const { cartItems, clearCart } = useCartContext()
+    const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 
     async function proceedToCheckout() {
+        clearCart()
+        setIsCartOpen(false)
         await sendOrder({
             merchantId: merchantId,
             cartItems: cartItems,
         })
-        clearCart()
     }
 
-    const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
     return isCartOpen ? (
         <div className="bg-gray-600 right-0 top-0 p-10 mt-10 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Cart Details</h2>
