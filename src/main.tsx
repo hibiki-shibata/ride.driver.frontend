@@ -1,12 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './style/index.css'
-import ConsumerHome from './features/consumer/home'
-import ConsumerMerchantList from './features/consumer/merchantList'
-import ConsumerAuth from './features/consumer/auth/'
-import ConsumerMenuCheckout from './features/consumer/menuCheckout'
-import Courier from './features/courier'
-import CourierApply from './features/courier/signup'
+import ConsumerHome from './feature/consumer/home'
+import ConsumerMerchantList from './feature/consumer/merchantList'
+import ConsumerAuth from './feature/consumer/auth'
+import ConsumerMenuCheckout from './feature/consumer/menuCheckout'
+import Courier from './feature/courier'
+import CourierApply from './feature/courier/signup'
 import { CONSUMER_ROUTE, COURIER_ROUTE } from './shared/constant/routePath'
 import {
   BrowserRouter,
