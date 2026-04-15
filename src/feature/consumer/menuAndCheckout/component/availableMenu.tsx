@@ -43,7 +43,7 @@ function AvailableMenu() {
     }
 
     return (
-        <div className="min-h-screen bg-slate-900 p-4 text-white scroll-smooth flex">
+        <div className="min-h-screen bg-slate-900 p-4 text-white scroll-smooth md:flex ">
             <div>
                 <BackToMxListBtn />
 
@@ -55,7 +55,7 @@ function AvailableMenu() {
                     {merchantItemList.map((item) => (
                         <div
                             key={item.id}
-                            className="bg-slate-800 border border-slate-700 m-1 px-7 pt-7 pb-6 rounded-2xl overflow-hidden hover:bg-slate-700 hover:border-amber-400 hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-lg">
+                            className="bg-slate-800 border border-slate-700 my-5 px-7 pt-7 pb-6 rounded-2xl overflow-hidden hover:bg-slate-700 hover:border-amber-400 hover:scale-[1.02] transition-all duration-300 cursor-pointer shadow-lg">
                             <h3 className="font-bold text-2xl mb-4 text-amber-100 text-center">
                                 {item.name}
                             </h3>
@@ -96,9 +96,7 @@ function AvailableMenu() {
                 </div>
             </div>
             <div ref={orderCartRef}
-                onClick={() =>
-                    orderCartRef.current?.scrollIntoView({behavior: "smooth" })
-                }>
+                onClick={() => orderCartRef.current?.scrollIntoView({ behavior: "smooth" })}>
                 <OrderCart merchantId={merchantId} />
             </div>
         </div>
