@@ -4,9 +4,9 @@ export const CONSUMER_ROUTE = {
     SIGNUP: BASE_ROUTE + "/consumer/signup",
     LOGIN: BASE_ROUTE + "/consumer/login",
     HOME: BASE_ROUTE + "/consumer/home",
-    MERCHANTS: BASE_ROUTE + "/consumer/explore/merchants",
+    MERCHANTS: BASE_ROUTE + "/consumer/explore/merchants", //
     MENU: BASE_ROUTE + "/consumer/explore/menu",
-    ORDER_STATUS: BASE_ROUTE + "/consumer/order/status",
+    ORDER_STATUS: BASE_ROUTE + "/consumer/order/active",
 }
 
 export const COURIER_ROUTE = {
