@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
-import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
-import { signupReq } from "../api/signupReq"
-import type { SignupReqDTO } from "../type/signupReqDTO"
+import { CONSUMER_ROUTE } from "../../../../../shared/constant/routePath"
+import { useConsumerAuthContext } from "../../../shared/context/ConsumerAuthContext"
+import { signupReq } from "../../api/signupReq"
+import type { SignupReqDTO } from "../../type/signupReqDTO"
 
 type SignupStatus =
   | { status: "idle" }
@@ -27,18 +27,18 @@ function getErrorMessage(error: unknown): string {
 
 function SignupForm() {
   const navigate = useNavigate()
-  const authContext = useConsumerAuthContext()
+  const consumerAuthContext = useConsumerAuthContext()
 
   const [formData, setFormData] = useState<SignupReqDTO>(INITIAL_SIGNUP_FORM)
   const [signupStatus, setSignupStatus] = useState<SignupStatus>({
     status: "idle",
   })
 
-  if (!authContext) {
+  if (!consumerAuthContext) {
     throw new Error("SignupForm must be used within ConsumerAuthContextProvider")
   }
 
-  const { login } = authContext
+  const { login } = consumerAuthContext
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const field = event.target.name as keyof SignupReqDTO
@@ -68,8 +68,8 @@ function SignupForm() {
     }
   }
 
-  const isLoading = signupStatus.status === "loading"
-  const isSubmitDisabled =
+  const isLoading: boolean = signupStatus.status === "loading"
+  const isSubmitDisabled: boolean =
     isLoading ||
     !formData.name.trim() ||
     !formData.emailAddress.trim() ||

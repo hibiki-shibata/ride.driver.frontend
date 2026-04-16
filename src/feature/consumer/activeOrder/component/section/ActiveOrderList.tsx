@@ -1,5 +1,5 @@
-import ActiveOrderCard from "./ActiveOrderCard"
-import { useActiveTasks } from "../hook/useActiveTasks"
+import ActiveOrderCardLayout from "../layout/ActiveOrderCardLayout"
+import { useActiveTasks } from "../../hook/useActiveTasks"
 
 function ActiveOrderList() {
     const { tasks, isLoading, error } = useActiveTasks()
@@ -20,10 +20,8 @@ function ActiveOrderList() {
                 <p className="text-xl text-center mt-10">You have no active orders.</p>
             )}
 
-            {!isLoading &&
-                !error &&
-                tasks.length > 0 &&
-                tasks.map((task) => <ActiveOrderCard key={task.taskId} task={task} />)}
+            {!isLoading && !error && tasks.length > 0 &&
+                tasks.map((task) => <ActiveOrderCardLayout key={task.taskId} task={task} />)}
         </section>
     )
 }

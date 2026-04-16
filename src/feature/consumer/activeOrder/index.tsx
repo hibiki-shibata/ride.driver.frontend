@@ -1,4 +1,4 @@
-import ActiveOrderList from "./component/ActiveOrderList"
+import ActiveOrderList from "./component/section/ActiveOrderList"
 
 function ActiveOrder() {
     return (

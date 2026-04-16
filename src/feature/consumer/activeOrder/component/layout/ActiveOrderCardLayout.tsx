@@ -1,10 +1,10 @@
-import type { TaskDataDTO } from "../type/taskDataDTO"
+import type { TaskDataDTO } from "../../type/taskDataDTO"
 
 type ActiveOrderCardProps = {
     task: TaskDataDTO
 }
 
-function ActiveOrderCard({ task }: ActiveOrderCardProps) {
+function ActiveOrderCardLayout({ task }: ActiveOrderCardProps) {
     return (
         <article className="bg-gray-800 mt-5 p-5 rounded-lg max-w-xl mx-auto">
             <h2 className="text-2xl font-bold mb-2">Order ID: {task.taskId}</h2>
@@ -18,4 +18,4 @@ function ActiveOrderCard({ task }: ActiveOrderCardProps) {
     )
 }
 
-export default ActiveOrderCard
+export default ActiveOrderCardLayout

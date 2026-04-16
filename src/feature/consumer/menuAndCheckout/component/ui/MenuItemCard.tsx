@@ -1,4 +1,4 @@
-import type { MenuItem } from "../type/menuItem"
+import type { MenuItem } from "../../type/menuItem"
 
 type CartItemPayload = {
   itemId: string

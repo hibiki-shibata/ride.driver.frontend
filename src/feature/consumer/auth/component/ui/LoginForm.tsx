@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
-import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
-import { loginReq } from "../api/loginReq"
-import type { LoginReqDTO } from "../type/loginReqDTO"
+import { CONSUMER_ROUTE } from "../../../../../shared/constant/routePath"
+import { useConsumerAuthContext } from "../../../shared/context/ConsumerAuthContext"
+import { loginReq } from "../../api/loginReq"
+import type { LoginReqDTO } from "../../type/loginReqDTO"
 
 type LoginStatus =
   | { status: "idle" }
@@ -21,16 +21,16 @@ function getErrorMessage(error: unknown): string {
 
 function LoginForm() {
   const navigate = useNavigate()
-  const authContext = useConsumerAuthContext()
+  const consumerAuthContext = useConsumerAuthContext()
 
   const [formData, setFormData] = useState<LoginReqDTO>(INITIAL_LOGIN_FORM)
   const [loginStatus, setLoginStatus] = useState<LoginStatus>({ status: "idle" })
 
-  if (!authContext) {
+  if (!consumerAuthContext) {
     throw new Error("LoginForm must be used within ConsumerAuthContextProvider")
   }
 
-  const { login } = authContext
+  const { login } = consumerAuthContext
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target
@@ -60,8 +60,8 @@ function LoginForm() {
     }
   }
 
-  const isLoading = loginStatus.status === "loading"
-  const isSubmitDisabled =
+  const isLoading: boolean = loginStatus.status === "loading"
+  const isSubmitDisabled: boolean =
     isLoading || !formData.emailAddress.trim() || !formData.password.trim()
 
   return (

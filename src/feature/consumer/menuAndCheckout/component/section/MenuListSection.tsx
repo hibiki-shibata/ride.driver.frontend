@@ -1,11 +1,11 @@
 import { useSearchParams } from "react-router-dom"
-import { useCartContext } from "../context/cartContext"
-import BackToMxListBtn from "./BackToMxListBtn"
-import MenuItemCard from "./MenuItemCard"
-import OrderCart from "./OrderCart"
-import { useMerchantMenu } from "../hook/useMerchantMenu"
+import { useCartContext } from "../../context/cartContext"
+import BackToMxListBtn from "../ui/BackToMxListBtn"
+import MenuItemCard from "../ui/MenuItemCard"
+import OrderCart from "./CartSection"
+import { useMerchantMenu } from "../../hook/useMerchantMenu"
 
-function AvailableMenu() {
+function MenuListSection() {
   const { addItem, removeItem } = useCartContext()
   const [searchParams] = useSearchParams()
 
@@ -60,4 +60,4 @@ function AvailableMenu() {
   )
 }
 
-export default AvailableMenu
+export default MenuListSection

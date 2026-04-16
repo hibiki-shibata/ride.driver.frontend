@@ -1,4 +1,4 @@
-import AvailableMenu from "./component/AvailableMenu"
+import AvailableMenu from "./component/section/MenuListSection"
 import { CartContextProvider } from "./context/cartContext"
 
 function MenuCheckout() {

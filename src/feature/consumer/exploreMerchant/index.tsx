@@ -1,4 +1,4 @@
-import AvailableMerchantList from "./component/AvailableMerchantList"
+import AvailableMerchantList from "./component/section/AvailableMerchantList"
 
 function ConsumerExplore() {
     return (

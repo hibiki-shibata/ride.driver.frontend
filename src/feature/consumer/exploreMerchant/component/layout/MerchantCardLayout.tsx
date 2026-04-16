@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
-import type { MerchantProfile } from "../type/merchantProfile"
+import { CONSUMER_ROUTE } from "../../../../../shared/constant/routePath"
+import type { MerchantProfile } from "../../type/merchantProfile"
 
 type MerchantCardProps = {
   merchant: MerchantProfile
 }
 
-function MerchantCard({ merchant }: MerchantCardProps) {
+function MerchantCardLayout({ merchant }: MerchantCardProps) {
   const searchParams = new URLSearchParams({
     merchantId: merchant.id,
     merchantName: merchant.name,
@@ -49,4 +49,4 @@ function MerchantCard({ merchant }: MerchantCardProps) {
   )
 }
 
-export default MerchantCard
+export default MerchantCardLayout

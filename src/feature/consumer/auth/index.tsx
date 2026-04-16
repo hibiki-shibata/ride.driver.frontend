@@ -1,4 +1,4 @@
-import SignupAndLoginForm from "./component/SignupAndLoginForm"
+import SignupAndLoginForm from "./component/section/SignupAndLoginForm"
 
 function LoginAndSignupPage({ isLogin }: { isLogin: boolean }) {
     return (
