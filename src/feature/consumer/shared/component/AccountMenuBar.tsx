@@ -1,5 +1,5 @@
 import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
-import { useConsumerAuthContext } from "../context/authContext"
+import { useConsumerAuthContext } from "../context/ConsumerAuthContext"
 
 function AccountMenuBar() {
     const { logout } = useConsumerAuthContext() ?? {}

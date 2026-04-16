@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
-import { useConsumerAuthContext } from "../../shared/context/authContext"
+import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
 import { signupReq } from "../api/signup"
 import type { SignupReqDTO } from "../type/signupReqDTO"
 

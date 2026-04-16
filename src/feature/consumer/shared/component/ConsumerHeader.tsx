@@ -5,7 +5,7 @@ import LoginButton from "../component/LoginButton"
 import AccountMenuBar from "../component/AccountMenuBar"
 import SmallAuthButtons from "../component/SmallAuthButtons"
 import LinkToCourierHome from "../component/LinkToCourierHome"
-import { useConsumerAuthContext } from "../context/authContext"
+import { useConsumerAuthContext } from "../context/ConsumerAuthContext"
 
 function ConsumerHeader() {
   const authContext = useConsumerAuthContext()

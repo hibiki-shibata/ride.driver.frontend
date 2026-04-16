@@ -1,15 +1,11 @@
-import ConsumerLayout from "../shared/layout/consumerLayout"
-import AvailableMenu from "./component/availableMenu"
+import AvailableMenu from "./component/AvailableMenu"
 import { CartContextProvider } from "./context/cartContext"
 
 function MenuCheckout() {
     return (
-        <ConsumerLayout>
             <CartContextProvider>
                 <AvailableMenu />
             </CartContextProvider>
-        </ConsumerLayout>
-
     )
 }
 export default MenuCheckout
