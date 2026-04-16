@@ -1,23 +1,22 @@
 import { useState } from "react"
 import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
-import LoginForm from "./loginForm"
-import SignupForm from "./signupForm"
-import AlreadyLoggedIn from "./alreadyLoggedIn"
+import LoginForm from "./LoginForm"
+import SignupForm from "./SignupForm"
+import AlreadyAuthedPage from "./AlreadyAuthedPage"
 
 function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
   const [isLoginMode, setLoginMode] = useState(isLogin)
   const consumerAuthContext = useConsumerAuthContext()
   const { authStatus } = consumerAuthContext!
 
-  if (authStatus === "authenticated") return <AlreadyLoggedIn />
-  
+  if (authStatus === "authenticated") return <AlreadyAuthedPage />
+
   return (
     <div className="flex flex-col items-center px-20 py-24 sm:py-32 bg-gray-900 text-white">
       <h1 className="mb-10 text-4xl font-bold">Welcome back to Amazones platform!</h1>
 
       <div className="mb-8 flex text-gray-400">
         <button
-          type="button"
           onClick={() => setLoginMode(true)}
           className={`text-3xl font-bold cursor-pointer ${isLoginMode ? "text-white" : "text-gray-400"
             }`}
@@ -28,7 +27,6 @@ function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
         <span className="mx-3 text-3xl font-bold">/</span>
 
         <button
-          type="button"
           onClick={() => setLoginMode(false)}
           className={`text-3xl font-bold cursor-pointer ${!isLoginMode ? "text-white" : "text-gray-400"
             }`}
