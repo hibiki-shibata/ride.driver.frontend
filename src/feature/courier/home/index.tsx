@@ -1,6 +1,6 @@
-import RequiredInfo from "./requiredInfo"
-import MissionAndResponsibility from "./missionAndResponsibility"
-import RegisterProcessCircle from "./registerProcessCircle"
+import RequiredInfo from "./component/RequiredInfo"
+import MissionAndResponsibility from "./component/MissionAndResponsibility"
+import RegisterProcessCircle from "./component/RegisterProcessCircle"
 
 function descriptionContaners() {
     return (

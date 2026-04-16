@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { cpApplicationReq } from "../api/cpApplicationReq"
-import type { CpApplicationData } from "../api/cpApplicationReq"
-import ApplySuccessPage from "./applySuccessPage"
+import { cpApplicationReq } from "../../api/cpApplicationReq"
+import type { CpApplicationData } from "../../api/cpApplicationReq"
+import ApplySuccessPage from "./ApplySuccessPage"
 
 type ApplicationSubmitStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 

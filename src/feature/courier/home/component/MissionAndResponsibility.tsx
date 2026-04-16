@@ -1,4 +1,4 @@
-import SignupButton from "../auth/component/courierSignupButton"
+import SignupButton from "../../auth/component/ui/LinkToSignup"
 
 const responsibilities = [
   {
