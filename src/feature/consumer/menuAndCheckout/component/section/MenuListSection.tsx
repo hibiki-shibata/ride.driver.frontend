@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom"
 import { useCartContext } from "../../context/cartContext"
 import BackToMxListBtn from "../ui/BackToMxListBtn"
 import MenuItemCard from "../ui/MenuItemCard"
-import OrderCart from "./CartSection"
+import CartSection from "./CartSection"
 import { useMerchantMenu } from "../../hook/useMerchantMenu"
 
 function MenuListSection() {
@@ -54,7 +54,7 @@ function MenuListSection() {
       </div>
 
       <aside className="mt-8 md:mt-0 md:w-[360px] md:shrink-0">
-        <OrderCart merchantId={merchantId} />
+        <CartSection merchantId={merchantId} />
       </aside>
     </section>
   )

@@ -1,6 +1,6 @@
 import { useState } from "react"
-import SignupButton from "./ToSignupFormBtn";
-import LoginButton from "./ToLoginFormBtn";
+import LinkToSignupForm from "./LinkToSignupForm";
+import LinkToLoginForm from "./LinkToLoginForm";
 
 function AuthBtnInSmallScreen() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +36,8 @@ function AuthBtnInSmallScreen() {
 
       {isOpen && (
         <div className="absolute bg-gray-700 rounded-lg right-0 w-30 flex flex-col items-center justify-center">
-          <SignupButton />
-          <LoginButton />
+          <LinkToSignupForm />
+          <LinkToLoginForm />
         </div>
       )}
     </div>

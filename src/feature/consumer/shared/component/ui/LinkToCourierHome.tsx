@@ -1,4 +1,4 @@
-import { COURIER_ROUTE } from "../../../../shared/constant/routePath"
+import { COURIER_ROUTE } from "../../../../../shared/constant/routePath"
 import { Link } from "react-router-dom"
 
 function LinkToCourierHome() {

@@ -1,11 +1,11 @@
 import { useState } from "react"
-import AmazonesLogo from "../../../../shared/component/amazones-logo"
+import AmazonesLogo from "../../../../../shared/component/amazones-logo"
 import SignupButton from "./ToSignupFormBtn"
-import LoginButton from "./ToLoginFormBtn"
-import AccountMenuBar from "../component/AccountMenuBar"
-import SmallAuthButtons from "./AuthBtnInSmallScreen"
-import LinkToCourierHome from "../component/LinkToCourierHome"
-import { useConsumerAuthContext } from "../context/ConsumerAuthContext"
+import LoginButton from "../ui/LinkToLoginForm"
+import AccountMenuBar from "../ui/AccountMenuBar"
+import SmallAuthButtons from "../ui/AuthBtnInSmallScreen"
+import LinkToCourierHome from "../ui/LinkToCourierHome"
+import { useConsumerAuthContext } from "../../context/ConsumerAuthContext"
 
 function ConsumerHeader() {
   const authContext = useConsumerAuthContext()
