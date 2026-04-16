@@ -1,8 +1,7 @@
 import { useState } from "react"
-import { cpApplicationReq } from "../api/cpApplicationReq"
-import type { CpApplicationData } from "../api/cpApplicationReq"
-import ApplySuccessPage from "./ApplySuccessCard"
 import LinkToCourierHome from "../../shared/component/ui/LinkToCourierHome"
+import { signupReq, type CpApplicationData } from "../api/signupReq"
+import ApplySuccessPage from "./ApplySuccessCard"
 
 type ApplicationSubmitStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
@@ -18,14 +17,14 @@ function SignupForm() {
     const handleSubmit = async (cpDraftData: CpApplicationData) => {
         try {
             setRequestStatus({ status: "loading" })
-            const resMessage: string = await cpApplicationReq(cpDraftData)
+            const resMessage: string = await signupReq(cpDraftData)
             if (resMessage) setRequestStatus({ status: "success", message: JSON.stringify(resMessage) })
         } catch (e: unknown) {
             setRequestStatus({ status: "failed", error: (e instanceof Error) ? e.message : "Unknown error" })
         }
     }
     return (
-        <div className="flex  flex-col py-15 items-center">
+        <div>
             <h1 className="text-4xl font-bold m-10">Ready to become a Amazones courier partner?</h1>
             <h2 className="text-2xl text-gray-900 m-10">Before we get you started as a Amazones courierpartner, we just need a few details from you. Fill out the quick application below, and we'll get the ball rolling!</h2>
             {requestStatus.status !== "success" && (
@@ -94,7 +93,6 @@ function SignupForm() {
             {requestStatus.status === "failed" && (
                 <p className="text-red-600 font-bold">Something went wrong: {requestStatus.error}</p>
             )}
-            <LinkToCourierHome />
         </div>
     )
 }
