@@ -1,4 +1,4 @@
-import ServiceInfoSection, { type ServiceInfoItem } from "./ServiceInfoSection"
+import ServiceInfoSection, { type ServiceInfoItem } from "../layout/ServiceInfoCardLayout"
 
 const reasonsToChooseUs: ServiceInfoItem[] = [
   {

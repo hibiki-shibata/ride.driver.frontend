@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import SignupButton from "../../shared/component/SignupButton"
+import SignupButton from "../../../shared/component/ToSignupFormBtn"
 
 export type ServiceInfoItem = {
   title: string
@@ -13,7 +13,7 @@ type InfoListSectionProps = {
   action?: ReactNode
 }
 
-function ServiceInfoSection({
+function ServiceInfoCardLayout({
   title,
   items,
   className,
@@ -38,4 +38,4 @@ function ServiceInfoSection({
   )
 }
 
-export default ServiceInfoSection
+export default ServiceInfoCardLayout

@@ -9,7 +9,7 @@ import ActiveOrder from './feature/consumer/activeOrder'
 import ConsumerRoot from './feature/consumer/shared/layout/consumerRoot'
 import Courier from './feature/courier'
 import CourierApply from './feature/courier/signup'
-import { CONSUMER_ROUTE, COURIER_ROUTE, BASE_ROUTE } from './shared/constant/routePath'
+import { CONSUMER_ROUTE, COURIER_ROUTE } from './shared/constant/routePath'
 import {
   BrowserRouter,
   Routes,

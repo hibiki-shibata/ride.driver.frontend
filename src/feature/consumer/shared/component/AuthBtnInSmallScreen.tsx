@@ -1,8 +1,8 @@
 import { useState } from "react"
-import SignupButton from "./SignupButton";
-import LoginButton from "./LoginButton";
+import SignupButton from "./ToSignupFormBtn";
+import LoginButton from "./ToLoginFormBtn";
 
-export default function SmallAuthButtons() {
+function AuthBtnInSmallScreen() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -44,3 +44,5 @@ export default function SmallAuthButtons() {
 
   )
 }
+
+export default AuthBtnInSmallScreen

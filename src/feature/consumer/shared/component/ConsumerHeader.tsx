@@ -1,9 +1,9 @@
 import { useState } from "react"
 import AmazonesLogo from "../../../../shared/component/amazones-logo"
-import SignupButton from "../component/SignupButton"
-import LoginButton from "../component/LoginButton"
+import SignupButton from "./ToSignupFormBtn"
+import LoginButton from "./ToLoginFormBtn"
 import AccountMenuBar from "../component/AccountMenuBar"
-import SmallAuthButtons from "../component/SmallAuthButtons"
+import SmallAuthButtons from "./AuthBtnInSmallScreen"
 import LinkToCourierHome from "../component/LinkToCourierHome"
 import { useConsumerAuthContext } from "../context/ConsumerAuthContext"
 

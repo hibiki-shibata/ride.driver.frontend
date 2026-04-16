@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
+import { CONSUMER_ROUTE } from "../../../../../shared/constant/routePath"
 
 function LinkToCpExplore() {
     return (

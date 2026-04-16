@@ -1,5 +1,4 @@
-import ServiceInfoSection, { type ServiceInfoItem } from "./ServiceInfoSection"
-import SignupButton from "../../shared/component/SignupButton"
+import ServiceInfoSection, { type ServiceInfoItem } from "../layout/ServiceInfoCardLayout"
 
 const merits: ServiceInfoItem[] = [
   {
