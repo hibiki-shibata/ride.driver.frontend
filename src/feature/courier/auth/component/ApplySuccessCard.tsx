@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 import LinkToAppInstall from "./LinkToAppInstall"
 
-function SignupSuccessPage() {
+function SignupSuccessCard() {
   const displaySuccessApplyPage: boolean = true
   if (!displaySuccessApplyPage) {
     return <Navigate to="/ride.driver.frontend/courier/apply" />
@@ -17,4 +17,4 @@ function SignupSuccessPage() {
   )
 }
 
-export default SignupSuccessPage
+export default SignupSuccessCard

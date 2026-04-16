@@ -1,5 +1,5 @@
 
-import { FRONTEND_URI } from "../../../../../shared/constant/apiURI"
+import { FRONTEND_URI } from "../../../../shared/constant/apiURI"
 import { Link } from "react-router-dom"
 
 function LinkToAppInstall() {

@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { cpApplicationReq } from "../../api/cpApplicationReq"
-import type { CpApplicationData } from "../../api/cpApplicationReq"
-import ApplySuccessPage from "./ApplySuccessPage"
+import { cpApplicationReq } from "../api/cpApplicationReq"
+import type { CpApplicationData } from "../api/cpApplicationReq"
+import ApplySuccessPage from "./ApplySuccessCard"
 
 type ApplicationSubmitStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
@@ -25,6 +25,8 @@ function SignupForm() {
     }
     return (
         <div className="py-15">
+            <h1 className="text-4xl font-bold m-10">Ready to become a Amazones courier partner?</h1>
+            <h2 className="text-2xl text-gray-900 m-10">Before we get you started as a Amazones courierpartner, we just need a few details from you. Fill out the quick application below, and we'll get the ball rolling!</h2>
             {requestStatus.status !== "success" && (
                 <form
                     onSubmit={(e) => {
@@ -49,8 +51,10 @@ function SignupForm() {
                             required
                         />
                     </div>
+
                     <label className="font-bold">Phone number</label>
                     <small> ( Format: +8112345678 )</small>
+
                     <input
                         className="mb-7 p-3 rounded-lg w-full text-black bg-white bg-white"
                         type="tel"
@@ -72,8 +76,9 @@ function SignupForm() {
                         <option value="CAR">Car</option>
                         <option value="TRUCK">Truck</option>
                     </select>
+
                     <button
-                        className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-6 mb-4 rounded-lg w-full"
+                        className="bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white font-bold py-3 px-6 mb-4 rounded-lg w-full"
                         type="submit">
                         Submit Application
                     </button>
