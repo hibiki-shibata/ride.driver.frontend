@@ -1,11 +1,11 @@
 import { ConsumerAuthContextProvider } from "../context/ConsumerAuthContext"
-import Header from "../component/section/ConsumerHeader"
+import ConsumerHeader from "../component/section/ConsumerHeader"
 import Footer from "../../../../shared/component/footer"
 
 function ConsumerLayout({ children }: { children: React.ReactNode }) {
     return (
         <ConsumerAuthContextProvider>
-            <Header />
+            <ConsumerHeader />
             {children}
             <Footer />
         </ConsumerAuthContextProvider>
