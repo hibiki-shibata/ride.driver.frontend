@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import SignupButton from "../../../shared/component/ToSignupFormBtn"
+import LinkToSignupForm from "../../../shared/component/ui/LinkToSignupForm"
 
 export type ServiceInfoItem = {
   title: string
@@ -32,7 +32,7 @@ function ServiceInfoCardLayout({
           ))}
         </ul>
 
-        <SignupButton />
+        <LinkToSignupForm />
       </div>
     </section>
   )

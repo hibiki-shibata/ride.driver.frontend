@@ -1,4 +1,4 @@
-import ActiveOrderCardLayout from "../layout/ActiveOrderCardLayout"
+import ActiveOrderCardLayout from "../ui/ActiveOrderCardLayout"
 import { useActiveTasks } from "../../hook/useActiveTasks"
 
 function ActiveOrderList() {

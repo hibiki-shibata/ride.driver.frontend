@@ -1,5 +1,5 @@
 import Headline from './component/ui/ServiceHeadline'
-import LinkToCpExplore from './component/ui/LinkToCpExplore'
+import LinkToCpExplore from '../shared/component/ui/LinkToMxExplore'
 import ServiceInfoSection from './component/section/ServiceInfoSection'
 
 function ConsumerHome() {

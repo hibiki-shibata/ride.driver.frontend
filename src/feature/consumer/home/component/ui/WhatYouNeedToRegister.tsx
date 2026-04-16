@@ -1,4 +1,3 @@
-import SignupButton from "../../../shared/component/ToSignupFormBtn"
 import ServiceInfoSection, { type ServiceInfoItem } from "../layout/ServiceInfoCardLayout"
 
 const registrationRequirements: ServiceInfoItem[] = [

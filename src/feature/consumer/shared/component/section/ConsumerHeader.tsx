@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AmazonesLogo from "../../../../../shared/component/amazones-logo"
-import SignupButton from "./ToSignupFormBtn"
-import LoginButton from "../ui/LinkToLoginForm"
+import LinkToSignupForm from "../../../shared/component/ui/LinkToSignupForm"
+import LinkToLoginForm from "../../../shared/component/ui/LinkToLoginForm"
 import AccountMenuBar from "../ui/AccountMenuBar"
 import SmallAuthButtons from "../ui/AuthBtnInSmallScreen"
 import LinkToCourierHome from "../ui/LinkToCourierHome"
@@ -41,8 +41,8 @@ function ConsumerHeader() {
         ) : (
           <>
             <div className="hidden sm:flex">
-              <LoginButton />
-              <SignupButton />
+              <LinkToLoginForm />
+              <LinkToSignupForm />
             </div>
 
             <div className="flex items-center px-2 pr-6 sm:hidden">
