@@ -1,11 +1,11 @@
-import MerchantCardLayout from "../layout/MerchantCardLayout"
+import MerchantCardLayout from "../ui/MerchantCardLayout"
 import { useAvailableMerchants } from "../../hook/useAvailableMerchants"
 
 function AvailableMerchantList() {
   const { merchants, isLoading, error } = useAvailableMerchants()
 
   return (
-    <section className="min-h-screen bg-slate-900 px-6 py-10 text-white">
+    <>
       <h1 className="mb-10 text-center text-5xl font-bold text-amber-100">
         Explore Available Merchants
       </h1>
@@ -35,7 +35,7 @@ function AvailableMerchantList() {
           ))}
         </div>
       )}
-    </section>
+    </>
   )
 }
 
