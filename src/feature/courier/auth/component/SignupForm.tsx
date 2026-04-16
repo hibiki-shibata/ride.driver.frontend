@@ -1,20 +1,21 @@
 import { useState } from "react"
-import LinkToCourierHome from "../../shared/component/ui/LinkToCourierHome"
 import { signupReq, type CpApplicationData } from "../api/signupReq"
-import ApplySuccessPage from "./ApplySuccessCard"
+import ApplySuccessCard from "./ApplySuccessCard"
 
 type ApplicationSubmitStatus = { status: "idle" } | { status: "loading" } | { status: "success", message: string } | { status: "failed", error: string }
 
+const INITIAL_CP_DATA: CpApplicationData = {
+    cpFirstName: "",
+    cpLastName: "",
+    phoneNumber: "",
+    vehicleType: ""
+}
+
 function SignupForm() {
     const [requestStatus, setRequestStatus] = useState<ApplicationSubmitStatus>({ status: "idle" })
-    const [cpDraftData, setCpDraftData] = useState<CpApplicationData>({
-        cpFirstName: "",
-        cpLastName: "",
-        phoneNumber: "",
-        vehicleType: ""
-    })
+    const [cpDraftData, setCpDraftData] = useState<CpApplicationData>(INITIAL_CP_DATA)
 
-    const handleSubmit = async (cpDraftData: CpApplicationData) => {
+    async function handleSubmit(cpDraftData: CpApplicationData) {
         try {
             setRequestStatus({ status: "loading" })
             const resMessage: string = await signupReq(cpDraftData)
@@ -54,7 +55,6 @@ function SignupForm() {
 
                     <label className="font-bold">Phone number</label>
                     <small> ( Format: +8112345678 )</small>
-
                     <input
                         className="mb-7 p-3 rounded-lg w-full text-black bg-white bg-white"
                         type="tel"
@@ -64,12 +64,12 @@ function SignupForm() {
                         pattern="^\+?\d{8,12}$"
                         required
                     />
+
                     <label className="font-bold">Vehicle type</label>
                     <select className="mb-7 p-3 rounded-lg w-full text-black bg-white bg-white"
                         value={cpDraftData.vehicleType}
                         onChange={(e) => setCpDraftData({ ...cpDraftData, vehicleType: e.target.value })}
-                        required
-                    >
+                        required>
                         <option value="" disabled>Select vehicle type</option>
                         <option value="BICYCLE" >Bicycle</option>
                         <option value="MOTORCYCLE">Motorcycle</option>
@@ -85,7 +85,7 @@ function SignupForm() {
                 </form>
             )}
             {requestStatus.status === "success" && (
-                <ApplySuccessPage />
+                <ApplySuccessCard />
             )}
             {requestStatus.status === "loading" && (
                 <p>Submitting your application...</p>
@@ -96,6 +96,5 @@ function SignupForm() {
         </div>
     )
 }
-
 
 export default SignupForm
