@@ -16,7 +16,6 @@ function MenuListSection() {
   return (
     <>
       <div className="flex-1">
-        
         <h1 className="m-10 text-center text-4xl font-bold text-amber-200">
           {merchantName}
         </h1>

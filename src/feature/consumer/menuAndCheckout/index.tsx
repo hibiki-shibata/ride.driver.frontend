@@ -1,15 +1,15 @@
 import { CartContextProvider } from "./context/cartContext"
 import MenuListSection from "./component/section/MenuListSection"
-import BackToMxExplore from "./component/ui/BackToMxExplore"
+import BackToMxExplore from "./component/ui/BackToMxExplore"    
 
 function MenuCheckout() {
     return (
-        <section className="min-h-screen bg-slate-900 p-4 text-white md:flex md:gap-6">
+        <div className="min-h-screen bg-slate-900 px-6 py-10 text-white">
             <CartContextProvider>
                 <BackToMxExplore />
                 <MenuListSection />
             </CartContextProvider>
-        </section>
+        </div>
     )
 }
 export default MenuCheckout
