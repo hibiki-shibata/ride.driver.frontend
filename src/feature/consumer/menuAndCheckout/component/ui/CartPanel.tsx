@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import CartItemRow from "../ui/CartItemRow"
 
 type CartItem = {
@@ -32,9 +33,13 @@ function CartPanel({
   onIncrease,
   onDecrease,
 }: CartPanelProps) {
+  const cartTopRef = useRef<HTMLDivElement>(null)
   return (
     <>
-      <aside className="rounded-xl border border-yellow-700 p-6 pt-16">
+      <aside
+        className="rounded-xl border border-yellow-700 p-6 pt-16"
+        ref={cartTopRef}
+      >
         <h2 className="mb-4 text-center text-2xl font-bold text-amber-200">
           Cart Details
         </h2>
@@ -94,7 +99,15 @@ function CartPanel({
           Clear Cart
         </button>
       </aside>
+
+      <button
+        className="fixed bottom-4 w-full text-center italic text-slate-400 hover:text-slate-200"
+        onClick={() => cartTopRef.current?.scrollIntoView({ behavior: "smooth" })}
+      >
+        Go To Cart Detail
+      </button>
     </>
+
   )
 }
 
