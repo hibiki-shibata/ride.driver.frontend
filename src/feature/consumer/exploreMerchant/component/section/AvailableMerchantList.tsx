@@ -1,25 +1,6 @@
 import MerchantCardLayout from "../layout/MerchantCardLayout"
 import { useAvailableMerchants } from "../../hook/useAvailableMerchants"
 
-// function testMerchants(): MerchantProfile[] { // Remove later
-//     const merchants: MerchantProfile[] = []
-//     for (let i = 0; i < 10; i++) {
-//         merchants.push({
-//             id: `${i}`,
-//             name: `Restaurant ${i}`,
-//             phoneNumber: `123456789${i}`,
-//             merchantAddress: `${i} Main St`,
-//             merchantComment: `This is merchant ${i}'s comment.`,
-//             merchantStatus: i % 2 === 0 ? "OPEN" : "CLOSED",
-//             merchantAddressCoordinates: {
-//                 latitude: 37.7749 + i * 0.01,
-//                 longitude: -122.4194 + i * 0.01,
-//             },
-//         })
-//     }
-//     return merchants
-// }
-
 function AvailableMerchantList() {
   const { merchants, isLoading, error } = useAvailableMerchants()
 

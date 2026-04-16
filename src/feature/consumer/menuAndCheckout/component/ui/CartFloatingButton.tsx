@@ -10,7 +10,7 @@ function CartFloatingButton({
   return (
     <>
       {totalQuantity > 0 && (
-        <div className="fixed bottom-24 right-10 rounded-full bg-rose-500 px-2 py-1 text-sm font-bold text-white shadow-md">
+        <div className="fixed bottom-26 right-9 rounded-full bg-rose-500 px-2 text-sm font-bold text-white shadow-md">
           {totalQuantity}
         </div>
       )}

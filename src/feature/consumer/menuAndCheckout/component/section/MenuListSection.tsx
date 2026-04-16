@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom"
 import { useCartContext } from "../../context/cartContext"
-import LinkToMxExplore from "../../../shared/component/ui/LinkToMxExplore"
+import BackToMxExplore from "../ui/BackToMxExplore"
 import MenuItemCard from "../ui/MenuItemCard"
 import CartSection from "./CartSection"
 import { useMerchantMenu } from "../../hook/useMerchantMenu"
@@ -17,7 +17,7 @@ function MenuListSection() {
   return (
     <section className="min-h-screen bg-slate-900 p-4 text-white md:flex md:gap-6">
       <div className="flex-1">
-        <LinkToMxExplore />
+        <BackToMxExplore />
 
         <h1 className="m-10 text-center text-4xl font-bold text-amber-200">
           {merchantName}
@@ -52,10 +52,7 @@ function MenuListSection() {
           </div>
         )}
       </div>
-
-      <aside className="mt-8 md:mt-0 md:w-[360px] md:shrink-0">
-        <CartSection merchantId={merchantId} />
-      </aside>
+      <CartSection merchantId={merchantId} />
     </section>
   )
 }
