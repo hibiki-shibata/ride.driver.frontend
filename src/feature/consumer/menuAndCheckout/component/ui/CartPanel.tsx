@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import CartItemRow from "../ui/CartItemRow"
+import CartItemRow from "./CartItemCard"
 
 type CartItem = {
   itemId: string

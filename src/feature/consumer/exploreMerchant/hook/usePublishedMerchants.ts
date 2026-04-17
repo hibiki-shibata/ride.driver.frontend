@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { getAvailableMerchants } from "../api/getAvailableMerchants"
-import type { MerchantProfile } from "../type/merchantProfile"
+import type { MerchantProfile } from "../../shared/type/merchantProfile"
 
 // function testMerchants(): MerchantProfile[] { // Remove later
 //   const merchants: MerchantProfile[] = []
@@ -27,7 +27,7 @@ type UseAvailableMerchantsResult = {
   error: string | null
 }
 
-export function useAvailableMerchants(): UseAvailableMerchantsResult {
+export function usePublishedMerchants(): UseAvailableMerchantsResult {
   const [merchants, setMerchants] = useState<MerchantProfile[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

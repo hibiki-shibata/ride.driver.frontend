@@ -11,7 +11,8 @@ export const CONSUMER_API_URI = {
     GET_ORDER_HISTORY: API_BASE_URL + "/api/v1/consumer/order/history",
     GET_ACTIVE_TASK: API_BASE_URL + `/api/v1/consumer/task/active`,
     CREATE_ORDER: API_BASE_URL + `/api/v1/consumer/task/create`,
-    GET_AVAILABLE_MERCHANTS: API_BASE_URL + `/api/v1/explore/merchants`, // + ?page={page}&size={pageSize}
+    GET_PUBLISHED_MERCHANTS: API_BASE_URL + `/api/v1/explore/merchants`, // + ?page={page}&size={pageSize}
+    GET_MERCHANT: API_BASE_URL + `/api/v1/explore/merchant`, // + /{merchantId}
     GET_MERCHANT_MENU: API_BASE_URL + `/api/v1/explore/merchant`, // + /{merchantId}/products
 }
 

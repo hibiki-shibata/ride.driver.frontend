@@ -1,8 +1,8 @@
 import MerchantCardLayout from "../ui/MerchantCardLayout"
-import { useAvailableMerchants } from "../../hook/useAvailableMerchants"
+import { usePublishedMerchants } from "../../hook/usePublishedMerchants"
 
 function AvailableMerchantList() {
-  const { merchants, isLoading, error } = useAvailableMerchants()
+  const { merchants, isLoading, error } = usePublishedMerchants()
 
   return (
     <>

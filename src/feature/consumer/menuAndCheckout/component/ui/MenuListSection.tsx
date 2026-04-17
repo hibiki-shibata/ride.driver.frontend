@@ -1,0 +1,47 @@
+
+import { useCartContext } from "../../context/cartContext"
+import { useMerchantMenu } from "../../hook/useMerchantMenu"
+import MenuItemCard from "./MenuItemCard"
+
+type MerchantListProps = {
+    merchantId: string
+}
+
+function MenuListSection({ merchantId }: MerchantListProps) {
+    const { addItem, removeItem } = useCartContext()
+    const { menuItems, isMenuLoading, menuLoadError } = useMerchantMenu(merchantId)
+    return (
+        <>
+            {isMenuLoading && (
+                <p className="text-center text-lg text-slate-300">Loading menu...</p>
+            )}
+
+            {!isMenuLoading && menuLoadError && (
+                <p className="text-center text-lg font-semibold text-rose-400">
+                    {menuLoadError}
+                </p>
+            )}
+
+            {!isMenuLoading && !menuLoadError && menuItems.length === 0 && (
+                <p className="text-center text-lg text-slate-300">
+                    No menu items are available.
+                </p>
+            )}
+
+            {!isMenuLoading && !menuLoadError && menuItems.length > 0 && (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {menuItems.map((item) => (
+                        <MenuItemCard
+                            key={item.id}
+                            item={item}
+                            onAddItem={addItem}
+                            onRemoveItem={removeItem}
+                        />
+                    ))}
+                </div>
+            )}
+        </>
+    )
+}
+
+export default MenuListSection

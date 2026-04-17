@@ -18,18 +18,17 @@ import type { MenuItem } from "../type/menuItem"
 
 type UseMerchantMenuResult = {
   menuItems: MenuItem[]
-  isLoading: boolean
-  error: string | null
+  isMenuLoading: boolean
+  menuLoadError: string | null
 }
 
 export function useMerchantMenu(merchantId: string): UseMerchantMenuResult {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [isMenuLoading, setIsMenuLoading] = useState(true)
+  const [menuLoadError, setMenuLoadError] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
-
     // setMenuItems(testMenuItems()) // Remove later
 
     async function fetchMenu() {
@@ -39,18 +38,18 @@ export function useMerchantMenu(merchantId: string): UseMerchantMenuResult {
         if (!isMounted) return
 
         setMenuItems(response)
-        setError(null)
+        setMenuLoadError(null)
       } catch (error: unknown) {
         if (!isMounted) return
 
-        setError(
+        setMenuLoadError(
           error instanceof Error
             ? error.message
             : "Failed to load menu."
         )
       } finally {
         if (!isMounted) return
-        setIsLoading(false)
+        setIsMenuLoading(false)
       }
     }
 
@@ -63,7 +62,7 @@ export function useMerchantMenu(merchantId: string): UseMerchantMenuResult {
 
   return {
     menuItems,
-    isLoading,
-    error,
+    isMenuLoading,
+    menuLoadError,
   }
 }

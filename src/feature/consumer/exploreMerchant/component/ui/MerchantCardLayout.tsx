@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { CONSUMER_ROUTE } from "../../../../../shared/constant/routePath"
-import type { MerchantProfile } from "../../type/merchantProfile"
+import type { MerchantProfile } from "../../../shared/type/merchantProfile"
 
 type MerchantCardProps = {
   merchant: MerchantProfile
