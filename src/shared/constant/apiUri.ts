@@ -5,6 +5,7 @@ export const FRONTEND_URI = "https://hibiki-shibata.github.io/ride.driver.fronte
 export const CONSUMER_API_URI = {
     LOGIN: API_BASE_URL + "/api/v1/consumer/auth/login",
     SIGNUP: API_BASE_URL + "/api/v1/consumer/auth/signup",
+    LOGOUT: API_BASE_URL + "/api/v1/consumer/auth/logout",
     REFRESH_TOKEN: API_BASE_URL + "/api/v1/consumer/auth/refresh-token",
     ME: API_BASE_URL + "/api/v1/consumer/me",
     GET_ORDER_HISTORY: API_BASE_URL + "/api/v1/consumer/order/history",

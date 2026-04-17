@@ -1,53 +1,11 @@
-// import { createContext, useContext, useState } from 'react'
-// import type { ConsumerProfile } from '../type/consumerProfile'
-// import { AccessTokenManager } from '../service/accessTokenManager'
-// import { getConsumerProfile } from '../api/getConsumerProfile'
-
-// type AuthStatus = 'authenticated' | 'unauthenticated' | 'loading'
-
-// type ConsumerAuthContextType = {
-//     authStatus: AuthStatus
-//     consumerProfile: ConsumerProfile | null
-//     login: (accessToken: string) => void
-//     logout: () => void
-// }
-
-// const ConsumerAuthContext = createContext<ConsumerAuthContextType | null>(null)
-
-// export function ConsumerAuthContextProvider({ children }: { children: React.ReactNode }) {
-//     const [status, setStatus] = useState<AuthStatus>('unauthenticated')
-//     const [consumerProfileState, setConsumerProfileState] = useState<ConsumerProfile | null>(null)
-
-//     return (
-//         <ConsumerAuthContext.Provider value={{
-//             authStatus: status,
-//             consumerProfile: consumerProfileState,
-//             login: async (accessToken: string) => {
-//                 AccessTokenManager.getInstance().setAccessToken(accessToken)
-//                 const consumerProfile: ConsumerProfile = await getConsumerProfile()
-//                 setConsumerProfileState(consumerProfile)
-//                 setStatus('authenticated')
-//             },
-//             logout: () => {
-//                 setConsumerProfileState(null)
-//                 setStatus('unauthenticated')
-//                 AccessTokenManager.getInstance().clearAccessToken()
-//             }
-//         }}>
-//             {children}
-//         </ConsumerAuthContext.Provider>
-//     )
-// }
-
-// export function useConsumerAuthContext() {
-//     return useContext(ConsumerAuthContext)
-// }
-
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import type { ConsumerProfile } from '../type/consumerProfile'
+import { CONSUMER_ROUTE } from '../../../../shared/constant/routePath'
 import { AccessTokenManager } from '../service/accessTokenManager'
 import { getConsumerProfile } from '../api/getConsumerProfile'
 import { refreshAccessToken } from '../api/refreshAccessToken'
+import { logoutReq } from '../api/logoutReq'
 
 type AuthStatus = 'authenticated' | 'unauthenticated' | 'loading'
 
@@ -61,7 +19,9 @@ type ConsumerAuthContextType = {
 
 const ConsumerAuthContext = createContext<ConsumerAuthContextType | undefined>(undefined)
 
+
 export function ConsumerAuthContextProvider({ children }: { children: React.ReactNode }) {
+    const navigate = useNavigate()
     const [authStatus, setAuthStatus] = useState<AuthStatus>('loading')
     const [consumerProfile, setConsumerProfile] = useState<ConsumerProfile | null>(null)
 
@@ -103,7 +63,8 @@ export function ConsumerAuthContextProvider({ children }: { children: React.Reac
 
     const logout = async (): Promise<void> => {
         try {
-            // optional: await logoutApiCall()
+            logoutReq()
+            navigate(CONSUMER_ROUTE.HOME)
         } finally {
             clearAuthState()
         }
