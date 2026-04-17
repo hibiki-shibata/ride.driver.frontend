@@ -53,7 +53,7 @@ function MenuItemCard({
       </div>
 
       <p className="rounded-xl border border-slate-700 bg-slate-900 p-4 text-center text-slate-300">
-        {item.description}
+        {item.productDescription}
       </p>
 
       {!item.enabled && (

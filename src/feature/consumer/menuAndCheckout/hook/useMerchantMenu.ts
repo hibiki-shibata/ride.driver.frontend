@@ -22,7 +22,7 @@ type UseMerchantMenuResult = {
   error: string | null
 }
 
-export function useMerchantMenu(merchantName: string): UseMerchantMenuResult {
+export function useMerchantMenu(merchantId: string): UseMerchantMenuResult {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -34,7 +34,7 @@ export function useMerchantMenu(merchantName: string): UseMerchantMenuResult {
 
     async function fetchMenu() {
       try {
-        const response = await getMenu(merchantName)
+        const response = await getMenu(merchantId)
 
         if (!isMounted) return
 
@@ -59,7 +59,7 @@ export function useMerchantMenu(merchantName: string): UseMerchantMenuResult {
     return () => {
       isMounted = false
     }
-  }, [merchantName])
+  }, [merchantId])
 
   return {
     menuItems,

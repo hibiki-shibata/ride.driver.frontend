@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom"
 import { useCartContext } from "../../context/cartContext"
 import MenuItemCard from "../ui/MenuItemCard"
-import CartSection from "./CartSection"
+import CartSection from "../ui/CartSection"
 import { useMerchantMenu } from "../../hook/useMerchantMenu"
 
 function MenuListSection() {
@@ -11,10 +11,10 @@ function MenuListSection() {
   const merchantName = searchParams.get("merchantName") ?? "Unknown Merchant"
   const merchantId = searchParams.get("merchantId") ?? ""
 
-  const { menuItems, isLoading, error } = useMerchantMenu(merchantName)
+  const { menuItems, isLoading, error } = useMerchantMenu(merchantId)
 
   return (
-    <>
+    <div className="flex flex-col lg:flex-row gap-10">
       <div className="flex-1">
         <h1 className="m-10 text-center text-4xl font-bold text-amber-200">
           {merchantName}
@@ -50,7 +50,7 @@ function MenuListSection() {
         )}
       </div>
       <CartSection merchantId={merchantId} />
-    </>
+    </div>
   )
 }
 
