@@ -6,15 +6,29 @@ A backend service for a Ride app, built with React, TypeScript, and Vite. It pro
 
 ## Features
 - Consumer
-  - Sign up and log in
+  - Sign up, log in and log out
   - See Merchant list
   - See Menu list
   - Send Order
   - Order History
+  - Manage profile information
 - Courier
-  - Under development
+  - *Sign up, log in and log out
+  - *Go online/offline
+  - *See assigned tasks
+  - *Update task status(Accept, PU, DO, Complete)
+  - *Update location
+  - *See task history
+  - *Manage profile information
 - Merchant
-  - Under development
+  - *Sign up, log in and log out
+  - *See incoming orders
+  - *Update order status(Mark as ready)
+  - *See order history
+  - *Manage menu items
+  - *Manage store information
+  
+  * = Under development
 
 ## Tech Stack
 - React
