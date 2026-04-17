@@ -4,7 +4,7 @@ import type { MerchantProfile } from "../type/merchantProfile"
 
 export async function getAvailableMerchants(
     page: number = 0,
-    pageSize: number = 10
+    pageSize: number = 100
 ): Promise<MerchantProfile[]> {
     const res = await httpRequest<MerchantProfile[]>({
         method: "GET",
