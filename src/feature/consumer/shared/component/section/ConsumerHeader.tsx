@@ -40,7 +40,7 @@ function ConsumerHeader() {
           </div>
         ) : (
           <>
-            <div className="hidden sm:flex">
+            <div className="hidden sm:flex mr-3">
               <LinkToLoginForm />
               <LinkToSignupForm />
             </div>

@@ -6,7 +6,7 @@ function AvailableMerchantList() {
 
   return (
     <>
-      <h1 className="mb-10 text-center text-5xl font-bold text-amber-100">
+      <h1 className="mb-10 mt-10 text-center text-5xl font-bold text-amber-100">
         Explore Available Merchants
       </h1>
 
