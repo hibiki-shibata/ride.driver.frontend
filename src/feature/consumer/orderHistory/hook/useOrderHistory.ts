@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import { getActiveTasks } from "../api/getActiveTask"
-import type { TaskDataDTO } from "../type/taskDataDTO"
+import { getOrderHistory } from "../api/getOrderHistory"
+import type { OrderHistoryDTO } from "../type/orderHistoryDTO"
 
 const POLLING_INTERVAL_MS = 30000
 
-type UseActiveTasksResult = {
-    tasks: TaskDataDTO[]
+type UseOrderHistoryResult = {
+    tasks: OrderHistoryDTO[]
     isLoading: boolean
     error: string | null
 }
@@ -32,8 +32,8 @@ type UseActiveTasksResult = {
 //     })
 // } // Remove later - for testing only
 
-export function useActiveTasks(): UseActiveTasksResult {
-    const [tasks, setTasks] = useState<TaskDataDTO[]>([])
+export function useOrderHistory(): UseOrderHistoryResult {
+    const [tasks, setTasks] = useState<OrderHistoryDTO[]>([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -42,7 +42,7 @@ export function useActiveTasks(): UseActiveTasksResult {
 
         async function fetchActiveTasks() {
             try {
-                const response: TaskDataDTO[] = await getActiveTasks()
+                const response: OrderHistoryDTO[] = await getOrderHistory()
 
                 if (!isMounted) return
 

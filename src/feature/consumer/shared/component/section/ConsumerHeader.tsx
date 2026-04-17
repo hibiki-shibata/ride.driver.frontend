@@ -17,7 +17,7 @@ function ConsumerHeader() {
 
   const { consumerProfile, authStatus } = authContext
   const isAuthenticated: boolean = authStatus === "authenticated"
-  const accountName: string = consumerProfile?.name ?? "Unknown Account"
+  const accountName: string = consumerProfile ? consumerProfile.name : "Unknown User"
 
   return (
     <header className="flex justify-between bg-black py-5 text-white md:py-0">

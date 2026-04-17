@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 import { sendOrder } from "../api/sendOrder"
 import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
 
@@ -33,11 +35,12 @@ export function useCartCheckout({
   cartItems,
   clearCart,
 }: UseCartCheckoutProps) {
+  const navigate = useNavigate()
+  const consumerAuthContext = useConsumerAuthContext()
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
-  const consumerAuthContext = useConsumerAuthContext()
-  
+
   const isAuthenticated: boolean = consumerAuthContext?.authStatus === "authenticated"
 
   const { totalPrice, totalQuantity } = getCartSummary(cartItems)
@@ -59,6 +62,8 @@ export function useCartCheckout({
 
       clearCart()
       setIsCartOpen(false)
+      alert("Order placed successfully!")
+      navigate(CONSUMER_ROUTE.ORDER_HISTORY)
     } catch (error: unknown) {
       setSubmitError(
         error instanceof Error ? error.message : "Failed to send order."

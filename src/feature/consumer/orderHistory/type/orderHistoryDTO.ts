@@ -1,9 +1,8 @@
-export type TaskDataDTO = {
+export type OrderHistoryDTO = {
     taskId: string
-    consumerName: string
-    consumerEmailaddress: string
     merchantName: string
     taskStatus: string
+    orderTime: string
     pickupAddress: string
     pickupLatitude: number
     pickupLongitude: number
