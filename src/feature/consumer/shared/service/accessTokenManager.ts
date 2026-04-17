@@ -1,9 +1,10 @@
-// Store access token in memory
+import { refreshAccessToken } from "../api/refreshAccessToken"
+
 export class AccessTokenManager {
     private static instance: AccessTokenManager
     private accessToken: string | null = null
 
-    private constructor() {}
+    private constructor() { }
 
     public static getInstance(): AccessTokenManager {
         if (!AccessTokenManager.instance) {
@@ -16,7 +17,8 @@ export class AccessTokenManager {
         this.accessToken = token
     }
 
-    public getAccessToken(): string | null {
+    public async getAccessToken(): Promise<string | null> {
+        if (!this.accessToken) await refreshAccessToken()
         return this.accessToken
     }
 

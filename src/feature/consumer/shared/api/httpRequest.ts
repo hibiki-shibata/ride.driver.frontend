@@ -18,15 +18,16 @@ export async function httpRequest<TResponse, TBody = unknown>(
   try {
     const { method, uri, headers, body, requiresAuth = false } = options
 
-    const accessToken = AccessTokenManager.getInstance().getAccessToken()
-
     const finalHeaders: Record<string, string> = {
       "Content-Type": "application/json",
       ...headers,
     }
 
+    const accessToken: string | null = await AccessTokenManager.getInstance().getAccessToken()
+
     if (requiresAuth && accessToken) {
       finalHeaders.Authorization = `Bearer ${accessToken}`
+      console.log("HTTP Request - Added Authorization Header")
     }
 
     const res = await fetch(uri, {
@@ -38,20 +39,13 @@ export async function httpRequest<TResponse, TBody = unknown>(
 
     // Retry once if unauthorized and requires auth, to handle access token expiration
     if (res.status === 401 && requiresAuth && !retried) {
-      const newAccessToken = await refreshAccessToken()
-
-      if (!newAccessToken) {
-        AccessTokenManager.getInstance().clearAccessToken()
-        throw new Error("Session expired")
-      }
-
+      await refreshAccessToken()
       return httpRequest<TResponse, TBody>(options, true)
     }
 
     if (!res.ok) {
-      const errorText = await res.text()
       throw new Error(
-        `HTTP request failed (${res.status}): ${errorText || res.statusText}`,
+        `HTTP request failed (${res.status}): ${res.text() || res.statusText}`,
       )
     }
 
