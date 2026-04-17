@@ -18,7 +18,7 @@ function MerchantCardLayout({ merchant }: MerchantCardProps) {
       className="block rounded-xl border border-slate-700 bg-slate-800 p-8 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-amber-400 hover:bg-slate-700"
     >
       <article>
-        <h2 className="pb-2 text-center text-3xl font-bold text-amber-200">
+        <h2 className="pb-2 text-center text-3xl font-bold text-green-200">
           {merchant.name}
         </h2>
 
