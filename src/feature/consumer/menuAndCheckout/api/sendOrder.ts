@@ -1,10 +1,10 @@
 import { CONSUMER_API_URI } from '../../../../shared/constant/apiURI'
 import { httpRequest } from "../../shared/api/httpRequest"
 import type { CreateOrderRequest } from "../type/createOrderRequest"
-import type { TaskDataDTO } from '../../orderHistory/type/orderHistoryDTO'
+import type { OrderHistoryDTO } from '../../orderHistory/type/orderHistoryDTO'
 
-export async function sendOrder(createOrderRequest: CreateOrderRequest): Promise<TaskDataDTO> {
-    const res = await httpRequest<TaskDataDTO>({
+export async function sendOrder(createOrderRequest: CreateOrderRequest): Promise<OrderHistoryDTO> {
+    const res = await httpRequest<OrderHistoryDTO>({
         method: "POST",
         uri: CONSUMER_API_URI.CREATE_ORDER,
         body: createOrderRequest,
