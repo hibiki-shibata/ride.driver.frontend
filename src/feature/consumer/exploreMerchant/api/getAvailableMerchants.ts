@@ -3,7 +3,7 @@ import { httpRequest } from "../../shared/api/httpRequest"
 import type { MerchantProfile } from "../type/merchantProfile"
 
 export async function getAvailableMerchants(
-    page: number = 1,
+    page: number = 0,
     pageSize: number = 10
 ): Promise<MerchantProfile[]> {
     const res = await httpRequest<MerchantProfile[]>({

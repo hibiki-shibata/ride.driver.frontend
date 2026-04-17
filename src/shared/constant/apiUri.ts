@@ -8,7 +8,7 @@ export const CONSUMER_API_URI = {
     REFRESH_TOKEN: API_BASE_URL + "/api/v1/consumer/auth/refresh-token",
     ME: API_BASE_URL + "/api/v1/consumer/me",
     GET_ORDER_HISTORY: API_BASE_URL + "/api/v1/consumer/order/history",
-    GET_AVAILABLE_MERCHANTS: API_BASE_URL + `/api/v1/consumer/explore/merchant`, // + ?page={page}&size={pageSize}
+    GET_AVAILABLE_MERCHANTS: API_BASE_URL + `/api/v1/consumer/explore/merchants`, // + ?page={page}&size={pageSize}
     GET_MERCHANT_MENU: API_BASE_URL + `/api/v1/consumer/explore/merchant`, // + /{merchantId}
     GET_ACTIVE_TASK: API_BASE_URL + `/api/v1/consumer/task/active`,
     CREATE_ORDER: API_BASE_URL + `/api/v1/consumer/task/create`,
