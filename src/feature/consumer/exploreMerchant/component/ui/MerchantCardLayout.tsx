@@ -27,7 +27,7 @@ function MerchantCardLayout({ merchant }: MerchantCardProps) {
         </p>
 
         <div className="rounded-lg border border-slate-700 bg-slate-900 p-4 text-center">
-          <p className="mb-2">
+          <p>
             Status:{" "}
             <span
               className={
@@ -38,10 +38,6 @@ function MerchantCardLayout({ merchant }: MerchantCardProps) {
             >
               {merchant.merchantStatus}
             </span>
-          </p>
-
-          <p className="text-slate-300">
-            Address: {merchant.merchantAddress}
           </p>
         </div>
       </article>

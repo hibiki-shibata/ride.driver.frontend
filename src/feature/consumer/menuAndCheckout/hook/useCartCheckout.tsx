@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { sendOrder } from "../api/sendOrder"
+import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
 
 type CartItem = {
   itemId: string
@@ -35,11 +36,14 @@ export function useCartCheckout({
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
+  const consumerAuthContext = useConsumerAuthContext()
+  
+  const isAuthenticated: boolean = consumerAuthContext?.authStatus === "authenticated"
 
   const { totalPrice, totalQuantity } = getCartSummary(cartItems)
 
   const isCheckoutDisabled =
-    isSubmitting || cartItems.length === 0 || !merchantId.trim()
+    isSubmitting || cartItems.length === 0 || !merchantId.trim() || !isAuthenticated
 
   async function handleCheckout() {
     if (isCheckoutDisabled) return
