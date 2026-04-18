@@ -1,6 +1,6 @@
-Website: https://hibiki-shibata.github.io/ride.driver.frontend/consumer/home
 
 # Ride App Frontend
+Website URL: https://hibiki-shibata.github.io/ride.driver.frontend/consumer/home
 
 A backend service for a Ride app, built with React, TypeScript, and Vite. It provides a user-friendly interface for customers to book rides, view ride history, and manage their profiles.
 
@@ -27,8 +27,10 @@ A backend service for a Ride app, built with React, TypeScript, and Vite. It pro
   - *See order history
   - *Manage menu items
   - *Manage store information
-  
-  * = Under development
+
+*Unit tests, component tests, and end-to-end tests are unimplemented yet
+
+* = Under development
 
 ## Tech Stack
 - React
