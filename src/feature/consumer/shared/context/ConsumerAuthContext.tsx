@@ -55,6 +55,7 @@ export function ConsumerAuthContextProvider({ children }: { children: React.Reac
 
         try {
             await applyAuthenticatedState(accessToken)
+            setAuthStatus('authenticated')
         } catch (error) {
             clearAuthState()
             throw error
