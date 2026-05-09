@@ -1,22 +1,8 @@
 // import { useEffect, useState } from "react"
 // import { QueryClient } from '@tanstack/react-query'
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query'
 import { getMenu } from "../api/getMenu"
 import type { MenuItem } from "../type/menuItem"
-
-// function testMenuItems(): MenuItem[] { // Remove later
-//   const menuItems: MenuItem[] = []
-//   for (let i = 0; i < 10; i++) {
-//     menuItems.push({
-//       id: `${i}`,
-//       name: `Menu Item ${i}`,
-//       description: `This is menu item ${i}'s description.`,
-//       price: 10 + i,
-//       enabled: i % 2 === 0,
-//     })
-//   }
-//   return menuItems
-// }
 
 type UseMerchantMenuResult = {
   menuItems: MenuItem[]

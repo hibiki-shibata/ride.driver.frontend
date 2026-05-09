@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom"
 import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
 import { sendOrder } from "../api/sendOrder"
@@ -15,6 +16,19 @@ type UseCartCheckoutProps = {
   merchantId: string
   cartItems: CartItem[]
   clearCart: () => void
+}
+
+type UseCartCheckout = {
+  isCartOpen: boolean
+  isPending: boolean
+  sendOrderError: string | null
+  totalPrice: number
+  totalQuantity: number
+  isCheckoutDisabled: boolean
+  openCart: () => void
+  closeCart: () => void
+  clearAndCloseCart: () => void
+  handleCheckout: () => void
 }
 
 function getCartSummary(cartItems: CartItem[]) {
@@ -34,70 +48,66 @@ export function useCartCheckout({
   merchantId,
   cartItems,
   clearCart,
-}: UseCartCheckoutProps) {
+}: UseCartCheckoutProps): UseCartCheckout {
   const navigate = useNavigate()
-  const consumerAuthContext = useConsumerAuthContext()
+  const { authStatus } = useConsumerAuthContext()
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitError, setSubmitError] = useState<string | null>(null)
 
-  const isAuthenticated: boolean = consumerAuthContext?.authStatus === "authenticated"
-
-  const { totalPrice, totalQuantity } = getCartSummary(cartItems)
-
-  const isCheckoutDisabled =
-    isSubmitting || cartItems.length === 0 || !merchantId.trim() || !isAuthenticated
-
-  async function handleCheckout() {
-    if (isCheckoutDisabled) return
-
-    try {
-      setIsSubmitting(true)
-      setSubmitError(null)
-
-      await sendOrder({
-        merchantId,
-        cartItems,
-      })
-
+  const { mutate, isPending, error } = useMutation({
+    mutationFn: () => sendOrder({ merchantId, cartItems }),
+    onSuccess: () => {
       clearCart()
       setIsCartOpen(false)
       alert("Order placed successfully!")
       navigate(CONSUMER_ROUTE.ORDER_HISTORY)
-    } catch (error: unknown) {
-      setSubmitError(
-        error instanceof Error ? error.message : "Failed to send order."
-      )
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+    },
+  })
 
-  function openCart() {
-    setIsCartOpen(true)
-  }
+  const isAuthenticated: boolean = authStatus === "authenticated"
 
-  function closeCart() {
-    if (isSubmitting) return
-    setIsCartOpen(false)
-  }
+  const { totalPrice, totalQuantity } = getCartSummary(cartItems)
+
+  const isCheckoutDisabled: boolean =
+    isPending || !isAuthenticated || cartItems.length === 0 || !merchantId.trim()
+
+  // async function handleCheckout() {
+  //   if (isCheckoutDisabled) return
+  //   try {
+  //     setIsSubmitting(true)
+  //     setSubmitError(null)
+  //     await sendOrder({
+  //       merchantId,
+  //       cartItems,
+  //     })
+  //     clearCart()
+  //     setIsCartOpen(false)
+  //     alert("Order placed successfully!")
+  //     navigate(CONSUMER_ROUTE.ORDER_HISTORY)
+  //   } catch (error: unknown) {
+  //     setSubmitError(
+  //       error instanceof Error ? error.message : "Failed to send order."
+  //     )
+  //   } finally {
+  //     setIsSubmitting(false)
+  //   }
+  // }
 
   function clearAndCloseCart() {
-    if (isSubmitting || cartItems.length === 0) return
+    if (isPending || cartItems.length === 0) return
     clearCart()
     setIsCartOpen(false)
   }
 
   return {
     isCartOpen,
-    isSubmitting,
-    submitError,
+    isPending,
+    sendOrderError: error instanceof Error ? error.message : null,
     totalPrice,
     totalQuantity,
     isCheckoutDisabled,
-    openCart,
-    closeCart,
+    openCart: () => setIsCartOpen(true),
+    closeCart: () => setIsCartOpen(false),
     clearAndCloseCart,
-    handleCheckout,
+    handleCheckout: () => isCheckoutDisabled ? null : mutate(),
   }
 }
