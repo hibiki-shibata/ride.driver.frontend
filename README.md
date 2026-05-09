@@ -5,6 +5,7 @@ Website URL: https://hibiki-shibata.github.io/ride.driver.frontend/consumer/home
 A backend service for a Ride app, built with React, TypeScript, and Vite. It provides a user-friendly interface for customers to book rides, view ride history, and manage their profiles.
 
 ## Features
+### [Live Demo Video](https://drive.google.com/file/d/1ko3GkkVkxu2W7JOJMOL2H4MTNhOH539g/view?usp=drive_link)
 - Consumer
   - Sign up, log in and log out
   - See Merchant list

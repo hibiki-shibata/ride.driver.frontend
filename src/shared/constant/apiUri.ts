@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000"
+const API_BASE_URL = "http://localhost:8080"
 
 export const FRONTEND_URI = "https://hibiki-shibata.github.io/ride.driver.frontend"
 
