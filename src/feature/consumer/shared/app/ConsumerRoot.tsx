@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import ConsumerLayout from "../layout/ConsumerLayout"
+import ConsumerLayout from "../layout/consumerLayout"
 import { ConsumerAuthContextProvider } from "../context/ConsumerAuthContext"
 
 function ConsumerRoot() {

@@ -12,8 +12,8 @@ function CartSection({ merchantId }: CartProps) {
 
   const {
     isCartOpen,
-    isSubmitting,
-    submitError,
+    isPending,
+    sendOrderError,
     totalPrice,
     totalQuantity,
     isCheckoutDisabled,
@@ -40,8 +40,8 @@ function CartSection({ merchantId }: CartProps) {
     <CartPanel
       cartItems={cartItems}
       totalPrice={totalPrice}
-      isSubmitting={isSubmitting}
-      submitError={submitError}
+      isSubmitting={isPending}
+      submitError={sendOrderError}
       isCheckoutDisabled={isCheckoutDisabled}
       onCheckout={handleCheckout}
       onClose={closeCart}

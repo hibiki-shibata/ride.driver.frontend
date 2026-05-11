@@ -1,4 +1,4 @@
-import { CONSUMER_API_URI } from '../../../../shared/constant/apiURI'
+import { CONSUMER_API_URI } from  "../../../../shared/constant/apiUri"
 import { httpRequest } from "../../shared/api/httpRequest"
 import type { CreateOrderRequest } from "../type/createOrderRequest"
 import type { OrderHistoryDTO } from '../../orderHistory/type/orderHistoryDTO'

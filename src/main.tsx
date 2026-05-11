@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './style/index.css'
 import ConsumerHome from './feature/consumer/home'
 import ConsumerMerchantList from './feature/consumer/exploreMerchant'
@@ -12,18 +13,13 @@ import CourierRoot from './feature/courier/shared/app/courierRoot'
 import CourierAuth from './feature/courier/auth'
 import CourierHome from './feature/courier/home'
 import { CONSUMER_ROUTE, COURIER_ROUTE } from './shared/constant/routePath'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate
-} from 'react-router-dom'
+import ServiceBanner from './shared/component/ServiceBanner'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
+    <ServiceBanner />
     <StrictMode>
       <Routes>
-
         <Route element={<ConsumerRoot />}>
           <Route path="*" element={<Navigate to={CONSUMER_ROUTE.HOME} />} />
           <Route path={CONSUMER_ROUTE.HOME} element={<ConsumerHome />} />
@@ -39,7 +35,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path={COURIER_ROUTE.HOME} element={<CourierHome />} />
           <Route path={COURIER_ROUTE.SIGNUP} element={<CourierAuth />} />
         </Route>
-        
       </Routes>
     </StrictMode>
   </BrowserRouter>

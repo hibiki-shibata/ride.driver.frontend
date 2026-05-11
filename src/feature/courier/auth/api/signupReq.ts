@@ -1,4 +1,4 @@
-import { COURIER_API_URI } from "../../../../shared/constant/apiURI"
+import { COURIER_API_URI } from "../../../../shared/constant/apiUri"
 import { httpRequest } from "../../shared/api/httpRequest"
 
 export type CpApplicationData = {

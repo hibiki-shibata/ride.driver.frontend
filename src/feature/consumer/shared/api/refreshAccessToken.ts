@@ -1,4 +1,4 @@
-import { CONSUMER_API_URI } from "../../../../shared/constant/apiURI"
+import { CONSUMER_API_URI } from "../../../../shared/constant/apiUri"
 import { AccessTokenManager } from "../service/accessTokenManager"
 
 let refreshPromise: Promise<string | null> | null = null // To prevent multiple simultaneous refresh requests

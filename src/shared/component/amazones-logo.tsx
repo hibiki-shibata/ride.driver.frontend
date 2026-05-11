@@ -7,7 +7,6 @@ function AmazonesLogo() {
                 ~Amazones~
             </a>
         </h1 >
-
     )
 }
 

@@ -1,5 +1,5 @@
 import type { LoginReqDTO, LoginResDTO } from "../type/loginReqDTO"
-import { CONSUMER_API_URI } from "../../../../shared/constant/apiURI"
+import { CONSUMER_API_URI } from "../../../../shared/constant/apiUri"
 import { httpRequest } from "../../shared/api/httpRequest"
 
 export async function loginReq(
