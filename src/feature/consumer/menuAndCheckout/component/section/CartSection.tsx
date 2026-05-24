@@ -1,7 +1,7 @@
 import { useCartContext } from "../../context/cartContext"
 import { useCartCheckout } from "../../hook/useCartCheckout"
-import CartFloatingButton from "./CartFloatingButton"
-import CartPanel from "./CartPanel"
+import CartFloatingButton from "../ui/CartFloatingButton"
+import CartPanel from "../ui/CartPanel"
 
 type CartProps = {
   merchantId: string

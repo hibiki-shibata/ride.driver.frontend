@@ -1,7 +1,7 @@
 
 import { useCartContext } from "../../context/cartContext"
 import { useMerchantMenu } from "../../hook/useMerchantMenu"
-import MenuItemCard from "./MenuItemCard"
+import MenuItemCard from "../ui/MenuItemCard"
 
 type MerchantListProps = {
     merchantId: string
@@ -34,8 +34,8 @@ function MenuListSection({ merchantId }: MerchantListProps) {
                         <MenuItemCard
                             key={item.id}
                             item={item}
-                            onAddItem={addItem}
-                            onRemoveItem={removeItem}
+                            onIncrease={addItem}
+                            onDecrease={removeItem}
                         />
                     ))}
                 </div>

@@ -8,14 +8,14 @@ type CartItemPayload = {
 
 type MenuItemCardProps = {
   item: MenuItem
-  onAddItem: (item: CartItemPayload) => void
-  onRemoveItem: (itemId: string) => void
+  onIncrease: (item: CartItemPayload) => void
+  onDecrease: (itemId: string) => void
 }
 
 function MenuItemCard({
   item,
-  onAddItem,
-  onRemoveItem,
+  onIncrease,
+  onDecrease,
 }: MenuItemCardProps) {
   return (
     <article className="my-5 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800 px-7 pb-6 pt-7 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-amber-400 hover:bg-slate-700">
@@ -31,7 +31,7 @@ function MenuItemCard({
         <button
           type="button"
           className="rounded-full bg-slate-600 px-3 py-1 text-sm font-bold transition-colors hover:bg-rose-500 active:scale-90"
-          onClick={() => onRemoveItem(item.id)}
+          onClick={() => onDecrease(item.id)}
         >
           -
         </button>
@@ -41,7 +41,7 @@ function MenuItemCard({
           disabled={!item.enabled}
           className="rounded-full bg-slate-600 px-3 py-1 text-sm font-bold transition-colors hover:bg-emerald-500 active:scale-110 disabled:cursor-not-allowed disabled:opacity-50"
           onClick={() =>
-            onAddItem({
+            onIncrease({
               itemId: item.id,
               name: item.name,
               price: item.price,

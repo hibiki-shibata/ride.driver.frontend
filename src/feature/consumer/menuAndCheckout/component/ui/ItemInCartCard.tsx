@@ -5,26 +5,28 @@ type CartItem = {
   quantity: number
 }
 
-type CartItemRowProps = {
+type ItemInCartCardProps = {
   item: CartItem
   isDisabled: boolean
   onIncrease: (item: Pick<CartItem, "itemId" | "name" | "price">) => void
   onDecrease: (itemId: string) => void
 }
 
-function CartItemRow({
+function ItemInCartCard({
   item,
   isDisabled,
   onIncrease,
   onDecrease,
-}: CartItemRowProps) {
+}: ItemInCartCardProps) {
   const subtotal = item.price * item.quantity
 
   return (
     <li className="rounded-xl border border-slate-700 bg-slate-800 p-4">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
-          <p className="text-lg font-semibold text-amber-100">{item.name}</p>
+          <p className="text-lg font-semibold text-amber-100">
+            {item.name}
+          </p>
           <p className="mt-1 text-sm text-slate-300">
             Unit price: ${item.price.toFixed(2)}
           </p>
@@ -71,4 +73,4 @@ function CartItemRow({
   )
 }
 
-export default CartItemRow
+export default ItemInCartCard

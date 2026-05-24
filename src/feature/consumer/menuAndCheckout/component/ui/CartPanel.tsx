@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import CartItemRow from "./CartItemCard"
+import ItemInCartCard from "./ItemInCartCard"
 
 type CartItem = {
   itemId: string
@@ -36,10 +36,7 @@ function CartPanel({
   const cartTopRef = useRef<HTMLDivElement>(null)
   return (
     <>
-      <aside
-        className="rounded-xl border border-yellow-700 p-6 pt-16"
-        ref={cartTopRef}
-      >
+      <aside className="rounded-xl border border-yellow-700 p-6 pt-16" ref={cartTopRef}>
         <h2 className="mb-4 text-center text-2xl font-bold text-amber-200">
           Cart Details
         </h2>
@@ -79,7 +76,7 @@ function CartPanel({
         ) : (
           <ul className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
             {cartItems.map((item) => (
-              <CartItemRow
+              <ItemInCartCard
                 key={item.itemId}
                 item={item}
                 isDisabled={isSubmitting}
@@ -101,7 +98,7 @@ function CartPanel({
       </aside>
 
       <button
-        className="fixed bottom-4 w-full text-center italic text-slate-400 hover:text-slate-200"
+        className="fixed bottom-4 w-full text-center italic text-slate-400 hover:text-slate-200 animate-bounce"
         onClick={() => cartTopRef.current?.scrollIntoView({ behavior: "smooth" })}
       >
         Go To Cart Detail
