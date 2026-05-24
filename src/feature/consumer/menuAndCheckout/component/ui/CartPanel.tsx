@@ -1,31 +1,13 @@
 import { useRef } from "react"
-import ItemInCartCard from "./ItemInCartCard"
-import type { CartItem } from "../../type/cartItem"
+import CartItemCard from "./CartItemCards"
 import { useCartContext } from "../../context/cartContext"
-
-// type CartPanelProps = {
-//   cartItems: CartItem[]
-//   totalPrice: number
-//   isSubmitting: boolean
-//   submitError: string | null
-//   isCheckoutDisabled: boolean
-//   onCheckout: () => void
-//   onClose: () => void
-//   onClearCart: () => void
-//   onIncrease: (item: Omit<CartItem, "quantity">) => void
-//   onDecrease: (itemId: string) => void
-// }
 
 function CartPanel() {
   const cartTopRef = useRef<HTMLDivElement>(null)
   const {
-    // openCart,
+    isCartEmpty,
     closeCart,
-    // isCartOpen,
-    // addItem,
-    // removeItem,
     cartItems,
-    // totalQuantity,
     totalPrice,
     checkout,
     isCheckoutPending,
@@ -70,25 +52,20 @@ function CartPanel() {
           </p>
         )}
 
-        {cartItems.length === 0 ? (
-          <p className="text-center text-slate-300">Your cart is empty.</p>
-        ) : (
-          <ul className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
-            {cartItems.map((item) => (
-              <ItemInCartCard
-              // key={item.id}
-              itemInCart={item}
-              // isDisabled={isCheckoutPending}
-              // onIncrease={onIncrease}
-              // onDecrease={onDecrease}
-              />
-            ))}
-          </ul>
+        {isCartEmpty && (
+          <p className="text-center text-slate-300">
+            Your cart is empty.
+          </p>
         )}
+
+        <ul className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
+          {cartItems.map((cartItem) => <CartItemCard cartItem={cartItem} />)}
+        </ul>
+
 
         <button
           type="button"
-          disabled={isCheckoutPending || cartItems.length === 0}
+          disabled={isCheckoutPending || isCartEmpty}
           onClick={clearCart}
           className="mt-5 w-full rounded-xl bg-rose-600 px-4 py-3 font-bold text-white transition-colors hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-50"
         >

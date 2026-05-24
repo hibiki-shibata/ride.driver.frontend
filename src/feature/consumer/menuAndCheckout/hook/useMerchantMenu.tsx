@@ -1,18 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
-import { getMenu } from "../api/getMenu"
-import type { MenuItem } from "../type/menuItem"
 import { useCartContext } from "../context/cartContext"
+import type { MenuItem } from "../type/menuItem"
+import { getMenu } from "../api/getMenu"
 
-type UseMerchantMenuResult = {
+type UseMerchantMenuType = {
   menuItems: MenuItem[]
   isMenuLoading: boolean
   menuLoadError: string | null
 }
 
-// // useMerchantMenu.ts — same file, same interface
-export function useMerchantMenu(): UseMerchantMenuResult {
+export function useMerchantMenu(): UseMerchantMenuType {
   const { merchantId } = useCartContext()
-
   const { data, isLoading, error } = useQuery({
     queryKey: ['menu', merchantId],
     queryFn: () => getMenu(merchantId),

@@ -7,10 +7,7 @@ function CartSection() {
   return (
     <>
       {!isCartOpen && (
-        <CartFloatingButton
-          totalQuantity={totalQuantity}
-          onOpen={openCart}
-        />
+        <CartFloatingButton totalQuantity={totalQuantity} onOpen={openCart} />
       )}
 
       {isCartOpen && (

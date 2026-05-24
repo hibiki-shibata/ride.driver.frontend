@@ -4,17 +4,18 @@ import MenuItemCard from "../ui/MenuItemCard"
 
 
 function MenuListSection() {
-    // const { addItem, removeItem } = useCartContext()
     const { menuItems, isMenuLoading, menuLoadError } = useMerchantMenu()
     return (
         <>
             {isMenuLoading && (
-                <p className="text-center text-lg text-slate-300">Loading menu...</p>
+                <p className="text-center text-lg text-slate-300">
+                    Loading menu...
+                </p>
             )}
 
-            {!isMenuLoading && menuLoadError && (
+            {menuLoadError && (
                 <p className="text-center text-lg font-semibold text-rose-400">
-                    {menuLoadError}
+                    Failed to load menu data
                 </p>
             )}
 
@@ -26,12 +27,7 @@ function MenuListSection() {
 
             {!isMenuLoading && !menuLoadError && menuItems.length > 0 && (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                    {menuItems.map((item) => (
-                        <MenuItemCard
-                            // key={item.id}
-                            item={item}
-                        />
-                    ))}
+                    {menuItems.map((menuItem) => <MenuItemCard menuItem={menuItem} />)}
                 </div>
             )}
         </>

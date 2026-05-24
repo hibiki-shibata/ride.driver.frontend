@@ -6,10 +6,16 @@ function MxProfileHeader() {
     const { merchantProfile, isMxProfileLoading, mxProfileLoadError } = useMerchantProfile()
     return (
         <>
-            {isMxProfileLoading && "Loading merchant profile..."}
+            {isMxProfileLoading && (
+                <h1 className="text-center font-bold">
+                    Loading merchant profile...
+                </h1>
+            )}
 
-            {!isMxProfileLoading && mxProfileLoadError && (
-                <span className="text-rose-400">{mxProfileLoadError}</span>
+            {mxProfileLoadError && (
+                <h1 className="text-rose-400 text-center font-bold">
+                    Failed to fetch merchant Profile
+                </h1>
             )}
 
             {!isMxProfileLoading && !mxProfileLoadError && merchantProfile && (
@@ -17,7 +23,6 @@ function MxProfileHeader() {
                     <h1 className="mt-10 mb-5 text-center text-4xl font-bold text-amber-200">
                         {merchantProfile.name}'s Menu
                     </h1>
-                    {/* Merchant comments, address, and phone number */}
                     <p className="mt-2 text-center text-lg text-slate-300">
                         {merchantProfile.merchantAddress}
                     </p>

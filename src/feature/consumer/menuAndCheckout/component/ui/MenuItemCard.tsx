@@ -1,60 +1,54 @@
 import type { MenuItem } from "../../type/menuItem"
 import { useCartContext } from "../../context/cartContext"
-// type CartItemPayload = {
-//   itemId: string
-//   name: string
-//   price: number
-// }
 
 type MenuItemCardProps = {
-  item: MenuItem
+  menuItem: MenuItem
 }
 
-function MenuItemCard({
-  item
-}: MenuItemCardProps) {
-  const { addItem, removeItem } = useCartContext()
-  function menuItemToCartItem(item: MenuItem) {
-    return {
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      quantity: 1,
-    };
+function menuItemToCartItemMapper(menuItem: MenuItem) {
+  return {
+    id: menuItem.id,
+    name: menuItem.name,
+    price: menuItem.price,
+    quantity: 1,
   }
+}
+
+function MenuItemCard({ menuItem }: MenuItemCardProps) {
+  const { addItem, removeItem } = useCartContext()
 
   return (
     <article className="my-5 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800 px-7 pb-6 pt-7 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-amber-400 hover:bg-slate-700">
       <h3 className="mb-4 text-center text-2xl font-bold text-amber-100">
-        {item.name}
+        {menuItem.name}
       </h3>
 
       <div className="mb-4 flex items-center justify-center gap-2">
         <span className="text-lg font-bold text-emerald-400">
-          ${item.price.toFixed(2)}
+          ${menuItem.price.toFixed(2)}
         </span>
 
         <button
           type="button"
           className="rounded-full bg-slate-600 px-3 py-1 text-sm font-bold transition-colors hover:bg-rose-500 active:scale-90"
-          onClick={() => removeItem(item.id)}>
+          onClick={() => removeItem(menuItemToCartItemMapper(menuItem))}>
           -
         </button>
 
         <button
           type="button"
-          disabled={!item.enabled}
+          disabled={!menuItem.enabled}
           className="rounded-full bg-slate-600 px-3 py-1 text-sm font-bold transition-colors hover:bg-emerald-500 active:scale-110 disabled:cursor-not-allowed disabled:opacity-50"
-          onClick={() => addItem(menuItemToCartItem(item))}>
+          onClick={() => addItem(menuItemToCartItemMapper(menuItem))}>
           +
         </button>
       </div>
 
       <p className="rounded-xl border border-slate-700 bg-slate-900 p-4 text-center text-slate-300">
-        {item.productDescription}
+        {menuItem.productDescription}
       </p>
 
-      {!item.enabled && (
+      {!menuItem.enabled && (
         <p className="mt-3 text-center font-semibold text-rose-400">
           Currently unavailable
         </p>

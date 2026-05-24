@@ -1,55 +1,23 @@
-import { useEffect, useState } from "react"
+import { useQuery } from '@tanstack/react-query'
+import { useCartContext } from "../context/cartContext"
 import type { MerchantProfile } from "../../shared/type/merchantProfile"
 import { getMerchantProfile } from "../api/getMerchantProfile"
-import { useCartContext } from "../context/cartContext"
 
-type UseMerchantProfileResult = {
+type UseMerchantProfileType = {
     merchantProfile: MerchantProfile | undefined
     isMxProfileLoading: boolean
     mxProfileLoadError: string | null
 }
 
-export function useMerchantProfile(): UseMerchantProfileResult {
+export function useMerchantProfile(): UseMerchantProfileType {
     const { merchantId } = useCartContext()
-    const [merchantProfile, setMerchantProfile] = useState<MerchantProfile>()
-    const [isMxProfileLoading, setIsMxProfileLoading] = useState(true)
-    const [mxProfileLoadError, setMxProfileLoadError] = useState<string | null>(null)
-
-    useEffect(() => {
-        let isMounted = true
-
-        async function fetchMerchantProfile() {
-            try {
-                const response = await getMerchantProfile(merchantId)
-
-                if (!isMounted) return
-
-                setMerchantProfile(response)
-                setMxProfileLoadError(null)
-            } catch (error: unknown) {
-                if (!isMounted) return
-
-                setMxProfileLoadError(
-                    error instanceof Error
-                        ? error.message
-                        : "Failed to load menu."
-                )
-            } finally {
-                if (!isMounted) return
-                setIsMxProfileLoading(false)
-            }
-        }
-
-        fetchMerchantProfile()
-
-        return () => {
-            isMounted = false
-        }
-    }, [merchantId])
-
+    const { data, isLoading, error } = useQuery({
+        queryKey: ['merchantProfile', merchantId],
+        queryFn: () => getMerchantProfile(merchantId),
+    })
     return {
-        merchantProfile,
-        isMxProfileLoading,
-        mxProfileLoadError,
+        merchantProfile: data ? data : undefined,
+        isMxProfileLoading: isLoading,
+        mxProfileLoadError: error ? JSON.stringify(error) : null,
     }
 }
