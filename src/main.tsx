@@ -14,28 +14,33 @@ import CourierAuth from './feature/courier/auth'
 import CourierHome from './feature/courier/home'
 import { CONSUMER_ROUTE, COURIER_ROUTE } from './shared/constant/routePath'
 import ServiceBanner from './shared/component/ServiceBanner'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <ServiceBanner />
-    <StrictMode>
-      <Routes>
-        <Route element={<ConsumerRoot />}>
-          <Route path="*" element={<Navigate to={CONSUMER_ROUTE.HOME} />} />
-          <Route path={CONSUMER_ROUTE.HOME} element={<ConsumerHome />} />
-          <Route path={CONSUMER_ROUTE.MERCHANTS} element={<ConsumerMerchantList />} />
-          <Route path={CONSUMER_ROUTE.ORDER_HISTORY} element={<ConsumerActiveOrder />} />
-          <Route path={CONSUMER_ROUTE.MENU} element={<ConsumerMenuCheckout />} />
-          <Route path={CONSUMER_ROUTE.SIGNUP} element={<ConsumerAuth isLogin={false} />} />
-          <Route path={CONSUMER_ROUTE.LOGIN} element={<ConsumerAuth isLogin={true} />} />
-        </Route>
+    <QueryClientProvider client={queryClient}>
+      <ServiceBanner />
+      <StrictMode>
+        <Routes>
+          <Route element={<ConsumerRoot />}>
+            <Route path="*" element={<Navigate to={CONSUMER_ROUTE.HOME} />} />
+            <Route path={CONSUMER_ROUTE.HOME} element={<ConsumerHome />} />
+            <Route path={CONSUMER_ROUTE.MERCHANTS} element={<ConsumerMerchantList />} />
+            <Route path={CONSUMER_ROUTE.ORDER_HISTORY} element={<ConsumerActiveOrder />} />
+            <Route path={CONSUMER_ROUTE.MENU} element={<ConsumerMenuCheckout />} />
+            <Route path={CONSUMER_ROUTE.SIGNUP} element={<ConsumerAuth isLogin={false} />} />
+            <Route path={CONSUMER_ROUTE.LOGIN} element={<ConsumerAuth isLogin={true} />} />
+          </Route>
 
-        <Route element={<CourierRoot />}>
-          <Route path="*" element={<Navigate to={COURIER_ROUTE.HOME} />} />
-          <Route path={COURIER_ROUTE.HOME} element={<CourierHome />} />
-          <Route path={COURIER_ROUTE.SIGNUP} element={<CourierAuth />} />
-        </Route>
-      </Routes>
-    </StrictMode>
-  </BrowserRouter>
+          <Route element={<CourierRoot />}>
+            <Route path="*" element={<Navigate to={COURIER_ROUTE.HOME} />} />
+            <Route path={COURIER_ROUTE.HOME} element={<CourierHome />} />
+            <Route path={COURIER_ROUTE.SIGNUP} element={<CourierAuth />} />
+          </Route>
+        </Routes>
+      </StrictMode>
+    </QueryClientProvider>
+  </BrowserRouter >
 )

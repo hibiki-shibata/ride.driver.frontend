@@ -1,4 +1,5 @@
-const API_BASE_URL = "http://localhost:8080"
+const isDev = process.env.NODE_ENV === "development" || process.env.NODE_ENV === "dev"
+const API_BASE_URL = isDev ? "http://localhost:8080" : "https://ride-driver-backend-production.up.railway.app"
 
 export const FRONTEND_URI = "https://hibiki-shibata.github.io/ride.driver.frontend"
 
