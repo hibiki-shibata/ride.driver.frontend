@@ -1,53 +1,104 @@
 import { createContext, useContext, useState } from 'react'
-import type { CartItem } from "../type/cartItem"
-
-type AddItemParams = {
-    itemId: string
-    name: string
-    price: number
-}
+import { useMutation } from "@tanstack/react-query"
+import { useNavigate, useSearchParams } from "react-router-dom"
+import type { CartItem } from '../type/cartItem'
+import { sendOrder } from "../api/sendOrder"
+import { CONSUMER_ROUTE } from "../../../../shared/constant/routePath"
+import { useConsumerAuthContext } from "../../shared/context/ConsumerAuthContext"
 
 type CartContextType = {
+    openCart: () => void
+    closeCart: () => void
+    isCartOpen: boolean
+    addItem: (targetItem: CartItem) => void
+    removeItem: (targetItem: string) => void
+    merchantId: string
     cartItems: CartItem[]
-    addItem: (addItemParams: AddItemParams) => void
-    removeItem: (itemId: string) => void
+    totalQuantity: number
+    totalPrice: number
+    checkout: () => void
+    isCheckoutPending: boolean
+    isCheckoutDisabled: boolean
+    checkoutError: Error | null
     clearCart: () => void
 }
 
 const CartContext = createContext<CartContextType | null>(null)
 
+function getCartSummary(cartItems: CartItem[]) {
+    return cartItems.reduce(
+        (summary, item) => ({
+            totalPrice: summary.totalPrice + item.price * item.quantity,
+            totalQuantity: summary.totalQuantity + item.quantity,
+        }),
+        {
+            totalPrice: 0,
+            totalQuantity: 0,
+        }
+    )
+}
+
 export function CartContextProvider({ children }: { children: React.ReactNode }) {
-    const [items, setOrderItems] = useState<CartItem[]>([])
+    const redirect = useNavigate()
+    const [isCartOpen, setIsCartOpen] = useState(false)
+    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [searchParams] = useSearchParams()
+    const merchantId = searchParams.get("merchantId") ?? ""
+    const { authStatus } = useConsumerAuthContext()
+    const isAuthenticated: boolean = authStatus === "authenticated"
+    const isCartEmpty: boolean = cartItems.length === 0
 
-    function addItem(item: AddItemParams) {
-        setOrderItems(prevItems => {
-            const existingItem = prevItems.find(i => i.itemId === item.itemId)
-            if (existingItem) {
-                return prevItems.map(i => i.itemId === item.itemId ? { ...i, quantity: i.quantity + 1 } : i)
+    function addItem(targetItem: CartItem) {
+        setCartItems(prevItems => {
+            const prevItem = prevItems.find(item => item.id === targetItem.id)
+            if (prevItem) {
+                return prevItems.map(item => item.id === targetItem.id ? { ...item, quantity: item.quantity + 1 } : item)
             } else {
-                return [...prevItems, { ...item, quantity: 1 }]
+                return [...prevItems, { ...targetItem, quantity: 1 }]
             }
         })
     }
 
-    function removeItem(itemId: string) {
-        setOrderItems(prevItems => {
-            const existingItem = prevItems.find(i => i.itemId === itemId)
-            if (!existingItem) return prevItems
-            if (existingItem.quantity === 1) {
-                return prevItems.filter(i => i.itemId !== itemId)
+    function removeItem(targetItemId: string) {
+        setCartItems(prevItems => {
+            const prevItem = prevItems.find(item => item.id === targetItemId)
+            if (!prevItem) {
+                return prevItems
+            } else if (prevItem.quantity === 1) {
+                return prevItems.filter(item => item.id !== targetItemId)
             } else {
-                return prevItems.map(i => i.itemId === itemId ? { ...i, quantity: i.quantity - 1 } : i)
+                return prevItems.map(item => item.id === targetItemId ? { ...item, quantity: item.quantity - 1 } : item)
             }
         })
     }
+
+    // Send Order
+    const { mutate, isPending, error } = useMutation({
+        mutationFn: () => sendOrder({ merchantId, cartItems }),
+        onSuccess: () => {
+            setCartItems([])
+            setIsCartOpen(false)
+            alert("Order placed successfully!")
+            redirect(CONSUMER_ROUTE.ORDER_HISTORY)
+        }
+    })
 
     return (
         <CartContext.Provider value={{
-            cartItems: items,
+            openCart: () => setIsCartOpen(true),
+            closeCart: () => setIsCartOpen(false),
+            isCartOpen: isCartOpen,
             addItem: addItem,
             removeItem: removeItem,
-            clearCart: () => setOrderItems([])
+            totalQuantity: getCartSummary(cartItems).totalQuantity,
+            totalPrice: getCartSummary(cartItems).totalPrice,
+            merchantId: merchantId,
+            cartItems: cartItems,
+            checkout: () => mutate(),
+            isCheckoutPending: isPending,
+            isCheckoutDisabled: isPending || !isAuthenticated || isCartEmpty || !merchantId.trim(),
+            checkoutError: error,
+            clearCart: () => setCartItems([])
         }}>
             {children}
         </CartContext.Provider>
@@ -56,8 +107,6 @@ export function CartContextProvider({ children }: { children: React.ReactNode })
 
 export function useCartContext() {
     const context = useContext(CartContext)
-    if (!context) {
-        throw new Error('useCart must be used within a CartContextProvider')
-    }
+    if (!context) throw new Error('useCart must be used within a CartContextProvider')
     return context
 }

@@ -1,39 +1,38 @@
 import { useRef } from "react"
 import ItemInCartCard from "./ItemInCartCard"
+import type { CartItem } from "../../type/cartItem"
+import { useCartContext } from "../../context/cartContext"
 
-type CartItem = {
-  itemId: string
-  name: string
-  price: number
-  quantity: number
-}
+// type CartPanelProps = {
+//   cartItems: CartItem[]
+//   totalPrice: number
+//   isSubmitting: boolean
+//   submitError: string | null
+//   isCheckoutDisabled: boolean
+//   onCheckout: () => void
+//   onClose: () => void
+//   onClearCart: () => void
+//   onIncrease: (item: Omit<CartItem, "quantity">) => void
+//   onDecrease: (itemId: string) => void
+// }
 
-type CartPanelProps = {
-  cartItems: CartItem[]
-  totalPrice: number
-  isSubmitting: boolean
-  submitError: string | null
-  isCheckoutDisabled: boolean
-  onCheckout: () => void
-  onClose: () => void
-  onClearCart: () => void
-  onIncrease: (item: Omit<CartItem, "quantity">) => void
-  onDecrease: (itemId: string) => void
-}
-
-function CartPanel({
-  cartItems,
-  totalPrice,
-  isSubmitting,
-  submitError,
-  isCheckoutDisabled,
-  onCheckout,
-  onClose,
-  onClearCart,
-  onIncrease,
-  onDecrease,
-}: CartPanelProps) {
+function CartPanel() {
   const cartTopRef = useRef<HTMLDivElement>(null)
+  const {
+    // openCart,
+    closeCart,
+    // isCartOpen,
+    // addItem,
+    // removeItem,
+    cartItems,
+    // totalQuantity,
+    totalPrice,
+    checkout,
+    isCheckoutPending,
+    isCheckoutDisabled,
+    checkoutError,
+    clearCart
+  } = useCartContext()
   return (
     <>
       <aside className="rounded-xl border border-yellow-700 p-6 pt-16" ref={cartTopRef}>
@@ -49,25 +48,25 @@ function CartPanel({
           <button
             type="button"
             disabled={isCheckoutDisabled}
-            onClick={onCheckout}
+            onClick={checkout}
             className="w-full rounded-xl bg-emerald-600 px-4 py-3 font-bold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {isSubmitting ? "Processing..." : "Proceed to Checkout"}
+            {isCheckoutPending ? "Processing..." : "Proceed to Checkout"}
           </button>
 
           <button
             type="button"
-            disabled={isSubmitting}
-            onClick={onClose}
+            disabled={isCheckoutPending}
+            onClick={closeCart}
             className="w-full rounded-xl bg-gray-600 px-4 py-3 font-bold text-white transition-colors hover:bg-gray-500 disabled:cursor-not-allowed disabled:opacity-50"
           >
             Close
           </button>
         </div>
 
-        {submitError && (
+        {checkoutError && (
           <p className="mb-4 rounded-lg border border-rose-500 bg-rose-950 px-4 py-3 text-sm text-rose-300">
-            {submitError}
+            {JSON.stringify(checkoutError)}
           </p>
         )}
 
@@ -77,11 +76,11 @@ function CartPanel({
           <ul className="space-y-3 rounded-xl border border-slate-700 bg-slate-900 p-4">
             {cartItems.map((item) => (
               <ItemInCartCard
-                key={item.itemId}
-                item={item}
-                isDisabled={isSubmitting}
-                onIncrease={onIncrease}
-                onDecrease={onDecrease}
+              // key={item.id}
+              itemInCart={item}
+              // isDisabled={isCheckoutPending}
+              // onIncrease={onIncrease}
+              // onDecrease={onDecrease}
               />
             ))}
           </ul>
@@ -89,8 +88,8 @@ function CartPanel({
 
         <button
           type="button"
-          disabled={isSubmitting || cartItems.length === 0}
-          onClick={onClearCart}
+          disabled={isCheckoutPending || cartItems.length === 0}
+          onClick={clearCart}
           className="mt-5 w-full rounded-xl bg-rose-600 px-4 py-3 font-bold text-white transition-colors hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-50"
         >
           Clear Cart

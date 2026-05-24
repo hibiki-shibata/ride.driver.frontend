@@ -1,15 +1,11 @@
-
-import { useCartContext } from "../../context/cartContext"
+// import { useCartContext } from "../../context/cartContext"
 import { useMerchantMenu } from "../../hook/useMerchantMenu"
 import MenuItemCard from "../ui/MenuItemCard"
 
-type MerchantListProps = {
-    merchantId: string
-}
 
-function MenuListSection({ merchantId }: MerchantListProps) {
-    const { addItem, removeItem } = useCartContext()
-    const { menuItems, isMenuLoading, menuLoadError } = useMerchantMenu(merchantId)
+function MenuListSection() {
+    // const { addItem, removeItem } = useCartContext()
+    const { menuItems, isMenuLoading, menuLoadError } = useMerchantMenu()
     return (
         <>
             {isMenuLoading && (
@@ -32,10 +28,8 @@ function MenuListSection({ merchantId }: MerchantListProps) {
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {menuItems.map((item) => (
                         <MenuItemCard
-                            key={item.id}
+                            // key={item.id}
                             item={item}
-                            onIncrease={addItem}
-                            onDecrease={removeItem}
                         />
                     ))}
                 </div>

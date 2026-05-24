@@ -1,22 +1,28 @@
 import type { MenuItem } from "../../type/menuItem"
-
-type CartItemPayload = {
-  itemId: string
-  name: string
-  price: number
-}
+import { useCartContext } from "../../context/cartContext"
+// type CartItemPayload = {
+//   itemId: string
+//   name: string
+//   price: number
+// }
 
 type MenuItemCardProps = {
   item: MenuItem
-  onIncrease: (item: CartItemPayload) => void
-  onDecrease: (itemId: string) => void
 }
 
 function MenuItemCard({
-  item,
-  onIncrease,
-  onDecrease,
+  item
 }: MenuItemCardProps) {
+  const { addItem, removeItem } = useCartContext()
+  function menuItemToCartItem(item: MenuItem) {
+    return {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: 1,
+    };
+  }
+
   return (
     <article className="my-5 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800 px-7 pb-6 pt-7 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-amber-400 hover:bg-slate-700">
       <h3 className="mb-4 text-center text-2xl font-bold text-amber-100">
@@ -31,8 +37,7 @@ function MenuItemCard({
         <button
           type="button"
           className="rounded-full bg-slate-600 px-3 py-1 text-sm font-bold transition-colors hover:bg-rose-500 active:scale-90"
-          onClick={() => onDecrease(item.id)}
-        >
+          onClick={() => removeItem(item.id)}>
           -
         </button>
 
@@ -40,14 +45,7 @@ function MenuItemCard({
           type="button"
           disabled={!item.enabled}
           className="rounded-full bg-slate-600 px-3 py-1 text-sm font-bold transition-colors hover:bg-emerald-500 active:scale-110 disabled:cursor-not-allowed disabled:opacity-50"
-          onClick={() =>
-            onIncrease({
-              itemId: item.id,
-              name: item.name,
-              price: item.price,
-            })
-          }
-        >
+          onClick={() => addItem(menuItemToCartItem(item))}>
           +
         </button>
       </div>

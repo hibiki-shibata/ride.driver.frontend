@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import type { MerchantProfile } from "../../shared/type/merchantProfile"
 import { getMerchantProfile } from "../api/getMerchantProfile"
+import { useCartContext } from "../context/cartContext"
 
 type UseMerchantProfileResult = {
     merchantProfile: MerchantProfile | undefined
@@ -8,7 +9,8 @@ type UseMerchantProfileResult = {
     mxProfileLoadError: string | null
 }
 
-export function useMerchantProfile(merchantId: string): UseMerchantProfileResult {
+export function useMerchantProfile(): UseMerchantProfileResult {
+    const { merchantId } = useCartContext()
     const [merchantProfile, setMerchantProfile] = useState<MerchantProfile>()
     const [isMxProfileLoading, setIsMxProfileLoading] = useState(true)
     const [mxProfileLoadError, setMxProfileLoadError] = useState<string | null>(null)

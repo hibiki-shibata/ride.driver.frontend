@@ -1,12 +1,9 @@
 
 import { useMerchantProfile } from "../../hook/useMerchantProfile"
 
-type MxProfileProps = {
-    merchantId: string
-}
 
-function MxProfileHeader({ merchantId }: MxProfileProps) {
-    const { merchantProfile, isMxProfileLoading, mxProfileLoadError } = useMerchantProfile(merchantId)
+function MxProfileHeader() {
+    const { merchantProfile, isMxProfileLoading, mxProfileLoadError } = useMerchantProfile()
     return (
         <>
             {isMxProfileLoading && "Loading merchant profile..."}
