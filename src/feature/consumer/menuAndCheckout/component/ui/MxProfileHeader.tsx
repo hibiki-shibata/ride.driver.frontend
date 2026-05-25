@@ -7,7 +7,7 @@ function MxProfileHeader() {
     return (
         <>
             {isMxProfileLoading && (
-                <h1 className="text-center font-bold">
+                <h1 className="text-center font-bold animate-bounce">
                     Loading merchant profile...
                 </h1>
             )}

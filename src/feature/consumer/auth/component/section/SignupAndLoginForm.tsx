@@ -13,23 +13,29 @@ function SignupAndLogin({ isLogin }: { isLogin: boolean }) {
 
   return (
     <section className="flex flex-col items-center px-20 py-24 sm:py-32 bg-gray-900 text-white">
-      <h1 className="mb-10 text-4xl font-bold">Welcome back to Amazones platform!</h1>
+      <h1 className="mb-10 text-4xl font-bold">
+        Welcome back to Amazones platform!
+      </h1>
 
       <div className="mb-8 flex text-gray-400">
         <button
           onClick={() => setLoginMode(true)}
-          className={`text-3xl font-bold cursor-pointer ${isLoginMode ? "text-white" : "text-gray-400"
-            }`}
+          className={`text-3xl font-bold cursor-pointer 
+            ${isLoginMode ? "text-white" : "text-gray-400"}`
+          }
         >
           Login
         </button>
 
-        <span className="mx-3 text-3xl font-bold">/</span>
+        <span className="mx-3 text-3xl font-bold">
+          /
+        </span>
 
         <button
           onClick={() => setLoginMode(false)}
-          className={`text-3xl font-bold cursor-pointer ${!isLoginMode ? "text-white" : "text-gray-400"
-            }`}
+          className={`text-3xl font-bold cursor-pointer 
+            ${!isLoginMode ? "text-white" : "text-gray-400"}`
+          }
         >
           Signup
         </button>

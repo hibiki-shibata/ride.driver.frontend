@@ -8,7 +8,7 @@ function MenuListSection() {
     return (
         <>
             {isMenuLoading && (
-                <p className="text-center text-lg text-slate-300">
+                <p className="text-center text-lg text-slate-300 animate-bounce">
                     Loading menu...
                 </p>
             )}
@@ -25,7 +25,7 @@ function MenuListSection() {
                 </p>
             )}
 
-            {!isMenuLoading && !menuLoadError && menuItems?.length > 0 && (
+            {!isMenuLoading && !menuLoadError && menuItems.length > 0 && (
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {menuItems.map((menuItem) => <MenuItemCard menuItem={menuItem} />)}
                 </div>

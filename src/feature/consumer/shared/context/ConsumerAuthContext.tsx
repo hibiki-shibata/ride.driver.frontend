@@ -95,10 +95,6 @@ export function ConsumerAuthContextProvider({ children }: { children: React.Reac
 
 export function useConsumerAuthContext() {
     const context = useContext(ConsumerAuthContext)
-
-    if (!context) {
-        throw new Error('useConsumerAuthContext must be used within ConsumerAuthContextProvider')
-    }
-
+    if (!context) throw new Error('useConsumerAuthContext must be used within ConsumerAuthContextProvider')
     return context
 }

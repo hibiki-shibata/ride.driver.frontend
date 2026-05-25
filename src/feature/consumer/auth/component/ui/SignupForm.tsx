@@ -149,13 +149,11 @@ function SignupForm() {
         </button>
       </form>
 
-      <div aria-live="polite" className="mt-4 min-h-6">
-        {signupStatus.status === "failed" && (
-          <p className="font-bold text-red-600">
-            Signup failed: {signupStatus.error}
-          </p>
-        )}
-      </div>
+      {signupStatus.status === "failed" && (
+        <div aria-live="polite" className="mt-4 min-h-6 font-bold text-red-600">
+          Signup failed: {signupStatus.error}
+        </div>
+      )}
     </>
   )
 }

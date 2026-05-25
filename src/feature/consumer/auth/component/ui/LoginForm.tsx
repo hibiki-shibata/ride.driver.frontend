@@ -43,12 +43,9 @@ function LoginForm() {
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-
     setLoginStatus({ status: "loading" })
-
     try {
       const loginResponse = await loginReq(formData)
-
       login(loginResponse.accessToken)
       setFormData(INITIAL_LOGIN_FORM)
       navigate(CONSUMER_ROUTE.MERCHANTS)
@@ -99,7 +96,6 @@ function LoginForm() {
           onChange={handleChange}
           className="mb-5 w-80 rounded-lg bg-white p-3 text-black"
         />
-
         <button
           type="submit"
           disabled={isSubmitDisabled}
@@ -109,13 +105,11 @@ function LoginForm() {
         </button>
       </form>
 
-      <div aria-live="polite" className="mt-4 min-h-6">
-        {loginStatus.status === "failed" && (
-          <p className="font-bold text-red-600">
-            Login failed: {loginStatus.error}
-          </p>
-        )}
-      </div>
+      {loginStatus.status === "failed" && (
+        <div aria-live="polite" className="mt-4 min-h-6 font-bold text-red-600">
+          Login failed: {loginStatus.error}
+        </div>
+      )}
     </>
   )
 }

@@ -11,20 +11,20 @@ function AvailableMerchantList() {
       </h1>
 
       {isLoadingPublishedMerchants && (
-        <p className="text-center text-lg text-slate-300">
+        <p className="text-center text-lg text-slate-300 animate-bounce">
           Loading merchants...
         </p>
       )}
 
       {!isLoadingPublishedMerchants && publishedMerchantsLoadError && (
         <p className="text-center text-lg font-semibold text-rose-400">
-          Failde to fetch published Merchant load
+          Failde to load published Merchant
         </p>
       )}
 
-      {!isLoadingPublishedMerchants && publishedMerchants.length === 0 && (
+      {!isLoadingPublishedMerchants && !publishedMerchantsLoadError && publishedMerchants.length === 0 && (
         <p className="text-center text-lg text-slate-300">
-          No merchants are available right now.
+          No merchants are published in the platform.
         </p>
       )}
 

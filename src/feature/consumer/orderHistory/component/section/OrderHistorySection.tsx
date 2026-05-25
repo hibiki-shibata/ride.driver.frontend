@@ -1,4 +1,4 @@
-import OrderHistoryCardLayout from "../ui/OrderHistoryCardLayout"
+import OrderHistoryCardLayout from "../ui/OrderHistoryCard"
 import { useOrderHistory } from "../../hook/useOrderHistory"
 import { useConsumerAuthContext } from "../../../shared/context/ConsumerAuthContext"
 
@@ -19,7 +19,7 @@ function OrderHistorySection() {
             )}
 
             {isLoadingOrderHistory && (
-                <p className="text-xl text-center mt-10">
+                <p className="text-xl text-center mt-10 animate-bounce">
                     Loading active orders...
                 </p>
             )}
@@ -31,7 +31,9 @@ function OrderHistorySection() {
             )}
 
             {!isLoadingOrderHistory && !orderHistoryFetchError && orderHistory.length === 0 && (
-                <p className="text-xl text-center mt-10">You have no active orders.</p>
+                <p className="text-xl text-center mt-10">
+                    You have no active orders
+                </p>
             )}
 
             {!isLoadingOrderHistory && !orderHistoryFetchError && orderHistory.length > 0 &&
