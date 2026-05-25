@@ -2,7 +2,7 @@ import MerchantCardLayout from "../ui/MerchantCardLayout"
 import { usePublishedMerchants } from "../../hook/usePublishedMerchants"
 
 function AvailableMerchantList() {
-  const { merchants, isLoading, error } = usePublishedMerchants()
+  const { publishedMerchants, isLoadingPublishedMerchants, publishedMerchantsLoadError } = usePublishedMerchants()
 
   return (
     <>
@@ -10,29 +10,27 @@ function AvailableMerchantList() {
         Explore Available Merchants
       </h1>
 
-      {isLoading && (
+      {isLoadingPublishedMerchants && (
         <p className="text-center text-lg text-slate-300">
           Loading merchants...
         </p>
       )}
 
-      {!isLoading && error && (
+      {!isLoadingPublishedMerchants && publishedMerchantsLoadError && (
         <p className="text-center text-lg font-semibold text-rose-400">
-          {error}
+          Failde to fetch published Merchant load
         </p>
       )}
 
-      {!isLoading && !error && merchants.length === 0 && (
+      {!isLoadingPublishedMerchants && publishedMerchants.length === 0 && (
         <p className="text-center text-lg text-slate-300">
           No merchants are available right now.
         </p>
       )}
 
-      {!isLoading && !error && merchants.length > 0 && (
+      {!isLoadingPublishedMerchants && publishedMerchants.length > 0 && (
         <div className="grid grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {merchants.map((merchant) => (
-            <MerchantCardLayout key={merchant.id} merchant={merchant} />
-          ))}
+          {publishedMerchants.map((merchant) => <MerchantCardLayout key={merchant.id} merchant={merchant} />)}
         </div>
       )}
     </>

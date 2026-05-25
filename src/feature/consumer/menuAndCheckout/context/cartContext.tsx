@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo } from 'react'
-import { useCartState } from "../hook/useCartstate"
+import { useCartState } from "../hook/useCartState"
 import type { CartState } from '../type/cartState'
 
 const CartContext = createContext<CartState | null>(null)

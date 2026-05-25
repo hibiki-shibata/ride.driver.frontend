@@ -2,7 +2,7 @@ import { CONSUMER_API_URI } from "../../../../shared/constant/apiUri"
 import { httpRequest } from "../../shared/api/httpRequest"
 import type { MerchantProfile } from "../../shared/type/merchantProfile"
 
-export async function getAvailableMerchants(
+export async function getPublishedMerchants(
     page: number = 0,
     pageSize: number = 100
 ): Promise<MerchantProfile[]> {

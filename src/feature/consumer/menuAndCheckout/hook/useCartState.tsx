@@ -60,6 +60,7 @@ export function useCartState(): CartState {
         ), [cartItems]
     )
 
+    //  Checkout mutation
     const { mutate, isPending, error } = useMutation({
         mutationFn: () => sendOrder({ merchantId, cartItems }),
         onSuccess: () => {

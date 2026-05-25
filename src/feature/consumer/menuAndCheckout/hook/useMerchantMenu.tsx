@@ -16,8 +16,8 @@ export function useMerchantMenu(): UseMerchantMenuType {
     queryFn: () => getMenu(merchantId),
   })
   return {
-    menuItems: data ?? [],
+    menuItems: data ? data : [],
     isMenuLoading: isLoading,
-    menuLoadError: error instanceof Error ? error.message : null,
+    menuLoadError: error ? JSON.stringify(error) : null,
   }
 }

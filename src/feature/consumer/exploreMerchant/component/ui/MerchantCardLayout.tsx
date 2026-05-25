@@ -29,12 +29,11 @@ function MerchantCardLayout({ merchant }: MerchantCardProps) {
         <div className="rounded-lg border border-slate-700 bg-slate-900 p-4 text-center">
           <p>
             Status:{" "}
-            <span
-              className={
-                merchant.merchantStatus === "OPEN"
-                  ? "font-semibold text-emerald-400"
-                  : "font-semibold text-rose-400"
-              }
+            <span className={
+              merchant.merchantStatus === "OPEN"
+                ? "font-semibold text-emerald-400"
+                : "font-semibold text-rose-400"
+            }
             >
               {merchant.merchantStatus}
             </span>
