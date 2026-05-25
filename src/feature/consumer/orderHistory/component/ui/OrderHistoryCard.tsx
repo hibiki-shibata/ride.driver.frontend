@@ -1,10 +1,10 @@
-import type { OrderHistoryDTO } from "../../type/orderHistoryDTO"
+import type { OrderHistory } from "../../type/orderHistory"
 
 type OrderHistoryCardProps = {
-    task: OrderHistoryDTO
+    task: OrderHistory
 }
 
-function OrderHistoryCardLayout({ task }: OrderHistoryCardProps) {
+function OrderHistoryCard({ task }: OrderHistoryCardProps) {
     return (
         <article className="bg-gray-800 mt-5 p-5 rounded-lg max-w-xl mx-auto">
             <h2 className="text-2xl font-bold mb-2">Order ID: {task.taskId}</h2>
@@ -22,4 +22,4 @@ function OrderHistoryCardLayout({ task }: OrderHistoryCardProps) {
     )
 }
 
-export default OrderHistoryCardLayout
+export default OrderHistoryCard

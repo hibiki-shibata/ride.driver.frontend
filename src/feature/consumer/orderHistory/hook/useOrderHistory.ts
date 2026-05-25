@@ -1,76 +1,22 @@
-import { useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
 import { getOrderHistory } from "../api/getOrderHistory"
-import type { OrderHistoryDTO } from "../type/orderHistoryDTO"
+import type { OrderHistory } from "../type/orderHistory"
 
-const POLLING_INTERVAL_MS = 30000
-
-type UseOrderHistoryResult = {
-    tasks: OrderHistoryDTO[]
-    isLoading: boolean
-    error: string | null
+type UseOrderHistoryType = {
+    orderHistory: OrderHistory[]
+    isLoadingOrderHistory: boolean
+    orderHistoryFetchError: string | null
 }
 
-// function createMockActiveTasks(): TaskDataDTO[] {
-//     return Array.from({ length: 5 }, (_, index) => {
-//         const i = index + 1
-
-//         return {
-//             taskId: `task-${i}`,
-//             consumerName: `Consumer ${i}`,
-//             consumerEmailaddress: "aa@a.com",
-//             merchantName: `Merchant ${i}`,
-//             taskStatus: i % 2 === 0 ? "PICKUP" : "DROPOFF",
-//             pickupAddress: `${i} Pickup St`,
-//             pickupLatitude: 37.7749 + i * 0.01,
-//             pickupLongitude: -122.4194 + i * 0.01,
-//             dropoffAddress: `${i} Dropoff St`,
-//             dropoffLatitude: 37.7749 - i * 0.01,
-//             dropoffLongitude: -122.4194 - i * 0.01,
-//             itemNames: [`Item A${i}`, `Item B${i}`],
-//             totalPrice: i * 10,
-//         }
-//     })
-// } // Remove later - for testing only
-
-export function useOrderHistory(): UseOrderHistoryResult {
-    const [tasks, setTasks] = useState<OrderHistoryDTO[]>([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
-
-    useEffect(() => {
-        let isMounted = true
-
-        async function fetchActiveTasks() {
-            try {
-                const response: OrderHistoryDTO[] = await getOrderHistory()
-
-                if (!isMounted) return
-
-                setTasks(response ?? [])
-                setError(null)
-            } catch (err) {
-                if (!isMounted) return
-                setError("Failed to load active orders.")
-                console.error(err)
-            } finally {
-                if (!isMounted) return
-                setIsLoading(false)
-            }
-        }
-
-        fetchActiveTasks()
-
-        const intervalId = window.setInterval(fetchActiveTasks, POLLING_INTERVAL_MS)
-
-        return () => {
-            isMounted = false
-            window.clearInterval(intervalId)
-        }
-    }, [])
-
+export function useOrderHistory(): UseOrderHistoryType {
+    const { data, isLoading, error } = useQuery({
+        queryKey: ["orderHistory"],
+        queryFn: () => getOrderHistory(),
+        refetchInterval: 3000
+    })
     return {
-        tasks,
-        isLoading,
-        error,
+        orderHistory: data ? data : [],
+        isLoadingOrderHistory: isLoading,
+        orderHistoryFetchError: JSON.stringify(error)
     }
 }

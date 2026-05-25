@@ -3,7 +3,7 @@ import { useOrderHistory } from "../../hook/useOrderHistory"
 import { useConsumerAuthContext } from "../../../shared/context/ConsumerAuthContext"
 
 function OrderHistorySection() {
-    const { tasks, isLoading, error } = useOrderHistory()
+    const { orderHistory, isLoadingOrderHistory, orderHistoryFetchError } = useOrderHistory()
     const consumerAuthContext = useConsumerAuthContext()
 
     const isAuthenticated: boolean = consumerAuthContext?.authStatus === "authenticated"
@@ -18,20 +18,24 @@ function OrderHistorySection() {
                 </p>
             )}
 
-            {isLoading && (
-                <p className="text-xl text-center mt-10">Loading active orders...</p>
+            {isLoadingOrderHistory && (
+                <p className="text-xl text-center mt-10">
+                    Loading active orders...
+                </p>
             )}
 
-            {!isLoading && isAuthenticated && error && (
-                <p className="text-xl text-center mt-10 text-red-400">{error}</p>
+            {!isLoadingOrderHistory && isAuthenticated && orderHistoryFetchError && (
+                <p className="text-xl text-center mt-10 text-red-400">
+                    Failed to fetch Order History
+                </p>
             )}
 
-            {!isLoading && !error && tasks.length === 0 && (
+            {!isLoadingOrderHistory && !orderHistoryFetchError && orderHistory.length === 0 && (
                 <p className="text-xl text-center mt-10">You have no active orders.</p>
             )}
 
-            {!isLoading && !error && tasks.length > 0 &&
-                tasks.map((task) => <OrderHistoryCardLayout key={task.taskId} task={task} />)}
+            {!isLoadingOrderHistory && !orderHistoryFetchError && orderHistory.length > 0 &&
+                orderHistory.map((task) => <OrderHistoryCardLayout task={task} />)}
         </section>
     )
 }

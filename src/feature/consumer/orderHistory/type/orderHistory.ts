@@ -1,4 +1,4 @@
-export type OrderHistoryDTO = {
+export type OrderHistory = {
     taskId: string
     merchantName: string
     taskStatus: string
